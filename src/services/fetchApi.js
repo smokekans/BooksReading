@@ -10,4 +10,3 @@ axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 //     axios.defaults.headers.common.Authorization = '';
 //   },
 // };
-s;
