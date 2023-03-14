@@ -1,5 +1,5 @@
 import React from 'react'
-import { TimerStl, LaybelStl, TimeStl, СolonStl, TitleStl } from './CountdounGoals.styled'
+import { TimerStl, LaybelStl, TimeStl, СolonStl, TitleStl } from './CountdownGoals.styled'
 
 export const CountdounGoals = () => {
   return (

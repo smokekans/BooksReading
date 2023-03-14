@@ -1,5 +1,5 @@
 import React from 'react';
-import { TimerStl, LaybelStl, TimeStl, СolonStl, TitleStl } from './CountdounYear.styled';
+import { TimerStl, LaybelStl, TimeStl, СolonStl, TitleStl } from './CountdownYear.styled';
 
 export const CountdounYears = () => {
   return (
