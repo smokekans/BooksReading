@@ -7,8 +7,8 @@ import { StatisticsBookPages } from 'components/StatisticsBookPages/StatisticsBo
 const Statistics = () => {
   return (
     <>
-      <CountdounYears />
-      <CountdounGoals />
+      <CountdownYears />
+      <CountdownGoals />
       <MyGoals />
       <StatisticsBookLIst />
       <StatisticsBookPages />
