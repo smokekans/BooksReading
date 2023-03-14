@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from 'redux/book/bookOperations';
 import { getBook } from 'redux/book/bookSelectors';
-
+import { Label, Form, Input } from './LibraryAddBook.styled';
 export const LibraryAddBook = () => {
   const dispatch = useDispatch();
   const books = useSelector(getBook);
@@ -27,10 +27,10 @@ export const LibraryAddBook = () => {
     };
     
   return (
-    <form onSubmit={addNewBook}>
-      <label>
+    <Form onSubmit={addNewBook}>
+      <Label>
         Назва книги
-        <input
+        <Input
           type="text"
           name="title"
           autoComplete="on"
@@ -38,10 +38,10 @@ export const LibraryAddBook = () => {
             // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Автор книги
-        <input
+        <Input
           type="text"
           name="author"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -49,10 +49,10 @@ export const LibraryAddBook = () => {
           autoComplete="on"
           required
         />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Рік випуску
-        <input
+        <Input
           type="number"
           name="publishYear"
             pattern="[0-9]*$"
@@ -60,19 +60,19 @@ export const LibraryAddBook = () => {
           autoComplete="on"
           required
         />
-      </label>
-      <label>
+      </Label>
+      <Label>
         Кількість сторінок
-        <input
+        <Input
           type="number"
           name="pagesTotal"
             pattern="[0-9]*$"
             title="Total pages may contain only numbers. For example 10, 253, 999"
           required
         />
-      </label>
+      </Label>
       <button type="submit">Додати</button>
-    </form>
+    </Form>
   );
 };
 

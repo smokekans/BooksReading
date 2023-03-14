@@ -30,7 +30,8 @@ export const LibraryTable = () => {
             );
           })}
         </tbody>
-      </table>
+          </table>
+          <button type='button'>Моє тренування</button>
     </>
   );
 };
