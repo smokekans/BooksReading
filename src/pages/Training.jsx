@@ -1,5 +1,9 @@
+import { MyTraining } from '../components/myTraining/myTarining'
+
 const Training = () => {
-  return <></>;
+  return <>
+  <MyTraining/>
+  </>;
 };
 
 export default Training;
