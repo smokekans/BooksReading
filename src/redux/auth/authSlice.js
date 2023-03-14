@@ -1,69 +1,67 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { googleSignUp, refresh, signIn, signOut, signUp } from './authOperations';
+import { useNavigate } from 'react-router-dom';
+import { signInThunk, logOutThunk, signUpThunk } from './authOperations';
 
 const authInitialState = {
-   user: { name: '', email: '', books: [], planning: {} },
-    token: null,
-    isLoggedIn: false,
-    isLoading: false,
+user: {},
+token: null,
+isLoggedIn: false,
+isLoading: false,
+error: null
 };
 
+function signUpFulfilled(state) {
+    state.isLoading = false;
+    state.error = null;
+}
+
+function signInFulfilled(state, action) {
+    state.user = action.payload.userData
+    state.token = action.payload.accessToken
+    state.isLoading = false
+    state.isLoggedIn = true
+    state.error = null
+}
+
+function logOutFulfilled(state) {
+    state.isLoading = false;
+    state.isLoggedIn = false;
+    state.user = {};
+    state.token = null;
+}
+
 const authSlice = createSlice({
-  name: 'auth',
-  initialState: authInitialState,
-  extraReducers: {
-   [signUp.fulfilled](state, { payload }) {
-      state.user = payload.user;
-      state.token = payload.token;
-      state.isLoggedIn = true;
-      state.isLoading = false;
-  },
-  [signUp.rejected](state) {
-      state.isLoading = false;
-  },
-
-  [signIn.pending]: state => {
-      state.isLoading = true;
-  },
-  [signIn.fulfilled]: (state, { payload }) => {
-      state.user = payload.data.user;
-      state.token = payload.data.token;
-      state.isLoggedIn = true;
-      state.isLoading = false;
-  },
-  [googleSignUp.fulfilled]: (state, { payload }) => {
-      state.token = payload.data.token;
-  },
-  [signIn.rejected](state) {
-      state.isLoading = false;
-  },
-
-  [refresh.pending]: state => {
-      state.isLoading = true;
-  },
-  [refresh.fulfilled]: (state, { payload }) => {
-      state.user = payload.data.user;
-      state.token = payload.data.user.token;
-      state.isLoggedIn = true;
-      state.isLoading = false;
-  },
-  [refresh.rejected](state) {
-      state.isLoading = false;
-  },
-
-  [signOut.pending]: state => {
-      state.isLoading = true;
-  },
-  [signOut.fulfilled](state) {
-      state.user = { name: '', email: '' };
-      state.token = null;
-      state.isLoggedIn = false;
-      state.isLoading = false;
-  },
-  [signOut.rejected](state) {
-      state.isLoading = false;
-  },
-  },
+    name: 'auth',
+    initialState: authInitialState,
+    extraReducers: (builder) => {
+        builder.addCase(signUpThunk.pending, (state) => {
+            state.isLoading = true
+            state.error = null
+        })
+        .addCase(signUpThunk.fulfilled, signUpFulfilled)
+        .addCase(signUpThunk.rejected, (state, { payload }) => {
+                state.isLoading = false
+                state.error = payload
+        })
+        .addCase(signInThunk.pending, (state) => {
+            state.isLoading = true
+            state.error = null
+        })
+        .addCase(signInThunk.fulfilled, signInFulfilled)
+        .addCase(signInThunk.rejected, (state, { payload }) => {
+                state.isLoading = false
+                state.error = payload
+        })
+        .addCase(logOutThunk.pending, (state) => {
+            state.isLoading = true
+            state.error = null
+        })
+        .addCase(logOutThunk.fulfilled, logOutFulfilled)
+        .addCase(logOutThunk.rejected, (state, { payload }) => {
+                state.isLoading = false
+                state.error = payload
+        })
+    }
 });
 
 export const authReducer = authSlice.reducer;

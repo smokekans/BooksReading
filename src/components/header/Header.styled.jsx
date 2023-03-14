@@ -94,7 +94,7 @@ export const UserInfo = styled.div`
 `;
 
 export const UserName = styled.p`
-    display: none;
+    display: inline;
 `;
 
 export const UserAvatar = styled.p`

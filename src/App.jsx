@@ -10,13 +10,14 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/layout" element={<Layout />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Layout />} >
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="/library" element={<Library />} />
         <Route path="/training" element={<Training />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="*" element={<Login />} />
+        </Route>
       </Routes>
     </>
   );
