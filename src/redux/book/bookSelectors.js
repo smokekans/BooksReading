@@ -1,1 +1,1 @@
-export const get = state => state.book;
+export const getBook = state => state.book.book.items;
