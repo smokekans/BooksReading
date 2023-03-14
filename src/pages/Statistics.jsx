@@ -1,5 +1,5 @@
-import { CountdounYears } from "components/CountdounYear/CountdownYear";
-import { CountdounGoals } from "components/CountdounGoals/CountdownGoals";
+import { CountdounYears } from "components/CountdownYear/CountdownYear";
+import { CountdounGoals } from "components/CountdownGoals/CountdownGoals";
 import { MyGoals } from "components/MyGoalsStatistics/MyGoals";
 
 const Statistics = () => {

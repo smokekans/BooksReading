@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const TimerStl = styled.section`
   display: flex;
   flex: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background: #ffffff;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
