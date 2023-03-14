@@ -5,11 +5,11 @@ import { baseUrl } from '../../API';
 
 axios.defaults.baseURL = baseUrl;
 
-export const signUp = createAsyncThunk(
+export const signUpThunk = createAsyncThunk(
     'auth/signup',
     async (credentials, { rejectWithValue }) => {
         try {
-            const { data } = await axios.post('/auth/signup', credentials);
+            const { data } = await axios.post('auth/register', credentials);
             token.set(data.token);
             return data;
         } catch (error) {
@@ -18,11 +18,11 @@ export const signUp = createAsyncThunk(
     }
 );
 
-export const googleSignUp = createAsyncThunk(
+export const googleSignUpThunk = createAsyncThunk(
     'auth/google',
     async (_, { rejectWithValue }) => {
         try {
-            const { data } = await axios.get('/auth/google');
+            const { data } = await axios.get('auth/google');
             token.set(data.token);
             return data;
         } catch (error) {
@@ -31,12 +31,12 @@ export const googleSignUp = createAsyncThunk(
     }
 );
 
-export const signIn = createAsyncThunk(
+export const signInThunk = createAsyncThunk(
     'auth/signin',
     async (credentials, { rejectWithValue }) => {
         try {
-            const { data } = await axios.post('/auth/signin', credentials);
-            token.set(data.data.token);
+            const { data } = await axios.post('auth/login', credentials);
+            // token.set(data.token);
             return data;
         } catch (error) {
             return rejectWithValue(error.message);
@@ -44,11 +44,11 @@ export const signIn = createAsyncThunk(
     }
 );
 
-export const signOut = createAsyncThunk(
+export const logOutThunk = createAsyncThunk(
     'auth/signout',
-    async (credentials, { rejectWithValue }) => {
+    async ({ rejectWithValue }) => {
         try {
-            await axios.get(`/auth/signout?_id=${credentials}`);
+            await axios.post(`auth/logout`);
             token.unset();
         } catch (error) {
             return rejectWithValue(error.message);
@@ -56,11 +56,11 @@ export const signOut = createAsyncThunk(
     }
 );
 
-export const refresh = createAsyncThunk(
+export const refreshThunk = createAsyncThunk(
     'user/refresh',
     async (credentials, { rejectWithValue }) => {
         try {
-            const { data } = await axios.get('/user/', credentials);
+            const { data } = await axios.get('user/', credentials);
             token.set(data.data.user.token);
             return data;
         } catch (error) {
