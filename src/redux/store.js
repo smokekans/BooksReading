@@ -13,13 +13,15 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
 import { bookReducer } from './book/bookSlice';
+import { languageReducer } from './language/language';
 import { planningReducer } from './planning/planningSlice';
+import { themeReducer } from './theme/themeSlice';
 import { userReducer } from './user/userSlice';
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  //   whitelist: ['token'],
+  whitelist: ['accessToken', 'refreshToken'],
 };
 
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
@@ -27,7 +29,7 @@ const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const rootRersistConfig = {
   key: 'root',
   storage,
-  // whilelist: ['']
+  whilelist: ['theme', 'language'],
 };
 
 const rootReducer = combineReducers({
@@ -35,6 +37,8 @@ const rootReducer = combineReducers({
   book: bookReducer,
   planning: planningReducer,
   user: userReducer,
+  theme: themeReducer,
+  language: languageReducer,
 });
 
 const rootPersistedReducer = persistReducer(rootRersistConfig, rootReducer);
