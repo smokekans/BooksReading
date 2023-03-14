@@ -3,6 +3,7 @@ const Training = () => {
   return (
     <>
       <MyPurposeToRead />
+      <MyTraining/> 
     </>
   );
 };
