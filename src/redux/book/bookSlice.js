@@ -27,7 +27,7 @@ const bookInitialState = {
     error: null,
   },
 };
-console.log(bookInitialState)
+// console.log(bookInitialState)
 
 const bookSlice = createSlice({
   name: 'book',

@@ -1,11 +1,11 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from 'redux/book/bookOperations';
-// import { get } from 'redux/book/bookSelectors';
+import { getBook } from 'redux/book/bookSelectors';
 
 export const LibraryAddBook = () => {
   const dispatch = useDispatch();
-  // const books = useSelector(get);
+  const books = useSelector(getBook);
 
   const addNewBook = e => {
     e.preventDefault();
@@ -15,12 +15,12 @@ export const LibraryAddBook = () => {
     const publishYear = Number(e.target.publishYear.value);
     const pagesTotal = Number(e.target.pagesTotal.value);
 
-    // if (books.items.find(book => book.title === title)) {
-    //   alert(`Книга ${title} уже додана в список`);
-    // } else {
+    if (books.find(book => book.title === title)) {
+      alert(`Книга ${title} уже додана в список`);
+    } else {
     const newBook = { title, author, publishYear, pagesTotal }
       dispatch(addBook(newBook));
-    // }
+    }
       console.log({ title, author, publishYear, pagesTotal })
 
     e.target.reset();
