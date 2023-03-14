@@ -1,6 +1,6 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-axios.defaults.baseURL = 'https://bookread-backend.goit.global';
+// axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
 // const token = {
 //   set(token) {
