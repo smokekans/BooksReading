@@ -1,13 +1,15 @@
-import { CountdounYears } from "components/CountdownYear/CountdownYear";
-import { CountdounGoals } from "components/CountdownGoals/CountdownGoals";
-import { MyGoals } from "components/MyGoalsStatistics/MyGoals";
+import { CountdownYears } from 'components/CountdownYear/CountdownYear';
+import { CountdownGoals } from 'components/CountdownGoals/CountdownGoals';
+import { MyGoals } from 'components/MyGoalsStatistics/MyGoals';
 
 const Statistics = () => {
-  return <>
-  <CountdounYears/>
-  <CountdounGoals/>
-  <MyGoals/>
-  </>;
+  return (
+    <>
+      <CountdownYears />
+      <CountdownGoals />
+      <MyGoals />
+    </>
+  );
 };
 
 export default Statistics;

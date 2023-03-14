@@ -8,7 +8,7 @@ import {
   TitleStl,
 } from './CountdownYear.styled';
 
-export const CountdounYears = () => {
+export const CountdownYears = () => {
   const [days, setDays] = useState('00');
   const [hours, setHours] = useState('00');
   const [minutes, setMinutes] = useState('00');
@@ -18,19 +18,21 @@ export const CountdounYears = () => {
 
   const startTimer = () => {
     const endDateYear = new Date('December 31, 2023 23:59:59').getTime();
-  
+
     interval = setInterval(() => {
       const startData = new Date().getTime();
       const distance = endDateYear - startData;
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-  //     const addLeadingZero=(value)=>{
-  //       return value.toString().padStart(2 ,'0');
-  // };
+
+      //     const addLeadingZero=(value)=>{
+      //       return value.toString().padStart(2 ,'0');
+      // };
 
       if (distance < 0) {
         clearInterval(interval.current);
@@ -48,10 +50,9 @@ export const CountdounYears = () => {
 
     startTimer();
     return () => {
-
       clearInterval(clearTimer);
-    }
-  })
+    };
+  });
 
   return (
     <div>
