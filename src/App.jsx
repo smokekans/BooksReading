@@ -3,7 +3,7 @@ import Login from 'pages/Login';
 import Register from 'pages/Register';
 import Statistics from 'pages/Statistics';
 import Training from 'pages/Training';
-import { Layout } from './components/Layout/Layout';
+import { Layout } from './components/Layouts/Layouts';
 import { Route, Routes } from 'react-router-dom';
 
 export const App = () => {
