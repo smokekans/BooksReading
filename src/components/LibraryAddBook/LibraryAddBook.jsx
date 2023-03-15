@@ -21,8 +21,7 @@ export const LibraryAddBook = () => {
       const goingToRead = { title, author, publishYear, pagesTotal };
       dispatch(addBook(goingToRead));
     }
-    console.log({ title, author, publishYear, pagesTotal });
-
+    // console.log({ title, author, publishYear, pagesTotal });
     e.target.reset();
   };
 
@@ -56,7 +55,7 @@ export const LibraryAddBook = () => {
         <Input
           type="number"
           name="publishYear"
-          pattern="[0-9]*$"
+          pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}"
           title="Publish year may contain only numbers. For example 1998, 2000, 2023"
           placeholder="..."
           autoComplete="on"
@@ -68,6 +67,7 @@ export const LibraryAddBook = () => {
         <Input
           type="number"
           name="pagesTotal"
+          min="0"
           pattern="[0-9]*$"
           title="Total pages may contain only numbers. For example 10, 253, 999"
           placeholder="..."
