@@ -63,6 +63,24 @@ export const СolonStl = styled.span`
   color: #091e3f;
 `;
 
+export const AccentStl = styled.span`
+  /* position: absolute; */
+  /* width: 21px; */
+  height: 38px;
+  left: 1017px;
+  top: 254px;
+
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 38px;
+
+  text-align: center;
+
+  color: #FF6B08;
+`;
+
 export const LabelStl = styled.p`
   font-family: 'Montserrat';
   font-style: normal;
@@ -75,7 +93,7 @@ export const LabelStl = styled.p`
 
   color: #898f9f;
   /* position: absolute; */
-  width: 57px;
+  /* width: 57px; */
   height: 30px;
   left: 1177px;
   top: 320px;
