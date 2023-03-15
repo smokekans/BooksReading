@@ -19,9 +19,9 @@ axios.defaults.baseURL = 'https://bookread-backend.goit.global'
 
 export const addTrainingConfig = createAsyncThunk(
   'planning/addTrainingConfig',
-  async ({ start, end, books }) => {
+  async ({startDate, endDate, books}) => {
     try {
-      const response = await axios.post('/planning', { start, end, books });
+      const response = await axios.post('/planning', {startDate, endDate, books});
       return response.data;
     } catch (error) {
      console.log(error);
