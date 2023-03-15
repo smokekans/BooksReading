@@ -18,8 +18,8 @@ export const LibraryAddBook = () => {
     if (books.find(book => book.title === title)) {
       alert(`Книга ${title} уже додана в список`);
     } else {
-      const newBook = { title, author, publishYear, pagesTotal };
-      dispatch(addBook(newBook));
+      const goingToRead = { title, author, publishYear, pagesTotal };
+      dispatch(addBook(goingToRead));
     }
     console.log({ title, author, publishYear, pagesTotal });
 
@@ -44,7 +44,7 @@ export const LibraryAddBook = () => {
         <Input
           type="text"
           name="author"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Author name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           placeholder="..."
           autoComplete="on"
