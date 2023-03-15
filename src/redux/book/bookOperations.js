@@ -32,8 +32,8 @@ export const fetchAllBooks = createAsyncThunk(
   'books/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const a = thunkAPI.getState().auth.token
-      token.set(a)
+      const value = thunkAPI.getState().auth.token
+      token.set(value)
       // const state = thunkAPI.getState();
       // const persistedToken = token;
 
