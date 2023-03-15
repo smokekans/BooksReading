@@ -14,7 +14,7 @@ export const LibraryTable = () => {
 
   return (
     <>
-      <TitleH2>Прочитано</TitleH2>
+      {/* <TitleH2>Прочитано</TitleH2>
       <Table>
         <thead>
           <TrHead>
@@ -27,14 +27,14 @@ export const LibraryTable = () => {
           </TrHead>
         </thead>
 
-        <tbody>
-          {books.map(b => {
+        <tbody> */}
+          {/* {books.map(b => {
               return (
-                <Tr key={b.title}>
+                <Tr key={b._id}>
                   <td>{b.title}</td>
                   <td>{b.author}</td>
                   <td>{b.publishYear}</td>
-                  <td>{b.totalPages}</td>
+                  <td>{b.pagesTotal}</td>
                   <td>
                     <span>*****</span>
                   </td>
@@ -43,8 +43,8 @@ export const LibraryTable = () => {
                   </td>
                 </Tr>
               );
-            })}
-        </tbody>
+            })} */}
+        {/* </tbody>
       </Table>
       <TitleH2>Читаю</TitleH2>
       <Table>
@@ -57,19 +57,19 @@ export const LibraryTable = () => {
           </TrHead>
         </thead>
 
-        <tbody>
-          {books.map(b => {
+        <tbody> */}
+          {/* {books.map(b => {
               return (
-                <Tr key={b.title}>
+                <Tr key={b._id}>
                   <td>{b.title}</td>
                   <td>{b.author}</td>
                   <td>{b.publishYear}</td>
-                  <td>{b.totalPages}</td>
+                  <td>{b.pagesTotal}</td>
                 </Tr>
               );
-            })}
-        </tbody>
-      </Table>
+            })} */}
+        {/* </tbody>
+      </Table> */}
       <TitleH2>Маю намір прочитати</TitleH2>
       <Table>
         <thead>
@@ -84,11 +84,11 @@ export const LibraryTable = () => {
         <tbody>
           {books.map(b => {
               return (
-                <Tr key={b.title}>
+                <Tr key={b._id}>
                   <td>{b.title}</td>
                   <td>{b.author}</td>
                   <td>{b.publishYear}</td>
-                  <td>{b.totalPages}</td>
+                  <td>{b.pagesTotal}</td>
                 </Tr>
               );
             })}
