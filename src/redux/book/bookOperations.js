@@ -1,19 +1,38 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { token } from '../auth/token';
 
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
 export const addBook = createAsyncThunk(
   'book/addBook',
-  async (newBook, thunkAPI) => {
+  async (goingToRead, thunkAPI) => {
     try {
-      const { data } = await axios.post('/book', newBook);
+     const value = thunkAPI.getState().auth.token
+      token.set(value)
+      const { data } = await axios.post('/book', goingToRead);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+
+export const fetchAllBooks = createAsyncThunk(
+  'books/fetchAll',
+  async (_, thunkAPI) => {
+    try {
+      const value = thunkAPI.getState().auth.token
+      token.set(value)
+      const { data } = await axios.get('/user/books');
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 
 // const postApiBook = axios.create({
 //     baseURL: 'https://bookread-backend.goit.global',
