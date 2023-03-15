@@ -9,7 +9,9 @@ export const addTrainingConfig = createAsyncThunk(
     'planning/addTrainingConfig',
   async ({ startDate, endDate, books }, thunkAPI) => {
      
-      try {
+    try {
+        const value = thunkAPI.getState().auth.token
+      token.set(value)
         const response = await axios.post('/planning', { startDate, endDate, books });
         return response.data;
       } catch (e) {
