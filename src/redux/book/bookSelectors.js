@@ -1,3 +1,3 @@
 export const getBook = state => {
-  return state.book.book.items;
+  return state.book.book.goingToRead;
 };
