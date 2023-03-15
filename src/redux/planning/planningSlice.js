@@ -10,10 +10,13 @@ const planningInitialState = {
 const planningSlice = createSlice({
   name: 'planning',
   initialState: planningInitialState,
-  reducer: {
-    addDate(state, action) {
+  reducers: {
+    addStartDate(state, action) {
       state.startDate = action.payload
-  }
+    },
+    addEndDate(state, action) {
+      state.endDate = action.payload
+    }
   },
   extraReducers: builder => {
     
@@ -21,4 +24,4 @@ const planningSlice = createSlice({
 });
 
 export const planningReducer = planningSlice.reducer;
-export const {addDate} = planningSlice.reducer;
+export const {addStartDate, addEndDate} = planningSlice.actions;
