@@ -1,5 +1,5 @@
 import MyPurposeToRead from 'components/MyPurposeToRead/MyPurposeToRead';
-import { MyTraining } from 'components/MyTraining/myTraining';
+import { MyTraining } from 'components/MyTraining/MyTraining';
 
 const Training = () => {
   return (
