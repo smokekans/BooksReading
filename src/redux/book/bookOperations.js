@@ -8,8 +8,8 @@ export const addBook = createAsyncThunk(
   'book/addBook',
   async (newBook, thunkAPI) => {
     try {
-     const a = thunkAPI.getState().auth.token
-      token.set(a)
+     const value = thunkAPI.getState().auth.token
+      token.set(value)
       const { data } = await axios.post('/book', newBook);
       return data;
     } catch (error) {
