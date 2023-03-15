@@ -1,34 +1,37 @@
 import React from 'react';
-import { TimerStl, LaybelStl, TimeStl, СolonStl, TitleStl } from './CountdownYear.styled';
+import {
+  TimerStl,
+  LaybelStl,
+  TimeStl,
+  СolonStl,
+  TitleStl,
+} from './CountdownGoals.styled';
 
-export const CountdounYears = () => {
+export const CountdownGoals = () => {
   return (
     <div>
-        <TitleStl>Years countdown</TitleStl>
+      <TitleStl>Goals countdown</TitleStl>
       <TimerStl>
-        
-        <section >
+        <section>
           <TimeStl>00</TimeStl>
           <LaybelStl>DAYS</LaybelStl>
         </section>
         <СolonStl>:</СolonStl>
-        <section >
+        <section>
           <TimeStl>00</TimeStl>
           <LaybelStl>HRS</LaybelStl>
         </section>
         <СolonStl>:</СolonStl>
-        <section >
+        <section>
           <TimeStl>00</TimeStl>
           <LaybelStl>MINS</LaybelStl>
         </section>
         <СolonStl>:</СolonStl>
-        <section >
+        <section>
           <TimeStl>00</TimeStl>
           <LaybelStl>SECS</LaybelStl>
         </section>
-    
       </TimerStl>
-
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { LibraryAddBook } from 'components/LibraryAddBook/LibraryAddBook';
 import { LibraryTable } from 'components/LibraryTable/LibraryTable';
-import { EmptyLibrary } from 'components/modal/EmptyLybrary/EmptyLibrary';
+import { EmptyLibrary } from 'components/Modal/EmptyLibrary/EmptyLibrary';
 
 const Library = () => {
   return (
