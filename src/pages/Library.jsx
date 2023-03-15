@@ -1,11 +1,15 @@
-import { LibraryAddBook } from "components/LibraryAddBook/LibraryAddBook";
-import { LibraryTable } from "components/LibraryTable/LibraryTable";
+import { LibraryAddBook } from 'components/LibraryAddBook/LibraryAddBook';
+import { LibraryTable } from 'components/LibraryTable/LibraryTable';
+import { EmptyLibrary } from 'components/modal/EmptyLybrary/EmptyLibrary';
 
 const Library = () => {
-  return <>
-    <LibraryAddBook />
-    <LibraryTable/>
-  </>;
+  return (
+    <>
+      <LibraryAddBook />
+      <EmptyLibrary />
+      <LibraryTable />
+    </>
+  );
 };
 
 export default Library;
