@@ -1,14 +1,22 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import DatePicker from "react-datepicker";
-
+import {addDate} from '../../redux/planning/planningSlice'
 import "react-datepicker/dist/react-datepicker.css";
+import { useDispatch } from "react-redux";
 
 
 
 export const MyTraining = () => {
     const [startDate, setStartDate] = useState(null);
      const [endDate, setEndDate] = useState(null);
+  const dispatch = useDispatch()
 
+    useEffect(() => {
+      dispatch(addDate(startDate))
+    
+      
+    }, [startDate, endDate, dispatch])
     return (
         <>
             <div>
