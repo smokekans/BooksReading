@@ -16,17 +16,56 @@ axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 //   }
 // );
 
-export const getTrainingConfig = createAsyncThunk(
-  'planning/getTrainingConfig',
-  async (_, thunkAPI) => {
-    try {
-      const { data } = await axios.post('/planning');
-      token.set(data.token);
-      return data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const getTrainingData = createAsyncThunk(
+//   'planning/getTrainingConfig',
+//   async (_, thunkAPI) => {
+//     try {
+//       const { data } = await axios.get('/planning');
+//     //   token.set(data.token);
+//       return data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
 
 
