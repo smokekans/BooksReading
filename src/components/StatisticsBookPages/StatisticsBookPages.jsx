@@ -1,12 +1,15 @@
 import { StatisticsBookData } from 'components/StatisticsBookData/StatisticsBookData';
 import { StatisticsResultForm } from 'components/StatisticsResultForm/StatisticsResultForm';
 import React from 'react';
+import { ResultWrapp } from './StatisticsBookPages.styled';
 
 export const StatisticsBookPages = () => {
   return (
     <>
-      <StatisticsResultForm />
-      <StatisticsBookData />
+      <ResultWrapp>
+        <StatisticsResultForm />
+        <StatisticsBookData />
+      </ResultWrapp>
     </>
   );
 };
