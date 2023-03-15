@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useNavigate } from 'react-router-dom';
 import { signInThunk, logOutThunk, signUpThunk } from './authOperations';
 
 const authInitialState = {
