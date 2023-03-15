@@ -8,8 +8,8 @@ export const addBook = createAsyncThunk(
   'book/addBook',
   async (newBook, thunkAPI) => {
     try {
-     const a = thunkAPI.getState().auth.token
-      token.set(a)
+     const value = thunkAPI.getState().auth.token
+      token.set(value)
       const { data } = await axios.post('/book', newBook);
       return data;
     } catch (error) {
@@ -18,30 +18,13 @@ export const addBook = createAsyncThunk(
   }
 );
 
-// export const fetchBooks = createAsyncThunk(
-//     'books/fetchAll',
-//     async (_, thunkAPI) => {
-//         try {
-//             const response = await axios.get('/user/books')
-//             return response.data;
-//         } catch (error) { return thunkAPI.rejectWithValue(error.message) }
-//     }
-// );
 
 export const fetchAllBooks = createAsyncThunk(
   'books/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const a = thunkAPI.getState().auth.token
-      token.set(a)
-      // const state = thunkAPI.getState();
-      // const persistedToken = token;
-
-      // if (persistedToken === null) {
-      //   return thunkAPI.rejectWithValue();
-      // }
-
-      // token.set(persistedToken);
+      const value = thunkAPI.getState().auth.token
+      token.set(value)
       const { data } = await axios.get('/user/books');
       return data;
     } catch (e) {
