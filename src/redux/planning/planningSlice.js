@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addTrainingConfig, fetchTraining } from './planningOperations';
+
+
+
 
 const planningInitialState = {
   startDate: "",
   endDate: "",
   books: [],
-  pages: 0
 };
+// const handleRejected = (state, action) => {
+ 
+//   state.planningInitialState.error = action.payload;
+// };
 
 const planningSlice = createSlice({
   name: 'planning',
@@ -16,12 +23,22 @@ const planningSlice = createSlice({
     },
     addEndDate(state, action) {
       state.endDate = action.payload
+    },
+    addToBooks(state, action) {
+      state.books.push(action.payload)
     }
   },
   extraReducers: builder => {
-    
+    builder
+      // .addCase(addTrainingConfig.rejected, handleRejected)
+      .addCase(addTrainingConfig.fulfilled, (state, action) => {
+        console.log('success');
+      })
+      // .addCase(fetchTraining.fulfilled, (state, action) => {
+      //   console.log(action.payload);
+      // })
   },
 });
 
 export const planningReducer = planningSlice.reducer;
-export const {addStartDate, addEndDate} = planningSlice.actions;
+export const {addStartDate, addEndDate, addToBooks} = planningSlice.actions;
