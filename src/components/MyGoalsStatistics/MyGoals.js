@@ -1,5 +1,5 @@
 import React from 'react'
-import { TitleStl, WrapStl, WraperStl, ListStl, СolonStl, LabelStl, BoxStl } from './MyGoals.styled'
+import { TitleStl, WrapStl, WraperStl, ListStl, СolonStl, LabelStl, BoxStl } from './myGoals.styled'
 
 export const MyGoals = () => {
   return (

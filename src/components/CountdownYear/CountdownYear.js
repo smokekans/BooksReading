@@ -6,7 +6,7 @@ import {
   TimeStl,
   СolonStl,
   TitleStl,
-} from './CountdownYear.styled';
+} from './countDownYear.styled';
 
 export const CountdounYears = () => {
   const [days, setDays] = useState('00');

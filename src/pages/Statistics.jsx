@@ -1,6 +1,6 @@
-import { CountdounYears } from "components/CountdownYear/CountdownYear";
-import { CountdounGoals } from "components/CountdownGoals/CountdownGoals";
-import { MyGoals } from "components/MyGoalsStatistics/MyGoals";
+import { CountdounYears } from "components/countDownYear/countDownYear";
+import { CountdounGoals } from "components/сountDownGoals/countDownGoals";
+import { MyGoals } from "components/myGoalsStatistics/myGoals";
 
 const Statistics = () => {
   return <>
