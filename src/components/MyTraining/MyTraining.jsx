@@ -3,14 +3,16 @@ import { useEffect } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { useDispatch } from "react-redux";
-import {addEndDate, addStartDate } from "redux/planning/planningSlice";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import { addTrainingConfig, fetchTraining } from "redux/planning/planningOperations";
+import {addEndDate, addStartDate, addToBooks } from "redux/planning/planningSlice";
 
 export const MyTraining = () => {
+    const state = useSelector(state => state.book.book.goingToRead)
+    const stateBody = useSelector(state=> state.planning)
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+    const [id, setId] = useState('')
     const dispatch = useDispatch()
     
     useEffect(() => {
@@ -19,17 +21,26 @@ export const MyTraining = () => {
         const year = incomeDate.getFullYear(); 
         let month = incomeDate.getMonth() + 1;
         if (month < 10) {
-            month = '0' + month;
-        }
+            month = '0' + month; }
         const day = incomeDate.getDate(); 
-       return year + '-' + month + '-' + day;
-         
-} 
+            return year + '-' + month + '-' + day;
+        } 
+        
         dispatch(addStartDate(formattedDate(startDate)))
         dispatch(addEndDate(formattedDate(endDate)))
  }, [dispatch, endDate, startDate])
 
+    const handleReadId = (e) => {
+       setId(e.target.value)
+    }
+    const handleAddBtn = (e)=>{
+        dispatch(addToBooks(id))
+    }
+    const handleBeginTrainingBtn = () => {
+        dispatch(addTrainingConfig(stateBody))
+}
 
+    
     return (
         <>
             <div>
@@ -50,10 +61,17 @@ export const MyTraining = () => {
             />
             
             
-            <select name="Library_books" id="books">
-                <option value=""></option>
+            <select onChange={handleReadId}>
+                <option value="default">...</option>
+                {state.map(({_id, title }) => {
+                    return <option
+                        
+                        key={_id} value={_id}>{title}</option>
+                })}
             </select>
-            <button type="button">Додати</button>
+            <button
+                onClick={handleAddBtn}
+                type="button">Додати</button>
             <table>
                 <thead>
                     <tr>
@@ -65,14 +83,16 @@ export const MyTraining = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>1984</td>
-                        <td>Джордж Оруелл</td>
-                        <td>1949</td>
-                        <td>328</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
-            <button type="button">Почати тренування</button>
+            <button
+                onClick={handleBeginTrainingBtn}
+                type="button">Почати тренування</button>
         </>
     )
 }
