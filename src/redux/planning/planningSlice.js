@@ -1,11 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const planningInitialState = {};
+const planningInitialState = {
+  startDate: "",
+  endDate: "",
+  books: [],
+  pages: 0
+};
 
 const planningSlice = createSlice({
   name: 'planning',
   initialState: planningInitialState,
-  extraReducers: {},
+  reducer: {
+    addDate(state, action) {
+      state.startDate = action.payload
+  }
+  },
+  extraReducers: builder => {
+    
+  },
 });
 
 export const planningReducer = planningSlice.reducer;
+export const {addDate} = planningSlice.reducer;

@@ -1,11 +1,42 @@
+import React, { useState } from "react";
+import { useEffect } from "react";
+import DatePicker from "react-datepicker";
+import {addDate} from '../../redux/planning/planningSlice'
+import "react-datepicker/dist/react-datepicker.css";
+import { useDispatch } from "react-redux";
+
+
+
 export const MyTraining = () => {
+    const [startDate, setStartDate] = useState(null);
+     const [endDate, setEndDate] = useState(null);
+  const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(addDate(startDate))
+    
+      
+    }, [startDate, endDate, dispatch])
     return (
         <>
             <div>
                 <h2>Моє тренування</h2>
             </div>
-            <input type="" />
-            <input type="text" />
+            
+            <DatePicker
+                placeholderText="Початок"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                dateFormat='dd.MM.yyyy'
+            />
+            <DatePicker
+                placeholderText="Завершення"
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+                dateFormat='dd.MM.yyyy'
+            />
+            
+            
             <select name="Library_books" id="books">
                 <option value=""></option>
             </select>

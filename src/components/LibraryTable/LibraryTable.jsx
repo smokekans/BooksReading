@@ -1,37 +1,100 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { getBook } from 'redux/book/bookSelectors';
+import { TitleH2, Table, Tr, TrHead } from './LibraryTable.styled';
+import { fetchAllBooks } from 'redux/book/bookOperations';
 
 export const LibraryTable = () => {
-    const books = useSelector(getBook);
+  const books = useSelector(getBook);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllBooks());
+  }, [dispatch]);
 
   return (
     <>
-      <h1>Маю намір прочитати</h1>
-      <table>
+      <TitleH2>Прочитано</TitleH2>
+      <Table>
         <thead>
-          <tr>
+          <TrHead>
             <th>Назва книги</th>
             <th>Автор</th>
             <th>Рік</th>
             <th>Стор.</th>
-          </tr>
+            <th>Рейтинг книги</th>
+            <th></th>
+          </TrHead>
         </thead>
 
         <tbody>
           {books.map(b => {
-            return (
-              <tr key={b.title}>
-                <td>{b.title}</td>
-                <td>{b.author}</td>
-                <td>{b.publishYear}</td>
-                <td>{b.totalPages}</td>
-              </tr>
-            );
-          })}
+              return (
+                <Tr key={b.title}>
+                  <td>{b.title}</td>
+                  <td>{b.author}</td>
+                  <td>{b.publishYear}</td>
+                  <td>{b.totalPages}</td>
+                  <td>
+                    <span>*****</span>
+                  </td>
+                  <td>
+                    <button type="button">Резюме</button>
+                  </td>
+                </Tr>
+              );
+            })}
         </tbody>
-          </table>
-          <button type='button'>Моє тренування</button>
+      </Table>
+      <TitleH2>Читаю</TitleH2>
+      <Table>
+        <thead>
+          <TrHead>
+            <th>Назва книги</th>
+            <th>Автор</th>
+            <th>Рік</th>
+            <th>Стор.</th>
+          </TrHead>
+        </thead>
+
+        <tbody>
+          {books.map(b => {
+              return (
+                <Tr key={b.title}>
+                  <td>{b.title}</td>
+                  <td>{b.author}</td>
+                  <td>{b.publishYear}</td>
+                  <td>{b.totalPages}</td>
+                </Tr>
+              );
+            })}
+        </tbody>
+      </Table>
+      <TitleH2>Маю намір прочитати</TitleH2>
+      <Table>
+        <thead>
+          <TrHead>
+            <th>Назва книги</th>
+            <th>Автор</th>
+            <th>Рік</th>
+            <th>Стор.</th>
+          </TrHead>
+        </thead>
+
+        <tbody>
+          {books.map(b => {
+              return (
+                <Tr key={b.title}>
+                  <td>{b.title}</td>
+                  <td>{b.author}</td>
+                  <td>{b.publishYear}</td>
+                  <td>{b.totalPages}</td>
+                </Tr>
+              );
+            })}
+        </tbody>
+      </Table>
+      <button type="button">Моє тренування</button>
     </>
   );
 };
