@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addPages, addTrainingConfig, getTrainingData } from './planningOperations';
+import { addPages, addTrainingConfig } from './planningOperations';
 
 const planningInitialState = {
   startDate: '',
