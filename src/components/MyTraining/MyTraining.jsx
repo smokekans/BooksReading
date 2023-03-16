@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import DatePicker from 'react-datepicker';
-
 import 'react-datepicker/dist/react-datepicker.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTrainingConfig } from 'redux/planning/planningOperations';
@@ -9,8 +8,11 @@ import {
   addEndDate,
   addStartDate,
   addToBooks,
+  deleteBook,
   filteredBooksList,
 } from 'redux/planning/planningSlice';
+
+
 
 export const MyTraining = () => {
   const state = useSelector(state => state.book.book.goingToRead);
@@ -20,6 +22,7 @@ export const MyTraining = () => {
   const [endDate, setEndDate] = useState(null);
   const [id, setId] = useState('');
   const dispatch = useDispatch();
+  const filterId = filter.map(filterBook => filterBook._id);
 
   useEffect(() => {
     const formattedDate = date => {
@@ -30,9 +33,7 @@ export const MyTraining = () => {
         month = '0' + month;
       }
       const day = incomeDate.getDate();
-      return year + '-' + month + '-' + day;
-    };
-
+      return year + '-' + month + '-' + day}
     dispatch(addStartDate(formattedDate(startDate)));
     dispatch(addEndDate(formattedDate(endDate)));
   }, [dispatch, endDate, startDate]);
@@ -41,8 +42,12 @@ export const MyTraining = () => {
     setId(e.target.value);
   };
 
+      
   const handleAddBtn = e => {
     dispatch(addToBooks(id));
+    if (filterId.toString() === id.toString()) {
+      return
+    };
     state.forEach(book => {
       if (book._id === id) {
         dispatch(filteredBooksList(book));
@@ -54,7 +59,13 @@ export const MyTraining = () => {
     dispatch(addTrainingConfig(stateBody));
   };
 
-  console.log(filter);
+  const handleDeleteBook = (e) => {
+    const removeBook = filter.filter(book => {
+      return book._id !== e.currentTarget.parentElement.id
+    })
+    dispatch(deleteBook(removeBook))
+  };
+
   return (
     <>
       <div>
@@ -99,11 +110,15 @@ export const MyTraining = () => {
         <tbody>
           {filter.map(({ _id, title, author, publishYear, pagesTotal }) => {
             return (
-              <tr key={_id}>
+              <tr key={_id} id={_id}>
                 <td>{title}</td>
                 <td>{author}</td>
                 <td>{publishYear}</td>
                 <td>{pagesTotal}</td>
+                <td onClick={handleDeleteBook}><svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M11 6V16H3V6H11ZM9.5 0H4.5L3.5 1H0V3H14V1H10.5L9.5 0ZM13 4H1V16C1 17.1 1.9 18 3 18H11C12.1 18 13 17.1 13 16V4Z" fill="#A6ABB9" />
+                </svg>
+                </td>
               </tr>
             );
           })}
