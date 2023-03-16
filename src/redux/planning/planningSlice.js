@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addPages, addTrainingConfig} from './planningOperations';
-
+import { addPages, addTrainingConfig } from './planningOperations';
 
 const planningInitialState = {
   startDate: '',
@@ -27,8 +26,8 @@ const planningSlice = createSlice({
       state.filter.push(action.payload);
     },
     deleteBook(state, action) {
-      state.filter = action.payload
-    }
+      state.filter = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -43,10 +42,14 @@ const planningSlice = createSlice({
           book._id === action.payload.book._id ? action.payload.book : book
         );
       });
- 
   },
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { addStartDate, addEndDate, addToBooks, filteredBooksList, deleteBook } =
-  planningSlice.actions;
+export const {
+  addStartDate,
+  addEndDate,
+  addToBooks,
+  filteredBooksList,
+  deleteBook,
+} = planningSlice.actions;
