@@ -9,11 +9,13 @@ import {
   addEndDate,
   addStartDate,
   addToBooks,
+  filteredBooksList,
 } from 'redux/planning/planningSlice';
 
 export const MyTraining = () => {
   const state = useSelector(state => state.book.book.goingToRead);
   const stateBody = useSelector(state => state.planning);
+  const filter = useSelector(state => state.planning.filter)
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [id, setId] = useState('');
@@ -40,11 +42,18 @@ export const MyTraining = () => {
   };
   const handleAddBtn = e => {
     dispatch(addToBooks(id));
+    state.filter((book) => {
+      if (book._id === id) {
+        dispatch(filteredBooksList(book))
+      }
+    })
   };
   const handleBeginTrainingBtn = () => {
     dispatch(addTrainingConfig(stateBody));
   };
-console.log(stateBody);
+  
+
+console.log(filter);
   return (
     <>
       <div>
@@ -87,10 +96,16 @@ console.log(stateBody);
           </tr>
         </thead>
         <tbody>
+          {filter.map(({_id, title, author, publishYear,pagesTotal}) =>{ return <tr key={_id}>
+            <td>{title }</td>
+            <td>{author }</td>
+            <td>{ publishYear}</td>
+            <td>{ pagesTotal}</td>
+          </tr>}
+          )}
           <tr>
             <td>...</td>
           </tr>
-          
         </tbody>
       </table>
       <button onClick={handleBeginTrainingBtn} type="button">
