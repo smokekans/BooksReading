@@ -46,8 +46,10 @@ export const signInThunk = createAsyncThunk(
 
 export const logOutThunk = createAsyncThunk(
   'auth/signout',
-  async ({ rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
+      const value = getState().auth.token
+      token.set(value)
       await axios.post(`auth/logout`);
       token.unset();
     } catch (error) {
