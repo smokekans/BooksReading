@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  getBook,
+  getGoingToRead,
   getCurrentlyReading,
   getFinishedReading,
 } from 'redux/book/bookSelectors';
@@ -12,7 +12,7 @@ import { ReactComponent as More } from './svg/more.svg';
 import { NavLink } from 'react-router-dom';
 
 export const LibraryTable = () => {
-  const goingToRead = useSelector(getBook);
+  const goingToRead = useSelector(getGoingToRead);
   const currentlyReading = useSelector(getCurrentlyReading);
   const finishedReading = useSelector(getFinishedReading);
   const dispatch = useDispatch();
@@ -42,7 +42,10 @@ export const LibraryTable = () => {
               {finishedReading.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td><BookIcon/>{b.title}</td>
+                    <td>
+                      <BookIcon />
+                      {b.title}
+                    </td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
@@ -76,7 +79,10 @@ export const LibraryTable = () => {
               {currentlyReading.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td><BookIcon/>{b.title}</td>
+                    <td>
+                      <BookIcon />
+                      {b.title}
+                    </td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
@@ -104,7 +110,10 @@ export const LibraryTable = () => {
               {goingToRead.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td><BookIcon/>{b.title}</td>
+                    <td>
+                      <BookIcon />
+                      {b.title}
+                    </td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
@@ -113,10 +122,15 @@ export const LibraryTable = () => {
               })}
             </tbody>
           </Table>
-          <NavLink to="/training"><button type="button">Моє тренування</button></NavLink>
-          <More/>
+          <NavLink to="/training">
+            <button type="button">Моє тренування</button>
+          </NavLink>
         </>
       )}
+      <h2>Додати книжку 👇</h2>
+      <NavLink to="/addbook">
+        <More />
+      </NavLink>
     </>
   );
 };
