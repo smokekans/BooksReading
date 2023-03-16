@@ -23,48 +23,6 @@ export const StatisticsBookData = () => {
               50&ensp;<StatPage>стор.</StatPage>
             </StatPages>
           </StatItem>
-          <StatItem>
-            <StatDate>15.03.2023</StatDate>
-            <StatTime>08:10:15</StatTime>
-            <StatPages>
-              50&ensp;<StatPage>стор.</StatPage>
-            </StatPages>
-          </StatItem>
-          <StatItem>
-            <StatDate>15.03.2023</StatDate>
-            <StatTime>08:10:15</StatTime>
-            <StatPages>
-              50&ensp;<StatPage>стор.</StatPage>
-            </StatPages>
-          </StatItem>
-          <StatItem>
-            <StatDate>15.03.2023</StatDate>
-            <StatTime>08:10:15</StatTime>
-            <StatPages>
-              50&ensp;<StatPage>стор.</StatPage>
-            </StatPages>
-          </StatItem>
-          <StatItem>
-            <StatDate>15.03.2023</StatDate>
-            <StatTime>08:10:15</StatTime>
-            <StatPages>
-              50&ensp;<StatPage>стор.</StatPage>
-            </StatPages>
-          </StatItem>
-          <StatItem>
-            <StatDate>15.03.2023</StatDate>
-            <StatTime>08:10:15</StatTime>
-            <StatPages>
-              50&ensp;<StatPage>стор.</StatPage>
-            </StatPages>
-          </StatItem>
-          <StatItem>
-            <StatDate>15.03.2023</StatDate>
-            <StatTime>08:10:15</StatTime>
-            <StatPages>
-              50&ensp;<StatPage>стор.</StatPage>
-            </StatPages>
-          </StatItem>
         </StatList>
       </StatWrap>
     </>
