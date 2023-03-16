@@ -8,18 +8,24 @@ import {
   Nav,
   NavItem,
   NavList,
-  //   UserAvatar,
+  UserAvatar,
   UserName,
   UserPanel,
+  ExitButton,
+  UserInfo
 } from './Header.styled';
 import { getUserName, getIsLoggedIn } from '../../redux/auth/authSelectors';
+import { logOutThunk } from 'redux/auth/authOperations'
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Header = () => {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const userName = useSelector(getUserName);
-  //   const userAvatar = userName[0]?.toUpperCase();
+    const userAvatar = userName?.at(0)?.toUpperCase();
+
+  
 
   return (
     <>
@@ -44,8 +50,13 @@ export const Header = () => {
                   </NavList>
                 </Nav>
                 <UserPanel>
-                  {/* <UserAvatar>{userAvatar}</UserAvatar> */}
-                  <UserName>{userName}</UserName>
+                  <UserInfo>
+                     <UserAvatar>{userAvatar}</UserAvatar>
+                     <UserName>{userName}</UserName>
+                  </UserInfo>
+                  <ExitButton type="button" onClick={() => {dispatch(logOutThunk())}}>
+                     Вихід
+                  </ExitButton>
                 </UserPanel>
               </>
             )}
