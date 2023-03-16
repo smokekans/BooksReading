@@ -13,14 +13,40 @@ import {
   ResultTitle,
 } from './StatisticsResultForm.styled';
 import css from './StatisticsResultForm.module.css';
+import { useDispatch } from 'react-redux';
+import { addPages } from 'redux/planning/planningOperations';
 
 export const StatisticsResultForm = () => {
   const [resultDate, setResultDate] = useState(new Date());
+  const [pages, setPages] = useState('');
+  const dispatch = useDispatch();
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case 'pages':
+        setPages(value);
+        break;
+      default:
+        return;
+    }
+  };
+
+  const handleSubmitForm = event => {
+    event.preventDefault();
+
+    const page = {
+      pages: Number(pages),
+    };
+    dispatch(addPages(page));
+    setPages('');
+  };
 
   return (
     <>
       <ResultTitle>Результати</ResultTitle>
-      <FormRes>
+      <FormRes onSubmit={handleSubmitForm}>
         <ResultBox>
           <DataBox>
             <LabelDate>Дата</LabelDate>
@@ -36,7 +62,13 @@ export const StatisticsResultForm = () => {
           </DataBox>
           <PageBox>
             <LabelPages>Кількість сторінок</LabelPages>
-            <InputPages type="text" name="pages" autoComplete="off" />
+            <InputPages
+              type="text"
+              name="pages"
+              autoComplete="off"
+              onChange={handleChange}
+              value={pages}
+            />
           </PageBox>
         </ResultBox>
         <ResultBtn type="submit">Додати результат</ResultBtn>

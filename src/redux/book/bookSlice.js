@@ -17,7 +17,6 @@ const bookInitialState = {
     error: null,
   },
 };
-console.log(bookInitialState);
 
 const bookSlice = createSlice({
   name: 'book',
@@ -47,7 +46,7 @@ const bookSlice = createSlice({
         state.error = null;
         state.book.goingToRead = action.payload.goingToRead;
         state.book.currentlyReading = action.payload.currentlyReading;
-        state.book.currentlyReading = action.payload.currentlyReading;
+        state.book.finishedReading = action.payload.finishedReading;
       })
       .addCase(fetchAllBooks.rejected, (state, action) => {
         state.isLoading = false;
