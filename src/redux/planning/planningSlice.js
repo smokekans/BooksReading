@@ -27,6 +27,9 @@ const planningSlice = createSlice({
     filteredBooksList(state, action) {
       state.filter.push(action.payload);
     },
+    deleteBook(state, action) {
+      state.filter = action.payload
+    }
   },
   extraReducers: builder => {
     builder
@@ -54,5 +57,5 @@ const planningSlice = createSlice({
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { addStartDate, addEndDate, addToBooks, filteredBooksList } =
+export const { addStartDate, addEndDate, addToBooks, filteredBooksList, deleteBook } =
   planningSlice.actions;
