@@ -1,5 +1,10 @@
 import React from 'react';
 import { BsCheck2 } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
+import {
+  getFinishedPages,
+  getTotalPages,
+} from 'redux/planning/planningSelectors';
 import {
   Author,
   AuthorMob,
@@ -21,45 +26,10 @@ import {
 } from './StatisticsBookLIst.styled';
 
 export const StatisticsBookLIst = () => {
-  const items = [
-    {
-      title: 'The Book of Five Rings',
-      author: 'Miyamoto Musashi',
-      publishYear: 1643,
-      totalPages: 110,
-    },
-    {
-      title: 'The Book of Five Rings2',
-      author: 'Miyamoto',
-      publishYear: 1643,
-      totalPages: 110,
-    },
-    {
-      title: 'The Book of Five Rings3',
-      author: 'Miyamoto',
-      publishYear: 1991,
-      totalPages: 110,
-    },
-    {
-      title: 'The Book of Five Rings6',
-      author: 'Miyamoto Musashi',
-      publishYear: 1643,
-      totalPages: 110,
-    },
-    {
-      title: 'The Book of Five Rings5',
-      author: 'Miyamoto Musashi',
-      publishYear: 1643,
-      totalPages: 110,
-    },
-    {
-      title: 'The',
-      author: 'Miyamoto Musashi',
-      publishYear: 1643,
-      totalPages: 110,
-    },
-  ];
-  // const listBook = useSelector(getBook);
+  const books = useSelector(state => state.book.book.goingToRead);
+  const finishedPages = useSelector(getFinishedPages);
+  const totalPage = useSelector(getTotalPages);
+
   return (
     <>
       <ListWrapp>
@@ -70,9 +40,9 @@ export const StatisticsBookLIst = () => {
           <Pages>Стор.</Pages>
         </HeaderBox>
         <List>
-          {items.map(({ title, author, publishYear, totalPages }) => (
+          {books?.map(({ title, author, publishYear, totalPages }) => (
             <Item key={title}>
-              {false ? (
+              {totalPage <= finishedPages ? (
                 <Checked>
                   <BsCheck2
                     style={{
