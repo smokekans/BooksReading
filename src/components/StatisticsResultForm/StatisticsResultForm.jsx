@@ -13,13 +13,13 @@ import {
   ResultTitle,
 } from './StatisticsResultForm.styled';
 import css from './StatisticsResultForm.module.css';
-// import { useDispatch } from 'react-redux';
-// import { addPages } from 'redux/planning/planningOperations';
+import { useDispatch } from 'react-redux';
+import { addPages } from 'redux/planning/planningOperations';
 
 export const StatisticsResultForm = () => {
   const [resultDate, setResultDate] = useState(new Date());
   const [pages, setPages] = useState('');
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -36,10 +36,10 @@ export const StatisticsResultForm = () => {
   const handleSubmitForm = event => {
     event.preventDefault();
 
-    // const page = {
-    //   pages: Number(pages),
-    // };
-    // dispatch(addPages(page));
+    const page = {
+      pages: Number(pages),
+    };
+    dispatch(addPages(page));
     setPages('');
   };
 

@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { token } from './token';
-// import { baseUrl } from '../../services/API';
 
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 

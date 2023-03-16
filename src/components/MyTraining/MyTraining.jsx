@@ -44,7 +44,7 @@ export const MyTraining = () => {
   const handleBeginTrainingBtn = () => {
     dispatch(addTrainingConfig(stateBody));
   };
-
+console.log(stateBody);
   return (
     <>
       <div>
