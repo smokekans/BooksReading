@@ -1,7 +1,24 @@
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { signUpThunk } from 'redux/auth/authOperations';
-import { Container, Orange, RegisterDiv, Form, Label, Input, SignInBtn, LogLink, LogText, GoogleBtn, MainDiv, Title, UlTitle, LiText, UlTitleSecond, Box, LiStyled } from './Register.styled';
+import {
+  Container,
+  Orange,
+  RegisterDiv,
+  Form,
+  Label,
+  Input,
+  SignInBtn,
+  LogLink,
+  LogText,
+  GoogleBtn,
+  MainDiv,
+  Title,
+  UlTitle,
+  LiText,
+  UlTitleSecond,
+  Box,
+  LiStyled,
+} from './Register.styled';
 import { ReactComponent as Icon } from '../../images/googleIcon.svg';
 import { ReactComponent as ArrowIcon } from '../../images/arrow.svg';
 
@@ -28,57 +45,70 @@ const Register = () => {
     <Container>
       <RegisterDiv>
         <Form onSubmit={handleSubmit}>
-          <GoogleBtn type='button'>
-            <Icon/>
+          <GoogleBtn type="button">
+            <Icon />
             Google
           </GoogleBtn>
-          <Label htmlFor="nameInput">Ім’я <Orange>*</Orange></Label>
-          <Input type="text" name="name" id='nameInput'/>
-          <Label htmlFor="emailInput">Електронна адреса <Orange>*</Orange></Label>
-          <Input type="email" name="email" id='emailInput'/>
-          <Label htmlFor="passInput">Пароль <Orange>*</Orange></Label>
-          <Input type="password" name="password" id='passInput'/>
-          <Label htmlFor="confPassInput">Підтвердити пароль <Orange>*</Orange></Label>
-          <Input type="password" name="confirm" id='confPassInput'/>
+          <Label htmlFor="nameInput">
+            Ім’я <Orange>*</Orange>
+          </Label>
+          <Input type="text" name="name" id="nameInput" />
+          <Label htmlFor="emailInput">
+            Електронна адреса <Orange>*</Orange>
+          </Label>
+          <Input type="email" name="email" id="emailInput" />
+          <Label htmlFor="passInput">
+            Пароль <Orange>*</Orange>
+          </Label>
+          <Input type="password" name="password" id="passInput" />
+          <Label htmlFor="confPassInput">
+            Підтвердити пароль <Orange>*</Orange>
+          </Label>
+          <Input type="password" name="confirm" id="confPassInput" />
           <SignInBtn type="submit">Зареєструватися</SignInBtn>
-          <LogText>Вже з нами? <LogLink to="/login">Увійти</LogLink></LogText>
+          <LogText>
+            Вже з нами? <LogLink to="/login">Увійти</LogLink>
+          </LogText>
         </Form>
       </RegisterDiv>
       <MainDiv>
         <Title>Books Reading</Title>
         <Box>
-        <UlTitle>Допоможе вам</UlTitle>
-        <ul>
-          <LiStyled>
+          <UlTitle>Допоможе вам</UlTitle>
+          <ul>
+            <LiStyled>
               <ArrowIcon />
               <LiText>Швидше сформулювати свою ціль і розпочати читати</LiText>
-          </LiStyled>
-          <LiStyled>
+            </LiStyled>
+            <LiStyled>
               <ArrowIcon />
-              <LiText>Пропорційно розподілити навантаження на кожний день</LiText>
-          </LiStyled>
-          <LiStyled>
+              <LiText>
+                Пропорційно розподілити навантаження на кожний день
+              </LiText>
+            </LiStyled>
+            <LiStyled>
               <ArrowIcon />
               <LiText>Відстежувати особистий успіх</LiText>
-          </LiStyled>
-        </ul>
-        <UlTitleSecond>Також ви зможете </UlTitleSecond>
-        <ul>
-          <LiStyled>
+            </LiStyled>
+          </ul>
+          <UlTitleSecond>Також ви зможете </UlTitleSecond>
+          <ul>
+            <LiStyled>
               <ArrowIcon />
               <LiText>Формувати особисту думку незалежну від інших</LiText>
-          </LiStyled>
-          <LiStyled>
+            </LiStyled>
+            <LiStyled>
               <ArrowIcon />
-              <LiText>Підвищити свої професійні якості опираючись на
-              нові знання</LiText>
-          </LiStyled>
-          <LiStyled>
+              <LiText>
+                Підвищити свої професійні якості опираючись на нові знання
+              </LiText>
+            </LiStyled>
+            <LiStyled>
               <ArrowIcon />
               <LiText>Стати цікавим співрозмовником</LiText>
-          </LiStyled>
+            </LiStyled>
           </ul>
-          </Box>
+        </Box>
       </MainDiv>
     </Container>
   );
