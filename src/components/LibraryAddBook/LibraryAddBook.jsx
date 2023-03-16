@@ -1,8 +1,11 @@
+// import { LibraryTable } from 'components/LibraryTable/LibraryTable';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from 'redux/book/bookOperations';
 import { getBook } from 'redux/book/bookSelectors';
-import { Label, Form, Input } from './LibraryAddBook.styled';
+import { Label, Form, Input, Button, ButtonSvgBack, FormAll } from './LibraryAddBook.styled';
+import { ReactComponent as Back } from './svg/back.svg';
+
 export const LibraryAddBook = () => {
   const dispatch = useDispatch();
   const books = useSelector(getBook);
@@ -21,14 +24,15 @@ export const LibraryAddBook = () => {
       const goingToRead = { title, author, publishYear, pagesTotal };
       dispatch(addBook(goingToRead));
     }
-    console.log({ title, author, publishYear, pagesTotal });
-
+    // console.log({ title, author, publishYear, pagesTotal });
     e.target.reset();
   };
 
-  return (
-    <Form onSubmit={addNewBook}>
-      <Label>
+  return (<>
+    <ButtonSvgBack type='button'><Back /></ButtonSvgBack>
+    <FormAll onSubmit={addNewBook}>
+      <Form>
+      <Label className="title">
         Назва книги
         <Input
           type="text"
@@ -38,10 +42,10 @@ export const LibraryAddBook = () => {
           // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-      </Label>
+      </Label><div className="input-second">
       <Label>
         Автор книги
-        <Input
+        <Input className="author"
           type="text"
           name="author"
           // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -53,10 +57,10 @@ export const LibraryAddBook = () => {
       </Label>
       <Label>
         Рік випуску
-        <Input
+        <Input className="small-input"
           type="number"
           name="publishYear"
-          pattern="[0-9]*$"
+          pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}"
           title="Publish year may contain only numbers. For example 1998, 2000, 2023"
           placeholder="..."
           autoComplete="on"
@@ -64,17 +68,17 @@ export const LibraryAddBook = () => {
         />
       </Label>
       <Label>
-        Кількість сторінок
-        <Input
+        Кількість сторінок<Input className="small-input"
           type="number"
           name="pagesTotal"
+          min="0"
           pattern="[0-9]*$"
           title="Total pages may contain only numbers. For example 10, 253, 999"
           placeholder="..."
           required
         />
-      </Label>
-      <button type="submit">Додати</button>
-    </Form>
+      </Label></div></Form>
+      <Button type="submit">Додати</Button>
+    </FormAll></>
   );
 };
