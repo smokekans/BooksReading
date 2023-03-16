@@ -88,11 +88,9 @@ console.log(stateBody);
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>...</td>
           </tr>
+          
         </tbody>
       </table>
       <button onClick={handleBeginTrainingBtn} type="button">
