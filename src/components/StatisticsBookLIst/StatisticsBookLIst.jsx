@@ -1,10 +1,7 @@
 import React from 'react';
 import { BsCheck2 } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
-import {
-  getFinishedPages,
-  getTotalPages,
-} from 'redux/planning/planningSelectors';
+import { getPlanBooks } from 'redux/planning/planningSelectors';
 import {
   Author,
   AuthorMob,
@@ -26,10 +23,8 @@ import {
 } from './StatisticsBookLIst.styled';
 
 export const StatisticsBookLIst = () => {
-  const books = useSelector(state => state.book.book.goingToRead);
-  const finishedPages = useSelector(getFinishedPages);
-  const totalPage = useSelector(getTotalPages);
-
+  const books = useSelector(getPlanBooks);
+  console.log(books);
   return (
     <>
       <ListWrapp>
@@ -40,30 +35,39 @@ export const StatisticsBookLIst = () => {
           <Pages>Стор.</Pages>
         </HeaderBox>
         <List>
-          {books?.map(({ title, author, publishYear, totalPages }) => (
-            <Item key={title}>
-              {totalPage <= finishedPages ? (
-                <Checked>
-                  <BsCheck2
-                    style={{
-                      color: '#ff6b08',
-                      width: '14px',
-                      height: '14px',
-                    }}
-                  />
-                </Checked>
-              ) : (
-                <UnChecked></UnChecked>
-              )}
-              <BookTitle>{title}</BookTitle>
-              <AuthorMob>Автор:</AuthorMob>
-              <BookAuthor>{author}</BookAuthor>
-              <YearMob>Рік:</YearMob>
-              <BookYear>{publishYear}</BookYear>
-              <PagesMob>Стор.:</PagesMob>
-              <BookPages>{totalPages}</BookPages>
-            </Item>
-          ))}
+          {books?.map(
+            ({
+              _id,
+              title,
+              author,
+              publishYear,
+              pagesTotal,
+              pagesFinished,
+            }) => (
+              <Item key={_id}>
+                {Number(pagesTotal) !== Number(pagesFinished) ? (
+                  <UnChecked></UnChecked>
+                ) : (
+                  <Checked>
+                    <BsCheck2
+                      style={{
+                        color: '#ff6b08',
+                        width: '14px',
+                        height: '14px',
+                      }}
+                    />
+                  </Checked>
+                )}
+                <BookTitle>{title}</BookTitle>
+                <AuthorMob>Автор:</AuthorMob>
+                <BookAuthor>{author}</BookAuthor>
+                <YearMob>Рік:</YearMob>
+                <BookYear>{publishYear}</BookYear>
+                <PagesMob>Стор.:</PagesMob>
+                <BookPages>{pagesTotal}</BookPages>
+              </Item>
+            )
+          )}
         </List>
       </ListWrapp>
     </>
