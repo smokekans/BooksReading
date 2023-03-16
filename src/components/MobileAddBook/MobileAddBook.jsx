@@ -7,7 +7,7 @@ import { StyledBackBtn, Wrapper } from './MobileAddBook.styled';
 import { ReactComponent as BackIcon } from '../MobileAddBook/back.svg';
 
 export const MobileAddBook = () => {
-  const [isEmpty, setIsEmpty] = useState(true);
+  const [isEmpty] = useState(true);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const toggleModal = () => setIsModalVisible(!isModalVisible);
   const navigate = useNavigate();
