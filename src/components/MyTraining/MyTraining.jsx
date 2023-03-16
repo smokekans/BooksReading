@@ -15,7 +15,7 @@ import {
 export const MyTraining = () => {
   const state = useSelector(state => state.book.book.goingToRead);
   const stateBody = useSelector(state => state.planning);
-  const filter = useSelector(state => state.planning.filter)
+  const filter = useSelector(state => state.planning.filter);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [id, setId] = useState('');
@@ -40,20 +40,21 @@ export const MyTraining = () => {
   const handleReadId = e => {
     setId(e.target.value);
   };
+
   const handleAddBtn = e => {
     dispatch(addToBooks(id));
-    state.filter((book) => {
+    state.forEach(book => {
       if (book._id === id) {
-        dispatch(filteredBooksList(book))
+        dispatch(filteredBooksList(book));
       }
-    })
+    });
   };
+
   const handleBeginTrainingBtn = () => {
     dispatch(addTrainingConfig(stateBody));
   };
-  
 
-console.log(filter);
+  console.log(filter);
   return (
     <>
       <div>
@@ -96,13 +97,16 @@ console.log(filter);
           </tr>
         </thead>
         <tbody>
-          {filter.map(({_id, title, author, publishYear,pagesTotal}) =>{ return <tr key={_id}>
-            <td>{title }</td>
-            <td>{author }</td>
-            <td>{ publishYear}</td>
-            <td>{ pagesTotal}</td>
-          </tr>}
-          )}
+          {filter.map(({ _id, title, author, publishYear, pagesTotal }) => {
+            return (
+              <tr key={_id}>
+                <td>{title}</td>
+                <td>{author}</td>
+                <td>{publishYear}</td>
+                <td>{pagesTotal}</td>
+              </tr>
+            );
+          })}
           <tr>
             <td>...</td>
           </tr>
