@@ -3,8 +3,15 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from 'redux/book/bookOperations';
 import { getBook } from 'redux/book/bookSelectors';
-import { Label, Form, Input, Button, ButtonSvgBack, FormAll } from './LibraryAddBook.styled';
-import { ReactComponent as Back } from './svg/back.svg';
+import {
+  Label,
+  Form,
+  Input,
+  Button,
+  // ButtonSvgBack,
+  FormAll,
+} from './LibraryAddBook.styled';
+// import { ReactComponent as Back } from './svg/back.svg';
 
 export const LibraryAddBook = () => {
   const dispatch = useDispatch();
