@@ -13,7 +13,7 @@ import {
   UserName,
   UserPanel,
   ExitButton,
-  UserInfo
+  UserInfo,
 } from './Header.styled';
 import { getUserName, getIsLoggedIn } from '../../redux/auth/authSelectors';
 import { logOutThunk } from 'redux/auth/authOperations';
