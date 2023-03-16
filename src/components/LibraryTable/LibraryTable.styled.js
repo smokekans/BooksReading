@@ -1,4 +1,18 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+
+export const Container = styled.section`
+  padding: 20px;
+  @media screen and (min-width: 768px) {
+    padding: 32px;
+  };
+  @media screen and (min-width: 1280px){
+    width: 1280px;
+    padding: 40px 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
 
 export const TitleH2 = styled.h2`
   font-weight: 600;
@@ -43,9 +57,18 @@ export const EmptyPageDiv = styled.div`
   font-weight: 500;
   color: #898f9f;
   line-height: 1.21;
-  margin-bottom: 20px;
   margin-top: 20px;
   @media screen and (min-width: 768px) {
     display: none;
   }
 `;
+
+export const NavLinkMore = styled(NavLink)`
+position: fixed;
+bottom: 12px;
+left: 48%;
+z-index: 999;
+@media screen and (min-width: 768px) {
+    display: none;
+  }
+`

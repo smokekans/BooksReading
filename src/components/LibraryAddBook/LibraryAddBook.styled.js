@@ -1,23 +1,37 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-
-`
-
-export const ButtonSvgBack = styled.button`
-  border: none;
-  background: #f6f7fb;
+  padding: 20px;
   @media screen and (min-width: 768px) {
-    display: none;
+    padding: 32px;
+  };
+  @media screen and (min-width: 1280px){
+    width: 1280px;
+    padding: 40px 16px;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
+
+// export const ButtonSvgBack = styled.button`
+//   border: none;
+//   background: #f6f7fb;
+//   @media screen and (min-width: 768px) {
+//     display: none;
+//   }
+// `;
 
 export const FormAll = styled.form`
   display: flex;
   flex-direction: column;
+@media screen and (min-width: 768px) {
+  align-items: center;
+};
 @media screen and (min-width: 1280px){
+  width: 100%;
   flex-direction: row;
-  justify-content: space-between;
+  gap: 48px;
+  // justify-content: space-between;
 `;
 
 export const Form = styled.div`
@@ -30,7 +44,6 @@ export const Form = styled.div`
     gap: 20px;
   }
   @media screen and (min-width: 768px) {
-    // padding: 32px;
     width: 704px;
     flex-wrap: wrap;
     gap: 24px;
@@ -51,7 +64,8 @@ export const Form = styled.div`
   @media screen and (min-width: 1280px) {
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 16px;
+    // gap: 16px;
+    width: 100%;
     & .title {
       width: 346px;
     }
@@ -59,7 +73,7 @@ export const Form = styled.div`
       width: 250px;
     }
     & .small-input {
-      width: 132px;
+      width: 134px;
     }
     & .input-second {
       gap: 16px;
@@ -84,6 +98,8 @@ export const Input = styled.input`
   background: #f6f7fb;
   :focus {
     background: white;
+    border: none;
+    box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
   }
 `;
 
@@ -93,14 +109,14 @@ export const Button = styled.button`
   display: block;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
+  margin-top: 40px;
   background: #f6f7fb;
   border: 1px solid #242a37;
   :hover {
     border: 1px solid #ff6b08;
   }
   @media screen and (min-width: 1280px) {
-    margin-left: 32px;
-    margin-right: 123px;
+    margin: 23px 99px 0px 0px;
+  width: 100%;
   }
 `;
