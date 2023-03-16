@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useRef, useEffect } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   TimerStl,
   LaybelStl,
@@ -8,24 +8,21 @@ import {
   СolonStl,
   TitleStl,
 } from './CountdownGoals.styled';
-// import { getStartDate, getEndDate } from 'redux/planning/planningSelectors';
-
-const GetDistance = () => {
-  // const endDateGoals = useSelector(getEndDate);
-  const endDateGoals = new Date('December 31, 2023 23:59:59').getTime();
-  // const startDataGoals = useSelector(getStartDate).getTime();
-  const startDataGoals = new Date().getTime();
-  return endDateGoals - startDataGoals;
-};
+import { getEndDate } from 'redux/planning/planningSelectors';
 
 export const CountdownGoals = () => {
-  const [distance, setDistance] = useState(() => GetDistance());
+  const [startDataGoals, setStartDataGoals] = useState(Date.now());
+  const endDateGoals = new Date(useSelector(getEndDate)).getTime();
 
   let interval = useRef();
 
   const formatDistance = () => {
+    const distance = endDateGoals - startDataGoals;
+
     const daysMath = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hoursMath = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const hoursMath = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
     const minutesMath = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const secondsMath = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -41,11 +38,8 @@ export const CountdownGoals = () => {
   };
 
   const startTimer = () => {
-    const endDateGoals = new Date('December 31, 2023 23:59:59').getTime();
-
     interval = setInterval(() => {
-      const startDataGoals  = new Date().getTime();
-      setDistance(endDateGoals - startDataGoals);
+      setStartDataGoals(Date.now());
     }, 1000);
   };
 

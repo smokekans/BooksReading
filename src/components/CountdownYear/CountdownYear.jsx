@@ -8,18 +8,16 @@ import {
   TitleStl,
 } from './CountdownYear.styled';
 
-const getDistance = () => {
-  const endDateYear = new Date('December 31, 2023 23:59:59').getTime();
-  const startData = new Date().getTime();
-  return endDateYear - startData;
-};
+const endDateYear = new Date('December 31, 2023 23:59:59').getTime();
 
 export const CountdownYears = () => {
-  const [distance, setDistance] = useState(() => getDistance());
+  const [startData, setStartData] = useState(Date.now());
 
   let interval = useRef();
 
   const formatDistance = () => {
+    const distance = endDateYear - startData;
+
     const daysMath = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hoursMath = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -39,11 +37,9 @@ export const CountdownYears = () => {
   };
 
   const startTimer = () => {
-    const endDateYear = new Date('December 31, 2023 23:59:59').getTime();
-
+  
     interval = setInterval(() => {
-      const startData = new Date().getTime();
-      setDistance(endDateYear - startData);
+       setStartData(Date.now());
     }, 1000);
   };
 

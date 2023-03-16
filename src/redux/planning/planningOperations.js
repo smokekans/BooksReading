@@ -41,7 +41,7 @@ export const getTrainingData = createAsyncThunk(
     try {
       const { data } = await axios.get('/planning');
       token.set(data.token);
-      console.log(data)
+      // console.log(data)
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
