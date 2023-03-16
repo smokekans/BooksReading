@@ -32,7 +32,7 @@ export const TimeStl = styled.p`
   font-weight: 700;
   font-size: 25px;
   line-height: 38px;
-  width: 28px;
+  /* width: 28px; */
   height: 12px;
 
   color: #091e3f;

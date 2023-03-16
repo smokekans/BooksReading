@@ -1,5 +1,5 @@
 import React from 'react'
-import { TitleStl, WrapStl, WraperStl, ListStl, СolonStl, LabelStl, BoxStl } from './MyGoals.styled'
+import { TitleStl, WrapStl, WraperStl, ListStl, СolonStl, LabelStl, BoxStl, AccentStl } from './MyGoals.styled'
 
 export const MyGoals = () => {
   return (
@@ -24,7 +24,7 @@ export const MyGoals = () => {
                 </li>
                 <li>
                     <BoxStl>
-                    <СolonStl>00</СolonStl>
+                    <AccentStl>00</AccentStl>
                     </BoxStl>
                     <LabelStl>Books left</LabelStl>
                 </li>
