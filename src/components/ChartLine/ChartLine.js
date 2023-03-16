@@ -18,6 +18,7 @@ export const options = {
     },
   },
 };
+
 const ChartLine = () => {
   const labels = ['start'];
   const planData = [0];

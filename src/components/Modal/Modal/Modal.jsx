@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { WrapperModal } from './Modal.styled';
 
-const modalRoot = document.querySelector('#modalRoot');
+const modalRoot = document.querySelector('#modal-root');
 
 export default function Modal({ onClose, children }) {
   useEffect(() => {
