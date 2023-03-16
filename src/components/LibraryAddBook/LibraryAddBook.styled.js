@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Container = styled.section`
+
+`
+
 export const ButtonSvgBack = styled.button`
   border: none;
   background: #f6f7fb;
@@ -9,10 +13,10 @@ export const ButtonSvgBack = styled.button`
 `;
 
 export const FormAll = styled.form`
-display: flex;
+  display: flex;
   flex-direction: column;
 @media screen and (min-width: 1280px){
-    flex-direction: row;
+  flex-direction: row;
   justify-content: space-between;
 `;
 
@@ -20,7 +24,6 @@ export const Form = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  //   padding: 32px 20px 20px 20px;
   & .input-second {
     display: flex;
     flex-direction: column;

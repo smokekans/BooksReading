@@ -14,7 +14,7 @@ export const Table = styled.table`
   margin-bottom: 32px;
   text-align: left;
   background: #f6f7fb;
-   border-spacing: 0px 5px;
+  border-spacing: 0px 5px;
 `;
 
 export const Tr = styled.tr`
@@ -26,10 +26,26 @@ export const Tr = styled.tr`
   line-height: 17px;
   color: #242a37;
 `;
- 
+
 export const TrHead = styled.tr`
-font-weight: 500;
-font-size: 14px;
-line-height: 17px;
-color: #898F9F;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #898f9f;
+`;
+
+export const EmptyPageDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #898f9f;
+  line-height: 1.21;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;

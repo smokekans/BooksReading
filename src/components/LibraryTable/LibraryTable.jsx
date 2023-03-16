@@ -5,7 +5,7 @@ import {
   getCurrentlyReading,
   getFinishedReading,
 } from 'redux/book/bookSelectors';
-import { TitleH2, Table, Tr, TrHead } from './LibraryTable.styled';
+import { TitleH2, Table, Tr, TrHead, EmptyPageDiv } from './LibraryTable.styled';
 import { fetchAllBooks } from 'redux/book/bookOperations';
 import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
@@ -127,10 +127,10 @@ export const LibraryTable = () => {
           </NavLink>
         </>
       )}
-      <h2>Додати книжку 👇</h2>
+      {finishedReading.length === 0 && goingToRead.length === 0 && currentlyReading.length === 0 && (<EmptyPageDiv><p>Додати книжку 👇</p>
       <NavLink to="/addbook">
         <More />
-      </NavLink>
+      </NavLink></EmptyPageDiv>)}
     </>
   );
 };
