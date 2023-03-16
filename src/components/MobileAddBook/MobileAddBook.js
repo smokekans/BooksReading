@@ -1,7 +1,7 @@
 import { LibraryAddBook } from 'components/LibraryAddBook/LibraryAddBook';
 import { ModalEmptyLibrary } from 'components/Modal/ModalEmptyLibrary/ModalEmptyLibrary';
 import Modal from 'components/Modal/Modal/Modal';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { StyledBackBtn, Wrapper } from './MobileAddBook.styled';
 import { ReactComponent as BackIcon } from '../MobileAddBook/back.svg';
@@ -11,6 +11,10 @@ export const MobileAddBook = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const toggleModal = () => setIsModalVisible(!isModalVisible);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    isEmpty ? setIsModalVisible(true) : setIsModalVisible(false);
+  }, [isEmpty]);
 
   return (
     <Wrapper>

@@ -3,14 +3,7 @@ import { addBook, fetchAllBooks } from './bookOperations';
 
 const bookInitialState = {
   book: {
-    goingToRead: [
-      // {
-      //   title: 'The Book of Five Rings',
-      //   author: 'Miyamoto Musashi',
-      //   publishYear: 1643,
-      //   totalPages: 110,
-      // },
-    ],
+    goingToRead: [],
     currentlyReading: [],
     finishedReading: [],
     isLoading: false,

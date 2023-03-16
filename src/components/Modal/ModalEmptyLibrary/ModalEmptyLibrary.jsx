@@ -20,7 +20,11 @@ export const ModalEmptyLibrary = ({ isEmptyLibrary, onClick }) => {
               </p>
 
               <p className="sup-step-text">
-                <ArrowIcon width={10} height={12} />
+                {' '}
+                <span>
+                  {' '}
+                  <ArrowIcon width={10} height={12} />
+                </span>
                 Додайте до неї книжки, які маєте намір прочитати.
               </p>
             </li>
@@ -32,7 +36,10 @@ export const ModalEmptyLibrary = ({ isEmptyLibrary, onClick }) => {
               </p>
 
               <p className="sup-step-text">
-                <ArrowIcon width={10} height={12} />
+                {' '}
+                <span>
+                  <ArrowIcon width={10} height={12} />
+                </span>
                 Визначте ціль, оберіть період, розпочинайте тренування.
               </p>
             </li>

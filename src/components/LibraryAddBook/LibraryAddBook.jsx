@@ -28,57 +28,66 @@ export const LibraryAddBook = () => {
     e.target.reset();
   };
 
-  return (<>
-    <ButtonSvgBack type='button'><Back /></ButtonSvgBack>
-    <FormAll onSubmit={addNewBook}>
-      <Form>
-      <Label className="title">
-        Назва книги
-        <Input
-          type="text"
-          name="title"
-          placeholder="..."
-          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </Label><div className="input-second">
-      <Label>
-        Автор книги
-        <Input className="author"
-          type="text"
-          name="author"
-          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Author name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          placeholder="..."
-          autoComplete="on"
-          required
-        />
-      </Label>
-      <Label>
-        Рік випуску
-        <Input className="small-input"
-          type="number"
-          name="publishYear"
-          pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}"
-          title="Publish year may contain only numbers. For example 1998, 2000, 2023"
-          placeholder="..."
-          autoComplete="on"
-          required
-        />
-      </Label>
-      <Label>
-        Кількість сторінок<Input className="small-input"
-          type="number"
-          name="pagesTotal"
-          min="0"
-          pattern="[0-9]*$"
-          title="Total pages may contain only numbers. For example 10, 253, 999"
-          placeholder="..."
-          required
-        />
-      </Label></div></Form>
-      <Button type="submit">Додати</Button>
-    </FormAll></>
+  return (
+    <>
+      {/* <ButtonSvgBack type='button'><Back /></ButtonSvgBack> */}
+      <FormAll onSubmit={addNewBook}>
+        <Form>
+          <Label className="title">
+            Назва книги
+            <Input
+              type="text"
+              name="title"
+              placeholder="..."
+              // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+          </Label>
+          <div className="input-second">
+            <Label>
+              Автор книги
+              <Input
+                className="author"
+                type="text"
+                name="author"
+                // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                title="Author name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                placeholder="..."
+                autoComplete="on"
+                required
+              />
+            </Label>
+            <Label>
+              Рік випуску
+              <Input
+                className="small-input"
+                type="number"
+                name="publishYear"
+                pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}"
+                title="Publish year may contain only numbers. For example 1998, 2000, 2023"
+                placeholder="..."
+                autoComplete="on"
+                required
+              />
+            </Label>
+            <Label>
+              Кількість сторінок
+              <Input
+                className="small-input"
+                type="number"
+                name="pagesTotal"
+                min="0"
+                pattern="[0-9]*$"
+                title="Total pages may contain only numbers. For example 10, 253, 999"
+                placeholder="..."
+                required
+              />
+            </Label>
+          </div>
+        </Form>
+        <Button type="submit">Додати</Button>
+      </FormAll>
+    </>
   );
 };
