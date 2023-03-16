@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const WrapperModal = styled.div`
   position: fixed;
-  top: 0;
+  top: 40px;
   left: 0;
-  width: 50vw;
-  height: 50vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

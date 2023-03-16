@@ -1,9 +1,9 @@
-import { LibraryAddBook } from 'components/LibraryAddBook/LibraryAddBook';
+import { MobileAddBook } from 'components/MobileAddBook/MobileAddBook';
 
 const AddBook = () => {
   return (
     <>
-      <LibraryAddBook />
+      <MobileAddBook />
     </>
   );
 };
