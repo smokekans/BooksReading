@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/BooksReading/static/css/main.80ae0a65.css",
+    "main.js": "/BooksReading/static/js/main.f91448bf.js",
+    "static/media/backgroundDesktop.png": "/BooksReading/static/media/backgroundDesktop.9cab04cf0a7338afdaec.png",
+    "static/media/googleIcon.svg": "/BooksReading/static/media/googleIcon.c991d72953f51196ca285c54b00b70df.svg",
+    "static/media/symbol-defs.svg": "/BooksReading/static/media/symbol-defs.da0640cb0e7524d94c98dada3bb03658.svg",
+    "static/media/arrow.svg": "/BooksReading/static/media/arrow.d0a21fea0323fe7975a4b3add570063d.svg",
+    "index.html": "/BooksReading/index.html",
+    "static/media/bookIconGrey.svg": "/BooksReading/static/media/bookIconGrey.63b5d8c4799f064d52ebe93b8bf1ad9f.svg",
+    "static/media/back.svg": "/BooksReading/static/media/back.8b677bb2b6fe00c19bd47931fc3f676f.svg",
+    "static/media/more.svg": "/BooksReading/static/media/more.269fcb0433a777c10dd40bf1fcab12a4.svg",
+    "static/media/flag.svg": "/BooksReading/static/media/flag.087f8975817df735103200049a5f570a.svg",
+    "main.80ae0a65.css.map": "/BooksReading/static/css/main.80ae0a65.css.map",
+    "main.f91448bf.js.map": "/BooksReading/static/js/main.f91448bf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.80ae0a65.css",
+    "static/js/main.f91448bf.js"
+  ]
+}
