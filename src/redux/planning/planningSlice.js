@@ -13,12 +13,7 @@ const planningInitialState = {
   pagesFinished: null,
   pagesTotal: null,
   filter: [],
-
 };
-// const handleRejected = (state, action) => {
-
-//   state.planningInitialState.error = action.payload;
-// };
 
 const planningSlice = createSlice({
   name: 'planning',
@@ -34,8 +29,8 @@ const planningSlice = createSlice({
       state.books.push(action.payload);
     },
     filteredBooksList(state, action) {
-      state.filter.push(action.payload)
-    }
+      state.filter.push(action.payload);
+    },
   },
   extraReducers: builder => {
     builder
@@ -63,4 +58,5 @@ const planningSlice = createSlice({
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { addStartDate, addEndDate, addToBooks,  filteredBooksList} = planningSlice.actions;
+export const { addStartDate, addEndDate, addToBooks, filteredBooksList } =
+  planningSlice.actions;
