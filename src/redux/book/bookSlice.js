@@ -3,7 +3,6 @@ import { addBook, fetchAllBooks } from './bookOperations';
 
 const bookInitialState = {
   book: {
-
     goingToRead: [],
     currentlyReading: [],
     finishedReading: [],
@@ -11,7 +10,6 @@ const bookInitialState = {
     error: null,
   },
 };
-console.log(bookInitialState)
 
 const bookSlice = createSlice({
   name: 'book',
@@ -33,20 +31,20 @@ const bookSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-    .addCase(fetchAllBooks.pending, state => {
+      .addCase(fetchAllBooks.pending, state => {
         state.isLoading = true;
       })
-      .addCase(fetchAllBooks.fulfilled, (state, action) => {
+      .addCase(fetchAllBooks.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.book.goingToRead = action.payload.goingToRead;
-        state.book.currentlyReading = action.payload.currentlyReading;
-        state.book.currentlyReading = action.payload.currentlyReading;
+        state.book.goingToRead = payload.goingToRead;
+        state.book.currentlyReading = payload.currentlyReading;
+        state.book.finishedReading = payload.finishedReading;
       })
       .addCase(fetchAllBooks.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
+      });
   },
 });
 

@@ -14,6 +14,7 @@ export const CountdownGoals = () => {
   const endDateGoals = new Date(useSelector(getEndDate)).getTime();
   const { days, hours, minutes, seconds } = useCountDown(endDateGoals);
 
+
   return (
     <div>
       <TitleStl>Goals countdown</TitleStl>

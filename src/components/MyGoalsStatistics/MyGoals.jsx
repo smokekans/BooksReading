@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { getEndDate } from 'redux/planning/planningSelectors';
+import { getBooksStatistics } from 'redux/planning/planningSelectors';
 import {
   TitleStl,
   WrapStl,
@@ -15,7 +16,15 @@ import {
 export const MyGoals = () => {
   const endDate = new Date(useSelector(getEndDate)).getTime();
   const startData = Date.now();
+  
+
   const days = Math.floor(((endDate - startData) / (1000 * 60 * 60 * 24)) % 30);
+
+  const books = useSelector(getBooksStatistics).length - 1;
+
+//   const bookLeft = () => {
+
+//   };
 
   return (
     <section>
@@ -26,7 +35,7 @@ export const MyGoals = () => {
         <ListStl>
           <li>
             <BoxStl>
-              <СolonStl>00</СolonStl>
+              <СolonStl>{books}</СolonStl>
             </BoxStl>
             <LabelStl>Amount of books</LabelStl>
           </li>
