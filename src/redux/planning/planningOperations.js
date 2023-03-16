@@ -38,15 +38,16 @@ export const addTrainingConfig = createAsyncThunk(
 //   }
 // );
 
-export const getTrainingData = createAsyncThunk(
-  'planning/getTrainingConfig',
+export const getTraining = createAsyncThunk(
+  'planning/getTraining',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('/planning');
-      token.set(data.token);
-      return data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      const value = thunkAPI.getState().auth.token;
+      token.set(value);
+      const response = await axios.get('/planning');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

@@ -105,3 +105,15 @@ export const ResultBtn = styled.button`
     height: 42px;
   }
 `;
+
+export const ErrorMessage = styled.div`
+  position: absolute;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: red;
+`;

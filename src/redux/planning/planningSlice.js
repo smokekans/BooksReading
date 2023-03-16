@@ -6,8 +6,6 @@ const planningInitialState = {
   endDate: '',
   books: [],
   stats: [],
-  pagesFinished: null,
-  pagesTotal: null,
   filter: [],
 };
 
@@ -27,6 +25,9 @@ const planningSlice = createSlice({
     filteredBooksList(state, action) {
       state.filter.push(action.payload);
     },
+    deleteBook(state, action) {
+      state.filter = action.payload
+    }
   },
   extraReducers: builder => {
     builder
@@ -38,14 +39,16 @@ const planningSlice = createSlice({
       // } )
 
       // .addCase(addTrainingConfig.rejected, handleRejected)
-      .addCase(addTrainingConfig.fulfilled, (planningInitialState, action) => {
-        console.log(planningInitialState);
-        console.log(action);
+      .addCase(addTrainingConfig.fulfilled, (state, action) => {
+        state.startDate = action.payload.startDate;
+        state.endDate = action.payload.endDate;
+        state.stats = action.payload.stats;
       })
       .addCase(addPages.fulfilled, (state, action) => {
         state.stats = action.payload.planning.stats;
-        state.pagesFinished = action.payload.book.pagesFinished;
-        state.pagesTotal = action.payload.book.pagesTotal;
+        state.filter = state.filter.map(book =>
+          book._id === action.payload.book._id ? action.payload.book : book
+        );
       });
     // .addCase(fetchTraining.fulfilled, (state, action) => {
     //   console.log(action.payload);
@@ -54,5 +57,5 @@ const planningSlice = createSlice({
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { addStartDate, addEndDate, addToBooks, filteredBooksList } =
+export const { addStartDate, addEndDate, addToBooks, filteredBooksList, deleteBook } =
   planningSlice.actions;
