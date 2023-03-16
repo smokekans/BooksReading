@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addTrainingConfig } from './planningOperations';
 // import { getTrainingData } from './planningOperations';
 // import { addTrainingConfig
   //  fetchTraining
@@ -32,21 +33,20 @@ const planningSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    // builder
+    builder
     // .addCase(getTrainingData.fulfilled, (state, { payload }) => {
     //   state.startDate = payload.startDate;
     //   state.endDate = payload.endDate;
     //   state.books = payload.books;
 
     // } )
-    // .addCase(addTrainingConfig, (state, { payload }) =>{
-
-    // } )
+   
 
       // .addCase(addTrainingConfig.rejected, handleRejected)
-      // .addCase(addTrainingConfig.fulfilled, (state, action) => {
-      //   console.log('success');
-      // });
+      .addCase(addTrainingConfig.fulfilled, (planningInitialState, action) => {
+        console.log(planningInitialState);
+        console.log(action);
+      });
     // .addCase(fetchTraining.fulfilled, (state, action) => {
     //   console.log(action.payload);
     // })
