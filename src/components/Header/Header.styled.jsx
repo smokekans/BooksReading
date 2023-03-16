@@ -115,17 +115,11 @@ export const UserAvatar = styled.p`
 `;
 
 export const ExitButton = styled.button`
-    color: #242A37;
-    &::after {
-        content: '';
-        display: block;
-        width: 0;
-        height: 1px;
-        background-color: #242A37;
-        transition: width 0.3s;
-    }
-    &:hover::after {
-        width: 100%;
-        transition: width 250ms;
-    }
+   font-family: 'Montserrat';
+   font-style: normal;
+   font-weight: 300;
+   font-size: 14px;
+   line-height: 2.71;
+   text-decoration-line: underline;
+   border: none; 
 `;
