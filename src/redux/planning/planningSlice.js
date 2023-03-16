@@ -1,18 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addTrainingConfig } from './planningOperations';
+import { addPages, addTrainingConfig } from './planningOperations';
 // import { getTrainingData } from './planningOperations';
 // import { addTrainingConfig
-  //  fetchTraining
-  //  } from './planningOperations';
-
-
-
+//  fetchTraining
+//  } from './planningOperations';
 
 const planningInitialState = {
   startDate: '',
   endDate: '',
   books: [],
+  stats: [],
+  pagesFinished: null,
+  pagesTotal: null,
   filter: [],
+
 };
 // const handleRejected = (state, action) => {
 
@@ -38,18 +39,22 @@ const planningSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-    // .addCase(getTrainingData.fulfilled, (state, { payload }) => {
-    //   state.startDate = payload.startDate;
-    //   state.endDate = payload.endDate;
-    //   state.books = payload.books;
+      // .addCase(getTrainingData.fulfilled, (state, { payload }) => {
+      //   state.startDate = payload.startDate;
+      //   state.endDate = payload.endDate;
+      //   state.books = payload.books;
 
-    // } )
-   
+      // } )
 
       // .addCase(addTrainingConfig.rejected, handleRejected)
       .addCase(addTrainingConfig.fulfilled, (planningInitialState, action) => {
         console.log(planningInitialState);
         console.log(action);
+      })
+      .addCase(addPages.fulfilled, (state, action) => {
+        state.stats = action.payload.planning.stats;
+        state.pagesFinished = action.payload.book.pagesFinished;
+        state.pagesTotal = action.payload.book.pagesTotal;
       });
     // .addCase(fetchTraining.fulfilled, (state, action) => {
     //   console.log(action.payload);
