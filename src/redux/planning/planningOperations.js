@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { token } from 'redux/auth/token';
-// import { refreshThunk } from 'redux/auth/authOperations';
 
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
@@ -18,22 +17,6 @@ export const addTrainingConfig = createAsyncThunk(
       }
     }
   );
-
-// export const fetchTraining = createAsyncThunk(
-//   'planning/fetchTraining',
-//   async () => {
-
-//     try {
-//       await refreshThunk()
-//         const response = await axios.get('/planning');
-//         console.log(response )
-//       return response.data;
-//     } catch (error) {
-//        console.log(error);
-//     }
-//   }
-// );
-
 
 export const getTrainingData = createAsyncThunk(
   'planning/getTrainingConfig',
