@@ -26,17 +26,17 @@ export const App = () => {
           />
           <Route
             path=""
-            element={<PublicRoute redirectTo="library" restricted />}
+            element={<PublicRoute redirectTo="addbook" restricted />}
           >
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
           </Route>
           <Route path="" element={<PrivateRoute />}>
-            <Route path="library" element={<Library />} />
             <Route
               path="addbook"
               element={isMobile ? <AddBook /> : <Navigate to={'/library'} />}
             />
+            <Route path="library" element={<Library />} />
             <Route path="training" element={<Training />} />
             <Route path="statistics" element={<Statistics />} />
           </Route>
@@ -46,55 +46,3 @@ export const App = () => {
     </>
   );
 };
-
-// export const App = () => {
-//   return (
-//     <>
-//       <Routes>
-//         <Route path="/" element={<Layout />}>
-//           <Route
-//             path="login"
-//             element={
-//               <PublicRoute>
-//                 <Login />
-//               </PublicRoute>
-//             }
-//           />
-//           <Route
-//             path="register"
-//             element={
-//               <PublicRoute>
-//                 <Registration />
-//               </PublicRoute>
-//             }
-//           />
-//           <Route
-//             path="library"
-//             element={
-//               <PrivateRoute>
-//                 <Library />
-//               </PrivateRoute>
-//             }
-//           />
-//           <Route
-//             path="training"
-//             element={
-//               <PrivateRoute>
-//                 <Training />
-//               </PrivateRoute>
-//             }
-//           />
-//           <Route
-//             path="statistics"
-//             element={
-//               <PrivateRoute>
-//                 <Statistics />
-//               </PrivateRoute>
-//             }
-//           />
-//         </Route>
-//         <Route path="*" element={<NotFound />} />
-//       </Routes>
-//     </>
-//   );
-// };

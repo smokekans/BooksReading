@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from 'redux/book/bookOperations';
-import { getBook } from 'redux/book/bookSelectors';
+import { getGoingToRead } from 'redux/book/bookSelectors';
 import {
   Label,
   Form,
@@ -15,7 +15,7 @@ import {
 
 export const LibraryAddBook = () => {
   const dispatch = useDispatch();
-  const books = useSelector(getBook);
+  const books = useSelector(getGoingToRead);
 
   const addNewBook = e => {
     e.preventDefault();
