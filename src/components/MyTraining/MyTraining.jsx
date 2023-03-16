@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -14,6 +14,7 @@ import {
 
 
 
+
 export const MyTraining = () => {
   const state = useSelector(state => state.book.book.goingToRead);
   const stateBody = useSelector(state => state.planning);
@@ -24,6 +25,7 @@ export const MyTraining = () => {
   const dispatch = useDispatch();
   const filterId = filter.map(filterBook => filterBook._id);
 
+  // форматування дати та запис у стан
   useEffect(() => {
     const formattedDate = date => {
       const incomeDate = new Date(date);
@@ -38,11 +40,12 @@ export const MyTraining = () => {
     dispatch(addEndDate(formattedDate(endDate)));
   }, [dispatch, endDate, startDate]);
 
+  // зчитування id з селектору
   const handleReadId = e => {
     setId(e.target.value);
   };
 
-      
+  // функція-слухач кліку на кнопці Додати, перевірка на відсутність однакових книжок у списку   
   const handleAddBtn = e => {
     dispatch(addToBooks(id));
     if (filterId.toString() === id.toString()) {
@@ -55,16 +58,26 @@ export const MyTraining = () => {
     });
   };
 
+  // відправка інформації на сервер при кліку на кнопку тренування
   const handleBeginTrainingBtn = () => {
     dispatch(addTrainingConfig(stateBody));
   };
 
+  // видалення книжки
   const handleDeleteBook = (e) => {
     const removeBook = filter.filter(book => {
       return book._id !== e.currentTarget.parentElement.id
     })
     dispatch(deleteBook(removeBook))
   };
+
+
+  // стилі для бібліотеки dataPiker
+const CustomInput = forwardRef(({ value, onClick }, ref) => (
+    <select className="example-custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </select>
+  ));
 
   return (
     <>
@@ -77,6 +90,7 @@ export const MyTraining = () => {
         selected={startDate}
         onChange={date => setStartDate(date)}
         dateFormat="dd.MM.yyyy"
+        customInput={<CustomInput/>}
       />
       <DatePicker
         placeholderText="Завершення"
