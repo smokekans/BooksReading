@@ -7,6 +7,9 @@ import {
 } from 'redux/book/bookSelectors';
 import { TitleH2, Table, Tr, TrHead } from './LibraryTable.styled';
 import { fetchAllBooks } from 'redux/book/bookOperations';
+import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
+import { ReactComponent as More } from './svg/more.svg';
+import { NavLink } from 'react-router-dom';
 
 export const LibraryTable = () => {
   const goingToRead = useSelector(getBook);
@@ -39,7 +42,7 @@ export const LibraryTable = () => {
               {finishedReading.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td>{b.title}</td>
+                    <td><BookIcon/>{b.title}</td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
@@ -73,7 +76,7 @@ export const LibraryTable = () => {
               {currentlyReading.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td>{b.title}</td>
+                    <td><BookIcon/>{b.title}</td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
@@ -101,7 +104,7 @@ export const LibraryTable = () => {
               {goingToRead.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td>{b.title}</td>
+                    <td><BookIcon/>{b.title}</td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
@@ -110,7 +113,8 @@ export const LibraryTable = () => {
               })}
             </tbody>
           </Table>
-          <button type="button">Моє тренування</button>
+          <NavLink to="/training"><button type="button">Моє тренування</button></NavLink>
+          <More/>
         </>
       )}
     </>
