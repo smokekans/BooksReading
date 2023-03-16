@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/BooksReading/static/css/main.8df63799.css",
-    "main.js": "/BooksReading/static/js/main.34d8b7b2.js",
+    "main.js": "/BooksReading/static/js/main.44d85410.js",
     "static/media/backgroundDesktop.png": "/BooksReading/static/media/backgroundDesktop.9cab04cf0a7338afdaec.png",
     "static/media/googleIcon.svg": "/BooksReading/static/media/googleIcon.bd05d64077c444bcdd93ba8d3964951e.svg",
     "static/media/symbol-defs.svg": "/BooksReading/static/media/symbol-defs.d54a8fb994cb406724ce41cfe1822b34.svg",
@@ -12,10 +12,10 @@
     "static/media/more.svg": "/BooksReading/static/media/more.d598573616d986f043876ed5d41d85c7.svg",
     "static/media/flag.svg": "/BooksReading/static/media/flag.087f8975817df735103200049a5f570a.svg",
     "main.8df63799.css.map": "/BooksReading/static/css/main.8df63799.css.map",
-    "main.34d8b7b2.js.map": "/BooksReading/static/js/main.34d8b7b2.js.map"
+    "main.44d85410.js.map": "/BooksReading/static/js/main.44d85410.js.map"
   },
   "entrypoints": [
     "static/css/main.8df63799.css",
-    "static/js/main.34d8b7b2.js"
+    "static/js/main.44d85410.js"
   ]
 }
