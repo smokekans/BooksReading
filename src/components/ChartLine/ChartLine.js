@@ -1,24 +1,45 @@
 import { Line } from 'react-chartjs-2';
-export const options = {
-  backgroundColor: '#FF6B08',
-  cubicInterpolationMode: 'monotone',
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-      align: 'end',
-      display: true,
-      labels: {
-        color: '#FF6B08',
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const ChartLine = () => {
+  const options = {
+    scales: { x: { title: { text: 'hello' } } },
+    backgroundColor: '#FF6B08',
+    cubicInterpolationMode: 'monotone',
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'end',
+        display: true,
+        labels: {
+          color: '#FF6B08',
+        },
+      },
+      title: {
+        display: false,
+        text: 'Кількість сторінок за день',
       },
     },
-    title: {
-      display: false,
-      text: 'Кількість сторінок за день',
-    },
-  },
-};
-const ChartLine = () => {
+  };
   const labels = ['start'];
   const planData = [0];
   const factData = [0];
