@@ -12,6 +12,7 @@ const planningInitialState = {
   startDate: '',
   endDate: '',
   books: [],
+  filter: [],
 };
 // const handleRejected = (state, action) => {
 
@@ -31,6 +32,9 @@ const planningSlice = createSlice({
     addToBooks(state, action) {
       state.books.push(action.payload);
     },
+    filteredBooksList(state, action) {
+      state.filter.push(action.payload)
+    }
   },
   extraReducers: builder => {
     builder
@@ -54,4 +58,4 @@ const planningSlice = createSlice({
 });
 
 export const planningReducer = planningSlice.reducer;
-export const { addStartDate, addEndDate, addToBooks } = planningSlice.actions;
+export const { addStartDate, addEndDate, addToBooks,  filteredBooksList} = planningSlice.actions;
