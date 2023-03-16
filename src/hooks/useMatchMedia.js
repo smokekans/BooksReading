@@ -4,7 +4,7 @@ import device from './device';
 const queries = [
   `${device.mobile} and (max-width: 767px)`,
   `${device.tablet} and (max-width: 1279px)`,
-  `${device.desctop}`,
+  `${device.desktop}`,
 ];
 
 const useMatchMedia = () => {
@@ -19,7 +19,10 @@ const useMatchMedia = () => {
 
     mediaQueryLists.forEach(list => list.addEventListener('change', handler));
 
-    return () => mediaQueryLists.forEach(list => list.removeEventListener('change', handler));
+    return () =>
+      mediaQueryLists.forEach(list =>
+        list.removeEventListener('change', handler)
+      );
   });
 
   const typesOfScreen = ['isMobile', 'isTablet', 'isDesktop'];
