@@ -22,9 +22,7 @@ export const MyGoals = () => {
 
   const books = useSelector(getBooksStatistics).length - 1;
 
-//   const bookLeft = () => {
 
-//   };
 
   return (
     <section>
