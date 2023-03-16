@@ -16,18 +16,14 @@ import {
   UserInfo
 } from './Header.styled';
 import { getUserName, getIsLoggedIn } from '../../redux/auth/authSelectors';
-import { logOutThunk } from 'redux/auth/authOperations'
-import icons from '../../images/symbol-defs.svg'
-
-
+import { logOutThunk } from 'redux/auth/authOperations';
+import icons from '../../images/symbol-defs.svg';
 
 export const Header = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const userName = useSelector(getUserName);
-    const userAvatar = userName?.at(0)?.toUpperCase();
-
-  
+  const userAvatar = userName?.at(0)?.toUpperCase();
 
   return (
     <>
@@ -40,20 +36,16 @@ export const Header = () => {
                 <Nav>
                   <NavList>
                     <NavItem>
-                      <Link to={'library'}>
+                      <Link to={'training'}>
                         <Icon width="22" height="17">
-                        <use
-                          href={`${icons}#group`}
-                        />
+                          <use href={`${icons}#group`} />
                         </Icon>
                       </Link>
                     </NavItem>
                     <NavItem>
-                      <Link to={'training'}>
+                      <Link to={'library'}>
                         <Icon width="20" height="17">
-                        <use
-                          href={`${icons}#home`}
-                        />
+                          <use href={`${icons}#home`} />
                         </Icon>
                       </Link>
                     </NavItem>
@@ -61,11 +53,16 @@ export const Header = () => {
                 </Nav>
                 <UserPanel>
                   <UserInfo>
-                     <UserAvatar>{userAvatar}</UserAvatar>
-                     <UserName>{userName}</UserName>
+                    <UserAvatar>{userAvatar}</UserAvatar>
+                    <UserName>{userName}</UserName>
                   </UserInfo>
-                  <ExitButton type="button" onClick={() => {dispatch(logOutThunk())}}>
-                     Вихід
+                  <ExitButton
+                    type="button"
+                    onClick={() => {
+                      dispatch(logOutThunk());
+                    }}
+                  >
+                    Вихід
                   </ExitButton>
                 </UserPanel>
               </>
