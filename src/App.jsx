@@ -1,6 +1,6 @@
 import Library from 'pages/Library';
-import Login from 'pages/Login';
-import Register from 'pages/Register';
+import Login from 'pages/Login/Login';
+import Register from 'pages/Register/Register';
 import Statistics from 'pages/Statistics';
 import Training from 'pages/Training';
 import { Layout } from './components/Layout/Layout';
