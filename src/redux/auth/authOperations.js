@@ -6,11 +6,16 @@ axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
 export const signUpThunk = createAsyncThunk(
   'auth/signup',
-  async (credentials, { rejectWithValue }) => {
+  async (credentials, { rejectWithValue, dispatch }) => {
     try {
-      const { data } = await axios.post('auth/register', credentials);
-      token.set(data.accessToken);
-      return data;
+      await axios.post('auth/register', credentials);
+      dispatch(
+        signInThunk({
+          email: credentials.email,
+          password: credentials.password,
+        })
+      );
+      // return data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
