@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
   HeaderStyled,
@@ -16,8 +17,9 @@ import {
 } from './Header.styled';
 import { getUserName, getIsLoggedIn } from '../../redux/auth/authSelectors';
 import { logOutThunk } from 'redux/auth/authOperations'
+import icons from '../../images/symbol-defs.svg'
 
-import { useDispatch, useSelector } from 'react-redux';
+
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -39,12 +41,20 @@ export const Header = () => {
                   <NavList>
                     <NavItem>
                       <Link to={'library'}>
-                        <Icon width="22" height="17"></Icon>
+                        <Icon width="22" height="17">
+                        <use
+                          href={`${icons}#group`}
+                        />
+                        </Icon>
                       </Link>
                     </NavItem>
                     <NavItem>
                       <Link to={'training'}>
-                        <Icon width="20" height="17"></Icon>
+                        <Icon width="20" height="17">
+                        <use
+                          href={`${icons}#home`}
+                        />
+                        </Icon>
                       </Link>
                     </NavItem>
                   </NavList>
