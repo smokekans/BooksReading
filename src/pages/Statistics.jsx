@@ -3,6 +3,7 @@ import { CountdownGoals } from 'components/CountdownGoals/CountdownGoals';
 import { MyGoals } from 'components/MyGoalsStatistics/MyGoals';
 import { StatisticsBookLIst } from 'components/StatisticsBookLIst/StatisticsBookLIst';
 import { StatisticsBookPages } from 'components/StatisticsBookPages/StatisticsBookPages';
+import ChartLine from 'components/ChartLine/ChartLine';
 
 const Statistics = () => {
   return (
@@ -12,6 +13,7 @@ const Statistics = () => {
       <MyGoals />
       <StatisticsBookLIst />
       <StatisticsBookPages />
+      <ChartLine />
     </>
   );
 };
