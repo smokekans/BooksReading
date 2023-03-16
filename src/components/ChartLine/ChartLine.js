@@ -76,14 +76,7 @@ const ChartLine = () => {
         display: false,
       },
     },
-<<<<<<< HEAD
   };
-=======
-  },
-};
-
-const ChartLine = () => {
->>>>>>> main
   const labels = ['start'];
   const planData = [0];
   const factData = [0];
