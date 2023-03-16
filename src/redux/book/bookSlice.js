@@ -3,15 +3,21 @@ import { addBook, fetchAllBooks } from './bookOperations';
 
 const bookInitialState = {
   book: {
-
-    goingToRead: [],
+    goingToRead: [
+      // {
+      //   title: 'The Book of Five Rings',
+      //   author: 'Miyamoto Musashi',
+      //   publishYear: 1643,
+      //   totalPages: 110,
+      // },
+    ],
     currentlyReading: [],
     finishedReading: [],
     isLoading: false,
     error: null,
   },
 };
-console.log(bookInitialState)
+console.log(bookInitialState);
 
 const bookSlice = createSlice({
   name: 'book',
@@ -33,7 +39,7 @@ const bookSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-    .addCase(fetchAllBooks.pending, state => {
+      .addCase(fetchAllBooks.pending, state => {
         state.isLoading = true;
       })
       .addCase(fetchAllBooks.fulfilled, (state, action) => {
@@ -46,7 +52,7 @@ const bookSlice = createSlice({
       .addCase(fetchAllBooks.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-      })
+      });
   },
 });
 
