@@ -4,19 +4,16 @@ import { token } from '../auth/token';
 
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
 
-export const addBook = createAsyncThunk(
-  'book/addBook',
-  async (goingToRead, thunkAPI) => {
-    try {
-      const value = thunkAPI.getState().auth.token;
-      token.set(value);
-      const { data } = await axios.post('/book', goingToRead);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+export const addBook = createAsyncThunk('book/addBook', async (goingToRead, thunkAPI) => {
+  try {
+    const value = thunkAPI.getState().auth.token;
+    token.set(value);
+    const { data } = await axios.post('/book', goingToRead);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
 
 export const fetchAllBooks = createAsyncThunk(
   'books/fetchAll',

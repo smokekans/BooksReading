@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { ModalRezume } from '../ModalRezume/ModalRezume';
 import { WrapperModal } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -24,7 +25,12 @@ export default function Modal({ onClose, children }) {
   };
 
   return createPortal(
-    <WrapperModal onClick={handleBackdropClick}>{children}</WrapperModal>,
+    <>
+      <WrapperModal onClick={handleBackdropClick}>
+        {children}
+        <ModalRezume onClose={onClose} />
+      </WrapperModal>
+    </>,
     modalRoot
   );
 }
