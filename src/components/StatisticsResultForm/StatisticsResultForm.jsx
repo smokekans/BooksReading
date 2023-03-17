@@ -73,7 +73,7 @@ export const StatisticsResultForm = () => {
       planBooks,
     });
     if (finishBook && unFinishBook && unFinishBook.pagesFinished === 0) {
-      alert(`${finishBook.title} вже прочитали книжку`);
+      alert(`${finishBook.title} вже прочитали книжку!`);
     }
   }, [planBooks]);
 
