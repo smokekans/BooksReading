@@ -7,7 +7,7 @@ const planningInitialState = {
   books: [],
   stats: [],
   filter: [],
-  duration: null,
+  // duration: null,
 };
 
 const planningSlice = createSlice({
@@ -36,7 +36,7 @@ const planningSlice = createSlice({
         state.startDate = action.payload.startDate;
         state.endDate = action.payload.endDate;
         state.stats = action.payload.stats;
-        state.duration = action.payload.duration;
+        // state.duration = action.payload.duration;
       })
       .addCase(addPages.fulfilled, (state, action) => {
         state.stats = action.payload.planning.stats;

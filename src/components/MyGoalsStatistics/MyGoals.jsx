@@ -16,20 +16,30 @@ export const MyGoals = () => {
   const endDate = new Date(useSelector(getEndDate)).getTime();
   const startData = Date.now();
   const booksAll = useSelector(getPlanBooks);
-  const {pagesFinished, pagesTotal} = useSelector(getPlanBooks);
-  console.log(booksAll);
+  // console.log(booksAll);
   const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24));
 
   const books = booksAll.length;
 
-  const getLastBook = ({pagesFinished, pagesTotal}) => {
-    const finishedBook = booksAll.filter(
-      book => book.pagesTotal === book.pagesFinished
-    );
-    return finishedBook;
-    console.log( finishedBook)
+  const booksFinished = () => {
+    const totalPages = (booksAll.map(book => book.pagesTotal));
+    console.log(totalPages);
+    const finishedPages = (booksAll.map(book => book.pagesFinished));
+    const booksL = [];
+    console.log(finishedPages);
+
+    if (finishedPages === totalPages) {
+      booksL.push(finishedPages);
+    }
+    return booksL.length
   };
-  // console.log( getLastBook)
+  console.log(booksFinished());
+
+
+  //  const totalPages = booksAll.map(book => book.pagesTotal)
+  //   console.log(totalPages)
+  //   const finishedPages = booksAll.map(book =>book.pagesFinished)
+  //     console.log(finishedPages)
 
   return (
     <section>
