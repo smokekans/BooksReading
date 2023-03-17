@@ -19,7 +19,7 @@ color: #FFFFFF
 `
 export const CalendarContainer = styled.div`
 display: flex;
-justify-content: end;
+justify-content: center;
 max-width: 928px;
 `
 export const Calendar = styled.div`
