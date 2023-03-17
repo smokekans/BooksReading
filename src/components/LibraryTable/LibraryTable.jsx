@@ -20,6 +20,7 @@ import {
   PMobile,
   SpanMobile,
   Button,
+  SpanIconBook,
 } from './LibraryTable.styled';
 import { fetchAllBooks } from 'redux/book/bookOperations';
 import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
@@ -49,27 +50,29 @@ export const LibraryTable = () => {
                 return (
                   <LiMobile key={b._id}>
                     <H3Mobile>
-                      <BookIcon />
+                      <BookIcon fill="#FF6B08" />
                       {b.title}
-                    </H3Mobile><PMobile>
-                    <div>
-                      <SpanMobile>Автор:</SpanMobile>
-                      <span>{b.author}</span>
-                    </div>
-                    <div>
-                      <SpanMobile>Рік:</SpanMobile>
-                      <span>{b.publishYear}</span>
-                    </div>
-                    <div>
-                      <SpanMobile>Стор.:</SpanMobile>
-                      <span>{b.pagesTotal}</span>
-                    </div>
-                    <div>
-                      <SpanMobile>Рейтинг:</SpanMobile>
-                      <SpanMobile>*****</SpanMobile>
-                    </div>
-                    <Button type="button">Резюме</Button>
-                </PMobile></LiMobile>
+                    </H3Mobile>
+                    <PMobile>
+                      <div>
+                        <SpanMobile>Автор:</SpanMobile>
+                        <span>{b.author}</span>
+                      </div>
+                      <div>
+                        <SpanMobile>Рік:</SpanMobile>
+                        <span>{b.publishYear}</span>
+                      </div>
+                      <div>
+                        <SpanMobile>Стор.:</SpanMobile>
+                        <span>{b.pagesTotal}</span>
+                      </div>
+                      <div>
+                        <SpanMobile>Рейтинг:</SpanMobile>
+                        <SpanMobile>*****</SpanMobile>
+                      </div>
+                      <Button type="button">Резюме</Button>
+                    </PMobile>
+                  </LiMobile>
                 );
               })}
             </UlMobile>
@@ -91,8 +94,10 @@ export const LibraryTable = () => {
                   return (
                     <Tr key={b._id}>
                       <td>
-                        <BookIcon />
-                        {b.title}
+                        <SpanIconBook>
+                          <BookIcon fill="#FF6B08" />
+                          {b.title}
+                        </SpanIconBook>
                       </td>
                       <td>{b.author}</td>
                       <td>{b.publishYear}</td>
@@ -122,19 +127,21 @@ export const LibraryTable = () => {
                     <H3Mobile>
                       <BookIcon />
                       {b.title}
-                    </H3Mobile><PMobile>
-                    <div>
-                      <SpanMobile>Автор:</SpanMobile>
-                      <span>{b.author}</span>
-                    </div>
-                    <div>
-                      <SpanMobile>Рік:</SpanMobile>
-                      <span>{b.publishYear}</span>
-                    </div>
-                    <div>
-                      <SpanMobile>Стор.:</SpanMobile>
-                      <span>{b.pagesTotal}</span>
-                    </div></PMobile>
+                    </H3Mobile>
+                    <PMobile>
+                      <div>
+                        <SpanMobile>Автор:</SpanMobile>
+                        <span>{b.author}</span>
+                      </div>
+                      <div>
+                        <SpanMobile>Рік:</SpanMobile>
+                        <span>{b.publishYear}</span>
+                      </div>
+                      <div>
+                        <SpanMobile>Стор.:</SpanMobile>
+                        <span>{b.pagesTotal}</span>
+                      </div>
+                    </PMobile>
                   </LiMobile>
                 );
               })}
@@ -180,19 +187,21 @@ export const LibraryTable = () => {
                     <H3Mobile>
                       <BookIcon />
                       {b.title}
-                    </H3Mobile><PMobile>
-                    <div>
-                      <SpanMobile>Автор:</SpanMobile>
-                      <span>{b.author}</span>
-                    </div>
-                    <div>
-                      <SpanMobile>Рік:</SpanMobile>
-                      <span>{b.publishYear}</span>
-                    </div>
-                    <div>
-                      <SpanMobile>Стор.:</SpanMobile>
-                      <span>{b.pagesTotal}</span>
-                    </div></PMobile>
+                    </H3Mobile>
+                    <PMobile>
+                      <div>
+                        <SpanMobile>Автор:</SpanMobile>
+                        <span>{b.author}</span>
+                      </div>
+                      <div>
+                        <SpanMobile>Рік:</SpanMobile>
+                        <span>{b.publishYear}</span>
+                      </div>
+                      <div>
+                        <SpanMobile>Стор.:</SpanMobile>
+                        <span>{b.pagesTotal}</span>
+                      </div>
+                    </PMobile>
                   </LiMobile>
                 );
               })}
@@ -213,8 +222,10 @@ export const LibraryTable = () => {
                   return (
                     <Tr key={b._id}>
                       <td>
-                        <BookIcon />
-                        {b.title}
+                        <SpanIconBook>
+                          <BookIcon />
+                          {b.title}
+                        </SpanIconBook>
                       </td>
                       <td>{b.author}</td>
                       <td>{b.publishYear}</td>

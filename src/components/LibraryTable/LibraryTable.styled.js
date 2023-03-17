@@ -31,6 +31,10 @@ export const Table = styled.table`
   text-align: left;
   background: #f6f7fb;
   border-spacing: 0px 5px;
+  th:last-child, td:last-child {
+text-align: right;
+padding-right: 23px;
+}
 `;
 
 export const Tr = styled.tr`
@@ -158,8 +162,18 @@ export const Button = styled.button`
   text-align: center;
    @media screen and (min-width: 768px) {
     width: 80px;
+    margin-left: 0px 20px 0px 0px;
   }
   @media screen and (min-width: 1280px) {
     width: 130px;
   }
 `;
+
+export const SpanIconBook = styled.span`
+ display: flex;
+ margin-left: 23px;
+ gap: 18px;
+ @media screen and (min-width: 768px) {
+  
+  }
+`
