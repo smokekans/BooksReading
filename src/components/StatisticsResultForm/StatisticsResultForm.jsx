@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addPages } from 'redux/planning/planningOperations';
 import { useFormik } from 'formik';
 import { getPlanBooks } from 'redux/planning/planningSelectors';
-import { getCurrentlyReading } from 'redux/book/bookSelectors';
+import { ModalFinishedBooks } from 'components/Modal/ModalFinishedBook/ModalFinishedBook';
 
 const getRemainPages = ({ planBooks }) => {
   const diffPages = planBooks
@@ -28,27 +28,11 @@ const getRemainPages = ({ planBooks }) => {
   return unReadPages;
 };
 
-const getLastBook = ({ currentBooks }) => {
-  const diffPages = currentBooks.filter(
-    book => book.pagesTotal - book.pagesFinished === 0
-  );
-  const finishedBook = diffPages[diffPages.length - 1];
-  return finishedBook;
-};
-
-const getNextBook = ({ currentBooks }) => {
-  const diffPages = currentBooks.filter(
-    book => book.pagesTotal - book.pagesFinished !== 0
-  );
-  const unFinishedBook = diffPages[0];
-  return unFinishedBook;
-};
-
 export const StatisticsResultForm = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const planBooks = useSelector(getPlanBooks);
-  const currentBooks = useSelector(getCurrentlyReading);
 
   const formik = useFormik({
     initialValues: { pages: '' },
@@ -56,26 +40,24 @@ export const StatisticsResultForm = () => {
       const lastsPages = getRemainPages({ planBooks });
       pages = Number(pages);
       if (pages > lastsPages) {
+        formik.resetForm();
         formik.setErrors({ pages: 'Залишилось ' + lastsPages + ' стор.' });
         return;
+      } else if (pages === lastsPages) {
+        setIsModalOpen(true);
       }
       dispatch(
         addPages({
           pages: Number(pages),
         })
       );
+      formik.resetForm();
     },
   });
 
-  useEffect(() => {
-    const finishBook = getLastBook({ currentBooks });
-    const unFinishBook = getNextBook({
-      currentBooks,
-    });
-    if (finishBook && unFinishBook && unFinishBook.pagesFinished === 0) {
-      alert(`${finishBook.title} has already finished`);
-    }
-  }, [currentBooks]);
+  const closeModalFinished = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -110,6 +92,7 @@ export const StatisticsResultForm = () => {
         </ResultBox>
         <ResultBtn type="submit">Додати результат</ResultBtn>
       </FormRes>
+      {isModalOpen && <ModalFinishedBooks onClose={closeModalFinished} />}
     </>
   );
 };

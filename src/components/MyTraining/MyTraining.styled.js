@@ -1,22 +1,23 @@
 import styled from 'styled-components';
-import calendarImg from '../../images/calendar.png'
+import calendarImg from '../../images/calendar.png';
 export const MainTitleContainer = styled.div`
-display: flex;
-justify-content: center;
-max-width: 928px;
-height: 60px;
-background-color: #B1B5C2;
-box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-margin-bottom: 24px;
-`
+  display: flex;
+  justify-content: center;
+  max-width: 928px;
+  height: 60px;
+  background-color: #b1b5c2;
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  margin-bottom: 24px;
+`;
 
 export const MainTitle = styled.h2`
-font-style: normal;
-font-weight: 600;
-font-size: 20px;
-line-height: 24px;
-color: #FFFFFF
-`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+`;
+
 export const CalendarContainer = styled.div`
 display: flex;
 justify-content: center;
@@ -38,12 +39,13 @@ background-position: 5% 50%;
 margin-right: 44px;
 `
 export const CalendarStartText = styled.p`
-font-weight: 500;
-font-size: 14px;
-line-height: 38px;
-color: #A6ABB9;
-margin-right: 118px;
-`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 38px;
+  color: #a6abb9;
+  margin-right: 118px;
+`;
+
 export const CalendarEndText = styled.p`
 font-weight: 500;
 font-size: 14px;
