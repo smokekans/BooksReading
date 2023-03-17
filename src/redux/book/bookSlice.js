@@ -3,9 +3,9 @@ import { addBook, fetchAllBooks } from './bookOperations';
 
 const bookInitialState = {
   book: {
-    goingToRead: [],
-    currentlyReading: [],
-    finishedReading: [],
+    goingToRead: null,
+    currentlyReading: null,
+    finishedReading: null,
     isLoading: false,
     error: null,
   },
