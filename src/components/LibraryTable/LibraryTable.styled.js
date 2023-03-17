@@ -21,7 +21,8 @@ export const TitleH2 = styled.h2`
   color: #242a37;
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {
-   margin-bottom: 24px;
+    margin-bottom: 24px;
+  }
 `;
 
 export const Table = styled.table`
@@ -31,10 +32,11 @@ export const Table = styled.table`
   text-align: left;
   background: #f6f7fb;
   border-spacing: 0px 5px;
-  th:last-child, td:last-child {
-text-align: right;
-padding-right: 23px;
-}
+  th:last-child,
+  td:last-child {
+    text-align: right;
+    padding-right: 23px;
+  }
 `;
 
 export const Tr = styled.tr`
@@ -86,7 +88,7 @@ export const ButtonMyTrain = styled(NavLink)`
   margin-right: auto;
   margin-left: auto;
   margin-top: 28px;
-    margin-bottom: 128px;
+  margin-bottom: 128px;
   background: #ff6b08;
   color: #ffffff;
   font-family: 'Montserrat';
@@ -161,7 +163,7 @@ export const Button = styled.button`
   font-size: 14px;
   line-height: 1.21;
   text-align: center;
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 80px;
     margin-left: 0px 20px 0px 0px;
   }
@@ -171,10 +173,9 @@ export const Button = styled.button`
 `;
 
 export const SpanIconBook = styled.span`
- display: flex;
- margin-left: 23px;
- gap: 18px;
- @media screen and (min-width: 768px) {
-  
+  display: flex;
+  margin-left: 23px;
+  gap: 18px;
+  @media screen and (min-width: 768px) {
   }
-`
+`;

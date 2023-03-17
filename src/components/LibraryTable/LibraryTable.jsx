@@ -1,10 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  getGoingToRead,
-  getCurrentlyReading,
-  getFinishedReading,
-} from 'redux/book/bookSelectors';
+import { useSelector } from 'react-redux';
+import { getGoingToRead, getCurrentlyReading, getFinishedReading } from 'redux/book/bookSelectors';
 import {
   TitleH2,
   Table,
@@ -22,31 +17,33 @@ import {
   Button,
   SpanIconBook,
 } from './LibraryTable.styled';
-import { fetchAllBooks } from 'redux/book/bookOperations';
 import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
 import { NavLink } from 'react-router-dom';
 import useMatchMedia from 'hooks/useMatchMedia';
+import Modal from 'components/Modal/Modal/Modal';
+import { Rate } from 'antd';
+import { useState } from 'react';
 
 export const LibraryTable = () => {
   const goingToRead = useSelector(getGoingToRead);
   const currentlyReading = useSelector(getCurrentlyReading);
   const finishedReading = useSelector(getFinishedReading);
-  const dispatch = useDispatch();
   const { isMobile } = useMatchMedia();
 
-  useEffect(() => {
-    dispatch(fetchAllBooks());
-  }, [dispatch]);
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <Container>
-      {finishedReading.length !== 0 && (
+      {finishedReading?.length !== 0 && (
         <>
           <TitleH2>Прочитано</TitleH2>
           {isMobile ? (
             <UlMobile>
-              {finishedReading.map(b => {
+              {finishedReading?.map(b => {
                 return (
                   <LiMobile key={b._id}>
                     <H3Mobile>
@@ -68,13 +65,16 @@ export const LibraryTable = () => {
                       </div>
                       <div>
                         <SpanMobile>Рейтинг:</SpanMobile>
-                        <SpanMobile>*****</SpanMobile>
+                        <Rate style={{ width: '120px', fontSize: '17px' }} />
                       </div>
-                      <Button type="button">Резюме</Button>
+                      <Button type="button" onClick={toggleModal}>
+                        Резюме
+                      </Button>
                     </PMobile>
                   </LiMobile>
                 );
               })}
+              {isOpen && <Modal onClose={toggleModal} />}
             </UlMobile>
           ) : (
             <Table>
@@ -90,7 +90,7 @@ export const LibraryTable = () => {
               </thead>
 
               <tbody>
-                {finishedReading.map(b => {
+                {finishedReading?.map(b => {
                   return (
                     <Tr key={b._id}>
                       <td>
@@ -103,11 +103,14 @@ export const LibraryTable = () => {
                       <td>{b.publishYear}</td>
                       <td>{b.pagesTotal}</td>
                       <td>
-                        <span>*****</span>
+                        <Rate style={{ width: '120px', fontSize: '17px' }} />
                       </td>
                       <td>
-                        <Button type="button">Резюме</Button>
+                        <Button type="button" onClick={toggleModal}>
+                          Резюме
+                        </Button>
                       </td>
+                      {isOpen && <Modal onClose={toggleModal} />}
                     </Tr>
                   );
                 })}
@@ -116,12 +119,12 @@ export const LibraryTable = () => {
           )}
         </>
       )}
-      {currentlyReading.length !== 0 && (
+      {currentlyReading?.length !== 0 && (
         <>
           <TitleH2>Читаю</TitleH2>
           {isMobile ? (
             <UlMobile>
-              {currentlyReading.map(b => {
+              {currentlyReading?.map(b => {
                 return (
                   <LiMobile key={b._id}>
                     <H3Mobile>
@@ -158,7 +161,7 @@ export const LibraryTable = () => {
               </thead>
 
               <tbody>
-                {currentlyReading.map(b => {
+                {currentlyReading?.map(b => {
                   return (
                     <Tr key={b._id}>
                       <td>
@@ -176,12 +179,12 @@ export const LibraryTable = () => {
           )}
         </>
       )}
-      {goingToRead.length !== 0 && (
+      {goingToRead?.length !== 0 && (
         <>
           <TitleH2>Маю намір прочитати</TitleH2>
           {isMobile ? (
             <UlMobile>
-              {goingToRead.map(b => {
+              {goingToRead?.map(b => {
                 return (
                   <LiMobile key={b._id}>
                     <H3Mobile>
@@ -218,7 +221,7 @@ export const LibraryTable = () => {
               </thead>
 
               <tbody>
-                {goingToRead.map(b => {
+                {goingToRead?.map(b => {
                   return (
                     <Tr key={b._id}>
                       <td>
@@ -240,9 +243,9 @@ export const LibraryTable = () => {
           <ButtonMyTrain to="/training">Моє тренування</ButtonMyTrain>
         </>
       )}
-      {finishedReading.length === 0 &&
-        goingToRead.length === 0 &&
-        currentlyReading.length === 0 && (
+      {finishedReading?.length === 0 &&
+        goingToRead?.length === 0 &&
+        currentlyReading?.length === 0 && (
           <EmptyPageDiv>
             <p>Додати книжку 👇</p>
             <NavLink to="/addbook">
