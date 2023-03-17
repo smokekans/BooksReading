@@ -12,6 +12,8 @@ import {
   deleteBook,
   filteredBooksList,
 } from 'redux/planning/planningSlice';
+import { Calendar, CalendarContainer, CalendarEndText,  CalendarStartText,  MainTitle, MainTitleContainer } from './MyTraining.styled';
+
 
 export const MyTraining = () => {
   const state = useSelector(state => state.book.book.goingToRead);
@@ -71,32 +73,46 @@ export const MyTraining = () => {
   };
 
   // стилі для бібліотеки dataPiker
-  const CustomInput = forwardRef(({ value, onClick }, ref) => (
-    <select className="example-custom-input" onClick={onClick} ref={ref}>
-      {value}
-    </select>
+  const Start = forwardRef(({ value, onClick }, ref) => (
+    <CalendarContainer>
+    <Calendar onClick={onClick} ref={ref}>
+      {value} <CalendarStartText>Початок</CalendarStartText>
+      <svg width="13" height="6" viewBox="0 0 13 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.5 6L0.870834 0.750001L12.1292 0.75L6.5 6Z" fill="#242A37" />
+      </svg>
+      </Calendar>
+      </CalendarContainer>
+  ));
+
+  const End = forwardRef(({ value, onClick }, ref) => (
+     <CalendarContainer>
+    <Calendar onClick={onClick} ref={ref}>
+      {value} <CalendarEndText>Завершення</CalendarEndText>
+      <svg width="13" height="6" viewBox="0 0 13 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.5 6L0.870834 0.750001L12.1292 0.75L6.5 6Z" fill="#242A37" />
+      </svg>
+      </Calendar>
+      </CalendarContainer>
   ));
 
   return (
     <>
-      <div>
-        <h2>Моє тренування</h2>
-      </div>
-
+      <MainTitleContainer>
+        <MainTitle>Моє тренування</MainTitle>
+      </MainTitleContainer>
+      
       <DatePicker
-        placeholderText="Початок"
         selected={startDate}
         onChange={date => setStartDate(date)}
         dateFormat="dd.MM.yyyy"
-        customInput={<CustomInput />}
+        customInput={<Start />}
       />
       <DatePicker
-        placeholderText="Завершення"
         selected={endDate}
         onChange={date => setEndDate(date)}
-        dateFormat="dd.MM.yyyy"
-      />
-
+          dateFormat="dd.MM.yyyy"
+          customInput={<End/>}
+        />
       <select onChange={handleReadId}>
         <option value="default">...</option>
         {state.map(({ _id, title }) => {
