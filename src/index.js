@@ -12,7 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
   <Provider store={store}>
     <PersistGate persistor={persistor}>
-      <BrowserRouter basename="/BooksReading">
+      <BrowserRouter 
+{/* basename="/BooksReading" */}
+>
         {/* <ThemeProvider theme={theme()}> */}
         <App />
         {/* </ThemeProvider> */}
