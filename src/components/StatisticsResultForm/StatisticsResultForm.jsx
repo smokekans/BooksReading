@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addPages } from 'redux/planning/planningOperations';
 import { useFormik } from 'formik';
 import { getPlanBooks } from 'redux/planning/planningSelectors';
-import { getCurrentlyReading } from 'redux/book/bookSelectors';
+// import { getCurrentlyReading } from 'redux/book/bookSelectors';
 
 const getRemainPages = ({ planBooks }) => {
   const diffPages = planBooks
@@ -28,16 +28,16 @@ const getRemainPages = ({ planBooks }) => {
   return unReadPages;
 };
 
-const getLastBook = ({ currentBooks }) => {
-  const diffPages = currentBooks.filter(
+const getLastBook = ({ planBooks }) => {
+  const diffPages = planBooks.filter(
     book => book.pagesTotal - book.pagesFinished === 0
   );
   const finishedBook = diffPages[diffPages.length - 1];
   return finishedBook;
 };
 
-const getNextBook = ({ currentBooks }) => {
-  const diffPages = currentBooks.filter(
+const getNextBook = ({ planBooks }) => {
+  const diffPages = planBooks.filter(
     book => book.pagesTotal - book.pagesFinished !== 0
   );
   const unFinishedBook = diffPages[0];
@@ -48,7 +48,7 @@ export const StatisticsResultForm = () => {
   const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
   const planBooks = useSelector(getPlanBooks);
-  const currentBooks = useSelector(getCurrentlyReading);
+  // const currentBooks = useSelector(getCurrentlyReading);
 
   const formik = useFormik({
     initialValues: { pages: '' },
@@ -68,14 +68,14 @@ export const StatisticsResultForm = () => {
   });
 
   useEffect(() => {
-    const finishBook = getLastBook({ currentBooks });
+    const finishBook = getLastBook({ planBooks });
     const unFinishBook = getNextBook({
-      currentBooks,
+      planBooks,
     });
     if (finishBook && unFinishBook && unFinishBook.pagesFinished === 0) {
-      alert(`${finishBook.title} has already finished`);
+      alert(`${finishBook.title} вже прочитали`);
     }
-  }, [currentBooks]);
+  }, [planBooks]);
 
   return (
     <>
