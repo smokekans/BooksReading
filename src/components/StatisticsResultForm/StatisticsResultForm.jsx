@@ -40,6 +40,7 @@ export const StatisticsResultForm = () => {
       const lastsPages = getRemainPages({ planBooks });
       pages = Number(pages);
       if (pages > lastsPages) {
+        formik.resetForm();
         formik.setErrors({ pages: 'Залишилось ' + lastsPages + ' стор.' });
         return;
       } else if (pages === lastsPages) {
@@ -50,6 +51,7 @@ export const StatisticsResultForm = () => {
           pages: Number(pages),
         })
       );
+      formik.resetForm();
     },
   });
 

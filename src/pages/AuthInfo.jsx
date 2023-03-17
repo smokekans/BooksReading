@@ -1,9 +1,9 @@
+import { AuthorizationInfo } from 'components/AuthorizationInfo/AuthorizationInfo';
+
 const AuthInfo = () => {
   return (
     <>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia cum,
-      unde distinctio incidunt adipisci deleniti velit laborum. Voluptatum,
-      laboriosam.
+      <AuthorizationInfo />
     </>
   );
 };
