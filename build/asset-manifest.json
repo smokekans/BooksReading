@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.67e3df37.css",
+    "main.js": "/static/js/main.a2f0ced0.js",
+    "static/media/backgroundDesktop.png": "/static/media/backgroundDesktop.9cab04cf0a7338afdaec.png",
+    "static/media/googleIcon.svg": "/static/media/googleIcon.c991d72953f51196ca285c54b00b70df.svg",
+    "static/media/symbol-defs.svg": "/static/media/symbol-defs.da0640cb0e7524d94c98dada3bb03658.svg",
+    "static/media/arrow.svg": "/static/media/arrow.d0a21fea0323fe7975a4b3add570063d.svg",
+    "index.html": "/index.html",
+    "static/media/bookIconGrey.svg": "/static/media/bookIconGrey.63b5d8c4799f064d52ebe93b8bf1ad9f.svg",
+    "static/media/back.svg": "/static/media/back.8b677bb2b6fe00c19bd47931fc3f676f.svg",
+    "static/media/more.svg": "/static/media/more.269fcb0433a777c10dd40bf1fcab12a4.svg",
+    "static/media/flag.svg": "/static/media/flag.087f8975817df735103200049a5f570a.svg",
+    "main.67e3df37.css.map": "/static/css/main.67e3df37.css.map",
+    "main.a2f0ced0.js.map": "/static/js/main.a2f0ced0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.67e3df37.css",
+    "static/js/main.a2f0ced0.js"
+  ]
+}
