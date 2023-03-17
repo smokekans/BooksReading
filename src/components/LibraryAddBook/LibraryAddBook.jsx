@@ -1,5 +1,6 @@
-// import { LibraryTable } from 'components/LibraryTable/LibraryTable';
 import React from 'react';
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from 'redux/book/bookOperations';
 import { getGoingToRead } from 'redux/book/bookSelectors';
@@ -8,10 +9,9 @@ import {
   Form,
   Input,
   Button,
-  // ButtonSvgBack,
   FormAll,
+  Container,
 } from './LibraryAddBook.styled';
-// import { ReactComponent as Back } from './svg/back.svg';
 
 export const LibraryAddBook = () => {
   const dispatch = useDispatch();
@@ -26,18 +26,17 @@ export const LibraryAddBook = () => {
     const pagesTotal = Number(e.target.pagesTotal.value);
 
     if (books.find(book => book.title === title)) {
-      alert(`Книга ${title} уже додана в список`);
+     toast.warn(`Книга ${title} уже є в списку`);
     } else {
       const goingToRead = { title, author, publishYear, pagesTotal };
       dispatch(addBook(goingToRead));
+     toast.success('Книга успішно додана в вашу бібліотеку')
     }
-    // console.log({ title, author, publishYear, pagesTotal });
     e.target.reset();
   };
 
   return (
-    <>
-      {/* <ButtonSvgBack type='button'><Back /></ButtonSvgBack> */}
+    <Container><ToastContainer autoClose={2000} />
       <FormAll onSubmit={addNewBook}>
         <Form>
           <Label className="title">
@@ -45,9 +44,9 @@ export const LibraryAddBook = () => {
             <Input
               type="text"
               name="title"
+              minlength="1" maxlength="254"
+               title="Title may contain letters, numbers, apostrophe, dash and spaces. For example: The Book of Five Rings"
               placeholder="..."
-              // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               required
             />
           </Label>
@@ -58,8 +57,9 @@ export const LibraryAddBook = () => {
                 className="author"
                 type="text"
                 name="author"
-                // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                title="Author name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                minlength="1" maxlength="254"
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                title="Author name may contain only letters, apostrophe, dash and spaces. For example: Miyamoto Musashi"
                 placeholder="..."
                 autoComplete="on"
                 required
@@ -71,6 +71,8 @@ export const LibraryAddBook = () => {
                 className="small-input"
                 type="number"
                 name="publishYear"
+                min="1000"
+                max="2023"
                 pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}"
                 title="Publish year may contain only numbers. For example 1998, 2000, 2023"
                 placeholder="..."
@@ -84,9 +86,10 @@ export const LibraryAddBook = () => {
                 className="small-input"
                 type="number"
                 name="pagesTotal"
-                min="0"
+                min="1"
+                max="5000"
                 pattern="[0-9]*$"
-                title="Total pages may contain only numbers. For example 10, 253, 999"
+                title="Total pages may contain only numbers from 1 to 5000. For example 10, 253, 999"
                 placeholder="..."
                 required
               />
@@ -95,6 +98,6 @@ export const LibraryAddBook = () => {
         </Form>
         <Button type="submit">Додати</Button>
       </FormAll>
-    </>
+    </Container>
   );
 };
