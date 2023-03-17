@@ -26,11 +26,11 @@ export const LibraryAddBook = () => {
     const pagesTotal = Number(e.target.pagesTotal.value);
 
     if (books.find(book => book.title === title)) {
-     toast.warn(`Книга ${title} уже є в списку`);
+     toast.warn(`Книга "${title}" уже є в списку`);
     } else {
       const goingToRead = { title, author, publishYear, pagesTotal };
       dispatch(addBook(goingToRead));
-     toast.success('Книга успішно додана в вашу бібліотеку')
+     toast.success(`Книга "${title}" успішно додана в вашу бібліотеку`)
     }
     e.target.reset();
   };

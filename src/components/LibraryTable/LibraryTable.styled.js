@@ -71,7 +71,7 @@ export const EmptyPageDiv = styled.div`
 
 export const NavLinkMore = styled(NavLink)`
   position: fixed;
-  bottom: 12px;
+  bottom: 53px;
   left: 44%;
   z-index: 999;
   @media screen and (min-width: 768px) {

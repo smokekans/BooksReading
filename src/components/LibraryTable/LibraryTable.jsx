@@ -25,7 +25,7 @@ import {
 import { fetchAllBooks } from 'redux/book/bookOperations';
 import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import useMatchMedia from 'hooks/useMatchMedia';
 
 export const LibraryTable = () => {
@@ -245,9 +245,9 @@ export const LibraryTable = () => {
         currentlyReading.length === 0 && (
           <EmptyPageDiv>
             <p>Додати книжку 👇</p>
-            <NavLink to="/addbook">
+            {/* <NavLink to="/addbook">
               <More />
-            </NavLink>
+            </NavLink> */}
           </EmptyPageDiv>
         )}
       <NavLinkMore to="/addbook">
