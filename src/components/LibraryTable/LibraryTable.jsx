@@ -1,9 +1,5 @@
 import { useSelector } from 'react-redux';
-import {
-  getGoingToRead,
-  getCurrentlyReading,
-  getFinishedReading,
-} from 'redux/book/bookSelectors';
+import { getGoingToRead, getCurrentlyReading, getFinishedReading } from 'redux/book/bookSelectors';
 import {
   TitleH2,
   Table,
@@ -25,6 +21,9 @@ import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
 import { NavLink } from 'react-router-dom';
 import useMatchMedia from 'hooks/useMatchMedia';
+import Modal from 'components/Modal/Modal/Modal';
+import { Rate } from 'antd';
+import { useState } from 'react';
 
 export const LibraryTable = () => {
   const goingToRead = useSelector(getGoingToRead);
@@ -32,6 +31,11 @@ export const LibraryTable = () => {
   const finishedReading = useSelector(getFinishedReading);
   const { isMobile } = useMatchMedia();
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <Container>
       {finishedReading?.length !== 0 && (
@@ -61,13 +65,16 @@ export const LibraryTable = () => {
                       </div>
                       <div>
                         <SpanMobile>Рейтинг:</SpanMobile>
-                        <SpanMobile>*****</SpanMobile>
+                        <Rate style={{ width: '120px', fontSize: '17px' }} />
                       </div>
-                      <Button type="button">Резюме</Button>
+                      <Button type="button" onClick={toggleModal}>
+                        Резюме
+                      </Button>
                     </PMobile>
                   </LiMobile>
                 );
               })}
+              {isOpen && <Modal onClose={toggleModal} />}
             </UlMobile>
           ) : (
             <Table>
@@ -96,11 +103,14 @@ export const LibraryTable = () => {
                       <td>{b.publishYear}</td>
                       <td>{b.pagesTotal}</td>
                       <td>
-                        <span>*****</span>
+                        <Rate style={{ width: '120px', fontSize: '17px' }} />
                       </td>
                       <td>
-                        <Button type="button">Резюме</Button>
+                        <Button type="button" onClick={toggleModal}>
+                          Резюме
+                        </Button>
                       </td>
+                      {isOpen && <Modal onClose={toggleModal} />}
                     </Tr>
                   );
                 })}
