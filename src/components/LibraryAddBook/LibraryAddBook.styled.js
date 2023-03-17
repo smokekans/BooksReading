@@ -4,8 +4,8 @@ export const Container = styled.section`
   padding: 20px;
   @media screen and (min-width: 768px) {
     padding: 32px;
-  };
-  @media screen and (min-width: 1280px){
+  }
+  @media screen and (min-width: 1280px) {
     width: 1280px;
     padding: 40px 16px;
     margin-left: auto;
@@ -117,6 +117,6 @@ export const Button = styled.button`
   }
   @media screen and (min-width: 1280px) {
     margin: 23px 99px 0px 0px;
-  width: 100%;
+    width: 100%;
   }
 `;
