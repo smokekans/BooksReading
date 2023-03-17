@@ -38,6 +38,8 @@ export const HeadText = styled.p`
   margin: 0;
   padding: 0;
 `;
+
+
 export const AmountValueWrapper = styled.div`
   width: 100px;
   height: 100px;
