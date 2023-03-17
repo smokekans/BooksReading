@@ -86,6 +86,7 @@ export const ButtonMyTrain = styled(NavLink)`
   margin-right: auto;
   margin-left: auto;
   margin-top: 28px;
+    margin-bottom: 128px;
   background: #ff6b08;
   color: #ffffff;
   font-family: 'Montserrat';
@@ -154,7 +155,7 @@ export const Button = styled.button`
   margin-left: auto;
   margin-top: 6px;
   background: #6d7a8d;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border: none;
   color: #ffffff;
   font-weight: 500;
   font-size: 14px;

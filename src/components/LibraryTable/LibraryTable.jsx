@@ -50,7 +50,7 @@ export const LibraryTable = () => {
                 return (
                   <LiMobile key={b._id}>
                     <H3Mobile>
-                      <BookIcon fill="#FF6B08" />
+                      <BookIcon />
                       {b.title}
                     </H3Mobile>
                     <PMobile>
@@ -95,7 +95,7 @@ export const LibraryTable = () => {
                     <Tr key={b._id}>
                       <td>
                         <SpanIconBook>
-                          <BookIcon fill="#FF6B08" />
+                          <BookIcon />
                           {b.title}
                         </SpanIconBook>
                       </td>
