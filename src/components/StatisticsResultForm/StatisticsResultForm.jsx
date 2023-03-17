@@ -68,7 +68,9 @@ export const StatisticsResultForm = () => {
   });
 
   useEffect(() => {
-    const finishBook = getLastBook({ planBooks });
+    const finishBook = getLastBook({ currentBooks });
+    console.log(finishBook);
+
     const unFinishBook = getNextBook({
       planBooks,
     });
