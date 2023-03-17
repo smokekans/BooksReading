@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
   DataBox,
+  ErrorMessage,
   FormRes,
   InputPages,
   LabelDate,
@@ -13,49 +14,82 @@ import {
   ResultTitle,
 } from './StatisticsResultForm.styled';
 import css from './StatisticsResultForm.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPages } from 'redux/planning/planningOperations';
+import { useFormik } from 'formik';
+import { getPlanBooks } from 'redux/planning/planningSelectors';
+import { getCurrentlyReading } from 'redux/book/bookSelectors';
+
+const getRemainPages = ({ planBooks }) => {
+  const diffPages = planBooks
+    .map(book => book.pagesTotal - book.pagesFinished)
+    .filter(book => book !== 0);
+  const unReadPages = diffPages[0];
+  return unReadPages;
+};
+
+const getLastBook = ({ currentBooks }) => {
+  const diffPages = currentBooks.filter(
+    book => book.pagesTotal - book.pagesFinished === 0
+  );
+  const finishedBook = diffPages[diffPages.length - 1];
+  return finishedBook;
+};
+
+const getNextBook = ({ currentBooks }) => {
+  const diffPages = currentBooks.filter(
+    book => book.pagesTotal - book.pagesFinished !== 0
+  );
+  const unFinishedBook = diffPages[0];
+  return unFinishedBook;
+};
 
 export const StatisticsResultForm = () => {
-  const [resultDate, setResultDate] = useState(new Date());
-  const [pages, setPages] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
   const dispatch = useDispatch();
+  const planBooks = useSelector(getPlanBooks);
+  const currentBooks = useSelector(getCurrentlyReading);
 
-  const handleChange = event => {
-    const { name, value } = event.target;
-
-    switch (name) {
-      case 'pages':
-        setPages(value);
-        break;
-      default:
+  const formik = useFormik({
+    initialValues: { pages: '' },
+    onSubmit: ({ pages }) => {
+      const lastsPages = getRemainPages({ planBooks });
+      pages = Number(pages);
+      if (pages > lastsPages) {
+        formik.setErrors({ pages: 'Залишилось ' + lastsPages + ' стор.' });
         return;
+      }
+      dispatch(
+        addPages({
+          pages: Number(pages),
+        })
+      );
+    },
+  });
+
+  useEffect(() => {
+    const finishBook = getLastBook({ currentBooks });
+    const unFinishBook = getNextBook({
+      currentBooks,
+    });
+    if (finishBook && unFinishBook && unFinishBook.pagesFinished === 0) {
+      alert(`${finishBook.title} has already finished`);
     }
-  };
-
-  const handleSubmitForm = event => {
-    event.preventDefault();
-
-    const page = {
-      pages: Number(pages),
-    };
-    dispatch(addPages(page));
-    setPages('');
-  };
+  }, [currentBooks]);
 
   return (
     <>
       <ResultTitle>Результати</ResultTitle>
-      <FormRes onSubmit={handleSubmitForm}>
+      <FormRes onSubmit={formik.handleSubmit}>
         <ResultBox>
           <DataBox>
             <LabelDate>Дата</LabelDate>
             <DatePicker
               className={css.picker}
-              selected={resultDate}
+              selected={startDate}
               disabled
               onChange={date => {
-                setResultDate(date);
+                setStartDate(date);
               }}
               dateFormat="dd.MM.yyyy"
             />
@@ -66,9 +100,12 @@ export const StatisticsResultForm = () => {
               type="text"
               name="pages"
               autoComplete="off"
-              onChange={handleChange}
-              value={pages}
+              onChange={formik.handleChange}
+              value={formik.values.pages}
             />
+            {formik.errors.pages && (
+              <ErrorMessage>{formik.errors.pages}</ErrorMessage>
+            )}
           </PageBox>
         </ResultBox>
         <ResultBtn type="submit">Додати результат</ResultBtn>
