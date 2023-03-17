@@ -5,7 +5,14 @@ const bookInitialState = {
   book: {
     goingToRead: [],
     currentlyReading: [],
-    finishedReading: [],
+    finishedReading: [
+      {
+        title: 'The Book of Five Rings',
+        author: 'Miyamoto Musashi',
+        publishYear: 1643,
+        totalPages: 110,
+      },
+    ],
     isLoading: false,
     error: null,
   },

@@ -1,26 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  getBook,
-  getCurrentlyReading,
-  getFinishedReading,
-} from 'redux/book/bookSelectors';
+import { getBook, getCurrentlyReading, getFinishedReading } from 'redux/book/bookSelectors';
 import { TitleH2, Table, Tr, TrHead } from './LibraryTable.styled';
 import { fetchAllBooks } from 'redux/book/bookOperations';
 import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
 import { NavLink } from 'react-router-dom';
+import Modal from 'components/Modal/Modal/Modal';
+import { Rate } from 'antd';
 
 export const LibraryTable = () => {
   const goingToRead = useSelector(getBook);
   const currentlyReading = useSelector(getCurrentlyReading);
   const finishedReading = useSelector(getFinishedReading);
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllBooks());
   }, [dispatch]);
 
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
       {finishedReading.length !== 0 && (
@@ -42,21 +44,27 @@ export const LibraryTable = () => {
               {finishedReading.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td><BookIcon/>{b.title}</td>
+                    <td>
+                      <BookIcon />
+                      {b.title}
+                    </td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
                     <td>
-                      <span>*****</span>
+                      <Rate style={{ width: '120px', fontSize: '17px' }} />
                     </td>
                     <td>
-                      <button type="button">Резюме</button>
+                      <button type="button" onClick={toggleModal}>
+                        Резюме
+                      </button>
                     </td>
                   </Tr>
                 );
               })}
             </tbody>
           </Table>
+          {isOpen && <Modal onClose={toggleModal} />}
         </>
       )}
       {currentlyReading.length !== 0 && (
@@ -76,7 +84,10 @@ export const LibraryTable = () => {
               {currentlyReading.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td><BookIcon/>{b.title}</td>
+                    <td>
+                      <BookIcon />
+                      {b.title}
+                    </td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
@@ -104,7 +115,10 @@ export const LibraryTable = () => {
               {goingToRead.map(b => {
                 return (
                   <Tr key={b._id}>
-                    <td><BookIcon/>{b.title}</td>
+                    <td>
+                      <BookIcon />
+                      {b.title}
+                    </td>
                     <td>{b.author}</td>
                     <td>{b.publishYear}</td>
                     <td>{b.pagesTotal}</td>
@@ -113,8 +127,11 @@ export const LibraryTable = () => {
               })}
             </tbody>
           </Table>
-          <NavLink to="/training"><button type="button">Моє тренування</button></NavLink>
-          <More/>
+
+          <NavLink to="/training">
+            <button type="button">Моє тренування</button>
+          </NavLink>
+          <More />
         </>
       )}
     </>
