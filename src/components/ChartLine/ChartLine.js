@@ -19,7 +19,8 @@ import {
   AmountValue,
   TitleLineValue,
 } from './ChartLine.styled';
-// import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 const ChartLine = () => {
   ChartJS.register(
@@ -32,37 +33,32 @@ const ChartLine = () => {
     Legend
   );
 
-  
-  // const { data } = ({_id: '64142a76d48309d92da85d81', startDate: 1679097600000, finishDate: 1679356800000, owner: '641417233c5e18d54ad0fbe9', book: Array(1), …}
-  // book: [{…}]
-  // finishDate:1679356800000
-  // owner : "641417233c5e18d54ad0fbe9"
-  // startDate:1679097600000
-  // statistic:[]
-  // _id : "64142a76d48309d92da85d81"
-  // [[Prototype]] : Object)
-  // const [statistic, setStatistic] = useState([]);
-  // const [daysLeft, setDaysLeft] = useState(0);
-  // useEffect(() => {
-  //   if (data) {
-  //     setStatistic(data.statistic);
-  //     const { startDate } = data;
-  //     const { finishDate } = data;
-  //     const daysLeft = Math.floor(
-  //       (finishDate - startDate) / (1000 * 60 * 60 * 24)
-  //     );
-  //     setDaysLeft(daysLeft);
-  //   }
-  // }, [data]);
-  // const amountPagesFromStatistic = data?.book?.reduce(
-  //   (totalPages, statisticBookInfo) =>
-  //     totalPages + statisticBookInfo.amountPages,
-  //   0
-  // );
-  // let amountPagesForDay = 0;
-  // if (daysLeft || amountPagesFromStatistic) {
-  //   amountPagesForDay = Math.ceil(amountPagesFromStatistic / daysLeft);
-  // }
+  const books = useSelector(state => state.planning);
+  // console.log(books)
+  const [statistic, setStatistic] = useState([]);
+  const [daysLeft, setDaysLeft] = useState(0);
+  useEffect(() => {
+    if (books) {
+      setStatistic(books.stats);
+      const { startDate } = books;
+      const { endDate } = books;
+      const daysLeft = Math.floor(
+        (Date.parse(endDate) - Date.parse(startDate)) / (1000 * 60 * 60 * 24)
+      );
+      setDaysLeft(daysLeft);
+    }
+  }, [books]);
+  const amountPagesFromStatistic = books?.filter?.reduce(
+    (totalPages, statisticBookInfo) =>
+      totalPages + statisticBookInfo.pagesTotal,
+    0
+  );
+  console.log(amountPagesFromStatistic);
+  let amountPagesForDay = 0;
+  if (daysLeft || amountPagesFromStatistic) {
+    amountPagesForDay = Math.ceil(amountPagesFromStatistic / daysLeft);
+    // console.log(amountPagesForDay);
+  }
 
   const options = {
     responsive: true,
@@ -122,19 +118,18 @@ const ChartLine = () => {
       },
     },
   };
-  // const labels = statistic?.map(item => item.date);
-  // const readPagesFromStatistic = statistic?.map(item => item.amountPages);
-  // const pagesToRead = statistic?.map(item => amountPagesForDay);
-  const labels = [];
-  // const readPagesFromStatistic = [];
-  const pagesToRead = 0;
+  const labels = statistic?.map(item => item.time);
+  console.log(statistic);
+  const readPagesFromStatistic = statistic?.map(item => item.pagesCount);
+  const pagesToRead = statistic?.map(item => amountPagesForDay);
+
   const dataChart = {
     labels,
     datasets: [
       {
         label: 'План',
         //  data: pathname === '/statistics' ? pagesToRead : [],
-        data: [],
+        data: pagesToRead,
         borderColor: '#091E3F',
         backgroundColor: '#091E3F',
         pointRadius: 5,
@@ -143,7 +138,7 @@ const ChartLine = () => {
       {
         label: 'Факт',
         //  data: pathname === '/statistics' ? readPagesFromStatistic : [],
-        data: pagesToRead,
+        data: readPagesFromStatistic,
         borderColor: '#FF6B08',
         backgroundColor: '#FF6B08',
         pointRadius: 5,
@@ -156,9 +151,7 @@ const ChartLine = () => {
       <ChartInfoBox>
         <AxisSignatureBox>
           <AmountText>КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ</AmountText>
-          <AmountValue>
-            {/* {pathname === '/statistics' ? amountPagesForDay : 0} */}
-          </AmountValue>
+          <AmountValue>{amountPagesForDay}</AmountValue>
         </AxisSignatureBox>
         <TitleLineBox>
           <TitleLineValue>План</TitleLineValue>
