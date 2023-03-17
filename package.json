@@ -1,5 +1,5 @@
 {
-  "name": "BooksReading",
+  "name": "books-reading-reactor",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
