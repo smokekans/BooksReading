@@ -1,7 +1,6 @@
-// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getEndDate } from 'redux/planning/planningSelectors';
-import { getBooksStatistics } from 'redux/planning/planningSelectors';
+import { getPlanBooks } from 'redux/planning/planningSelectors';
 import {
   TitleStl,
   WrapStl,
@@ -12,32 +11,25 @@ import {
   BoxStl,
   AccentStl,
 } from './MyGoals.styled';
-// import { getDuration } from 'redux/planning/planningSelectors';
-// import { getLastBook } from 'components/StatisticsResultForm/StatisticsResultForm';
-// import { getCurrentlyReading } from 'redux/book/bookSelectors';
 
 export const MyGoals = () => {
   const endDate = new Date(useSelector(getEndDate)).getTime();
-  // const days = useSelector(getDuration);
   const startData = Date.now();
-  // const currentBooks = useSelector(getCurrentlyReading);
-  
-  const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24)) ;
+  const booksAll = useSelector(getPlanBooks);
+  const {pagesFinished, pagesTotal} = useSelector(getPlanBooks);
+  console.log(booksAll);
+  const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24));
 
-  const books = useSelector(getBooksStatistics).length ;
-  // console.log()
-  // const lastBook =() => {
-  //   const lastBook = getLastBook({currentBooks})
-  //   console.log(lastBook)
-  // };
+  const books = booksAll.length;
 
-  // useEffect(() => {
-  //   const lastBook = getLastBook({currentBooks})
-  //   // console.log(lastBook)
-  // }, [currentBooks]);
-
-  // const lastBook = getLastBook(currentBooks);
- 
+  const getLastBook = ({pagesFinished, pagesTotal}) => {
+    const finishedBook = booksAll.filter(
+      book => book.pagesTotal === book.pagesFinished
+    );
+    return finishedBook;
+    console.log( finishedBook)
+  };
+  // console.log( getLastBook)
 
   return (
     <section>
