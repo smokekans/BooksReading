@@ -25,7 +25,7 @@ export const MyGoals = () => {
   const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24)) ;
 
   const books = useSelector(getBooksStatistics).length ;
-
+  // console.log()
   // const lastBook =() => {
   //   const lastBook = getLastBook({currentBooks})
   //   console.log(lastBook)
