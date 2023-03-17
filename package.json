@@ -2,7 +2,6 @@
   "name": "BooksReading",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://smokekans.github.io/BooksReading/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@mui/material": "^5.11.12",
