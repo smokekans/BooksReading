@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/BooksReading/static/css/main.eb621e9b.css",
-    "main.js": "/BooksReading/static/js/main.c3215e0f.js",
-    "static/media/backgroundDesktop.png": "/BooksReading/static/media/backgroundDesktop.9cab04cf0a7338afdaec.png",
-    "static/media/googleIcon.svg": "/BooksReading/static/media/googleIcon.bd05d64077c444bcdd93ba8d3964951e.svg",
-    "static/media/symbol-defs.svg": "/BooksReading/static/media/symbol-defs.d54a8fb994cb406724ce41cfe1822b34.svg",
-    "index.html": "/BooksReading/index.html",
-    "static/media/arrow.svg": "/BooksReading/static/media/arrow.3158c564816e324e859d08b2c56f5594.svg",
-    "static/media/bookIconGrey.svg": "/BooksReading/static/media/bookIconGrey.1ef78e679dde739723a3ee7f93759188.svg",
-    "static/media/back.svg": "/BooksReading/static/media/back.6d96b894a0edb0b3c97719fa425b1703.svg",
-    "static/media/more.svg": "/BooksReading/static/media/more.d598573616d986f043876ed5d41d85c7.svg",
-    "static/media/flag.svg": "/BooksReading/static/media/flag.087f8975817df735103200049a5f570a.svg",
-    "main.eb621e9b.css.map": "/BooksReading/static/css/main.eb621e9b.css.map",
-    "main.c3215e0f.js.map": "/BooksReading/static/js/main.c3215e0f.js.map"
+    "main.css": "/static/css/main.eb621e9b.css",
+    "main.js": "/static/js/main.edd8a255.js",
+    "static/media/backgroundDesktop.png": "/static/media/backgroundDesktop.9cab04cf0a7338afdaec.png",
+    "static/media/googleIcon.svg": "/static/media/googleIcon.bd05d64077c444bcdd93ba8d3964951e.svg",
+    "static/media/symbol-defs.svg": "/static/media/symbol-defs.d54a8fb994cb406724ce41cfe1822b34.svg",
+    "static/media/arrow.svg": "/static/media/arrow.3158c564816e324e859d08b2c56f5594.svg",
+    "index.html": "/index.html",
+    "static/media/bookIconGrey.svg": "/static/media/bookIconGrey.1ef78e679dde739723a3ee7f93759188.svg",
+    "static/media/back.svg": "/static/media/back.6d96b894a0edb0b3c97719fa425b1703.svg",
+    "static/media/more.svg": "/static/media/more.d598573616d986f043876ed5d41d85c7.svg",
+    "static/media/flag.svg": "/static/media/flag.087f8975817df735103200049a5f570a.svg",
+    "main.eb621e9b.css.map": "/static/css/main.eb621e9b.css.map",
+    "main.edd8a255.js.map": "/static/js/main.edd8a255.js.map"
   },
   "entrypoints": [
     "static/css/main.eb621e9b.css",
-    "static/js/main.c3215e0f.js"
+    "static/js/main.edd8a255.js"
   ]
 }
