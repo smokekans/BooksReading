@@ -16,30 +16,16 @@ export const MyGoals = () => {
   const endDate = new Date(useSelector(getEndDate)).getTime();
   const startData = Date.now();
   const booksAll = useSelector(getPlanBooks);
-  // console.log(booksAll);
+
   const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24));
 
   const books = booksAll.length;
 
-  const booksFinished = () => {
-    const totalPages = (booksAll.map(book => book.pagesTotal));
-    console.log(totalPages);
-    const finishedPages = (booksAll.map(book => book.pagesFinished));
-    const booksL = [];
-    console.log(finishedPages);
-
-    if (finishedPages === totalPages) {
-      booksL.push(finishedPages);
-    }
-    return booksL.length
+  const bookLeft = () => {
+    const diffPages = booksAll.filter(
+      book => book.pagesTotal - book.pagesFinished === 0);
+    return diffPages.length;
   };
-  console.log(booksFinished());
-
-
-  //  const totalPages = booksAll.map(book => book.pagesTotal)
-  //   console.log(totalPages)
-  //   const finishedPages = booksAll.map(book =>book.pagesFinished)
-  //     console.log(finishedPages)
 
   return (
     <section>
@@ -62,7 +48,7 @@ export const MyGoals = () => {
           </li>
           <li>
             <BoxStl>
-              <AccentStl>00</AccentStl>
+              <AccentStl>{bookLeft()}</AccentStl>
             </BoxStl>
             <LabelStl>Books left</LabelStl>
           </li>
