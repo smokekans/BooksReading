@@ -24,7 +24,7 @@ import {
 
 export const StatisticsBookLIst = () => {
   const books = useSelector(getPlanBooks);
-  console.log(books);
+ 
   return (
     <>
       <ListWrapp>
