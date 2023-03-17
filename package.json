@@ -1,8 +1,7 @@
 {
-  "name": "BooksReading",
+  "name": "books-reading-reactor",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://smokekans.github.io/BooksReading/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@mui/material": "^5.11.12",
@@ -11,6 +10,7 @@
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "antd": "^5.3.1",
     "axios": "^1.3.4",
     "chart.js": "^4.2.1",
     "formik": "^2.2.9",
@@ -22,6 +22,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.1.1",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",

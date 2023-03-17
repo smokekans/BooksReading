@@ -26,7 +26,7 @@ export const App = () => {
           />
           <Route
             path=""
-            element={<PublicRoute redirectTo="addbook" restricted />}
+            element={<PublicRoute redirectTo="library" restricted />}
           >
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />

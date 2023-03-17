@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { /*useDispatch*/ useSelector } from 'react-redux';
 import {
-  Container,
-  HeaderStyled,
   HeaderWrapper,
   Icon,
   Link,
@@ -16,60 +15,70 @@ import {
   UserInfo,
 } from './Header.styled';
 import { getUserName, getIsLoggedIn } from '../../redux/auth/authSelectors';
-import { logOutThunk } from 'redux/auth/authOperations';
+// import { logOutThunk } from 'redux/auth/authOperations';
 import icons from '../../images/symbol-defs.svg';
+import ExitModal from 'components/Modal/ModalHeader/ModalHeader';
 
 export const Header = () => {
-  const dispatch = useDispatch();
+   const [isModalOpen, setIsModalOpen] = useState(false);
+
+//   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const userName = useSelector(getUserName);
   const userAvatar = userName?.at(0)?.toUpperCase();
 
+  const openExitModal = () => {
+   setIsModalOpen(true);
+};
+
+const closeModal = () => {
+   setIsModalOpen(false);
+};
+
   return (
     <>
-      <HeaderStyled>
-        <Container>
-          <HeaderWrapper>
-            <Logo isLoggedIn={isLoggedIn}>BR</Logo>
-            {isLoggedIn && (
-              <>
-                <Nav>
-                  <NavList>
-                    <NavItem>
-                      <Link to={'training'}>
-                        <Icon width="22" height="17">
-                          <use href={`${icons}#group`} />
-                        </Icon>
-                      </Link>
-                    </NavItem>
-                    <NavItem>
-                      <Link to={'library'}>
-                        <Icon width="20" height="17">
-                          <use href={`${icons}#home`} />
-                        </Icon>
-                      </Link>
-                    </NavItem>
-                  </NavList>
-                </Nav>
-                <UserPanel>
-                  <UserInfo>
-                    <UserAvatar>{userAvatar}</UserAvatar>
-                    <UserName>{userName}</UserName>
-                  </UserInfo>
-                  <ExitButton
-                    type="button"
-                    onClick={() => {
-                      dispatch(logOutThunk());
-                    }}
-                  >
-                    Вихід
-                  </ExitButton>
-                </UserPanel>
-              </>
-            )}
-          </HeaderWrapper>
-        </Container>
-      </HeaderStyled>
+      <HeaderWrapper>
+        <Logo isLoggedIn={isLoggedIn}>BR</Logo>
+        {isLoggedIn && (
+          <>
+            <UserInfo>
+              <UserAvatar>{userAvatar}</UserAvatar>
+              <UserName>{userName}</UserName>
+            </UserInfo>
+            <UserPanel>
+              <Nav>
+                <NavList>
+                  <NavItem>
+                    <Link to={'training'}>
+                      <Icon width="22" height="17">
+                        <use href={`${icons}#group`} />
+                      </Icon>
+                    </Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link to={'library'}>
+                      <Icon width="20" height="17">
+                        <use href={`${icons}#home`} />
+                      </Icon>
+                    </Link>
+                  </NavItem>
+                </NavList>
+              </Nav>
+              {/* <ExitButton
+                type="button"
+                onClick={() => {
+                  dispatch(logOutThunk());
+                }}
+              > */}
+              <ExitButton onClick={openExitModal}>
+                Вихід
+              </ExitButton>
+              {/* </ExitButton> */}
+            </UserPanel>
+          </>
+        )}
+      </HeaderWrapper>
+      {isModalOpen && <ExitModal closeModal={closeModal} />}
     </>
   );
 };
