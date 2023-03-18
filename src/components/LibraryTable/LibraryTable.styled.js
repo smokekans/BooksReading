@@ -36,7 +36,13 @@ export const Table = styled.table`
   td:last-child {
     text-align: right;
     padding-right: 23px;
-  }
+   
+  };
+  @media screen and (min-width: 1280px){
+    th:last-child,
+    td:last-child { padding-right: 77px;}
+     
+    }
 `;
 
 export const Tr = styled.tr`

@@ -12,25 +12,28 @@ import {
   FormAll,
   Container,
 } from './LibraryAddBook.styled';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langOptionsLibraryAddBook } from 'languages/langOptionsLibraryAddBook';
 
 export const LibraryAddBook = () => {
   const dispatch = useDispatch();
   const books = useSelector(getGoingToRead);
+  const lang = useSelector(getLanguage);
+  const { titlel, authorl, publishYearl, pagesTotall, addl, bookl } = langOptionsLibraryAddBook;
 
   const addNewBook = e => {
     e.preventDefault();
-
     const title = e.target.title.value;
     const author = e.target.author.value;
     const publishYear = Number(e.target.publishYear.value);
     const pagesTotal = Number(e.target.pagesTotal.value);
 
-    if (books.find(book => book.title === title)) {
-     toast.warn(`Книга "${title}" уже є в списку`);
+    if (books?.find(book => book.title === title)) {
+     toast.warn(`${bookl} "${title}" уже є в списку`);
     } else {
       const goingToRead = { title, author, publishYear, pagesTotal };
       dispatch(addBook(goingToRead));
-     toast.success(`Книга "${title}" успішно додана в вашу бібліотеку`)
+     toast.success(`${bookl} "${title}" успішно додана в вашу бібліотеку`)
     }
     e.target.reset();
   };
@@ -40,7 +43,7 @@ export const LibraryAddBook = () => {
       <FormAll onSubmit={addNewBook}>
         <Form>
           <Label className="title">
-            Назва книги
+           {titlel[lang]}
             <Input
               type="text"
               name="title"
@@ -52,7 +55,7 @@ export const LibraryAddBook = () => {
           </Label>
           <div className="input-second">
             <Label>
-              Автор книги
+              {authorl[lang]}
               <Input
                 className="author"
                 type="text"
@@ -66,7 +69,7 @@ export const LibraryAddBook = () => {
               />
             </Label>
             <Label>
-              Рік випуску
+              {publishYearl[lang]}
               <Input
                 className="small-input"
                 type="number"
@@ -81,7 +84,7 @@ export const LibraryAddBook = () => {
               />
             </Label>
             <Label>
-              Кількість сторінок
+              {pagesTotall[lang]}
               <Input
                 className="small-input"
                 type="number"
@@ -96,7 +99,7 @@ export const LibraryAddBook = () => {
             </Label>
           </div>
         </Form>
-        <Button type="submit">Додати</Button>
+        <Button type="submit">{addl[lang]}</Button>
       </FormAll>
     </Container>
   );

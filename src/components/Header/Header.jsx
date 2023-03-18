@@ -18,6 +18,7 @@ import { getUserName, getIsLoggedIn } from '../../redux/auth/authSelectors';
 // import { logOutThunk } from 'redux/auth/authOperations';
 import icons from '../../images/symbol-defs.svg';
 import ExitModal from 'components/Modal/ModalHeader/ModalHeader';
+import { SwitchLanguage } from 'components/SwitchLanguage/SwitchLanguage';
 
 export const Header = () => {
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -70,13 +71,14 @@ const closeModal = () => {
                   dispatch(logOutThunk());
                 }}
               > */}
+              <SwitchLanguage/>
               <ExitButton onClick={openExitModal}>
                 Вихід
               </ExitButton>
               {/* </ExitButton> */}
             </UserPanel>
           </>
-        )}
+        )}{!isLoggedIn && <SwitchLanguage/>}
       </HeaderWrapper>
       {isModalOpen && <ExitModal closeModal={closeModal} />}
     </>

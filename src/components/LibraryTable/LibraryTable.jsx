@@ -19,7 +19,8 @@ import {
 } from './LibraryTable.styled';
 import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
-// import { NavLink } from 'react-router-dom';
+import { ReactComponent as BookOrange } from './svg/flat.svg';
+import { NavLink } from 'react-router-dom';
 import useMatchMedia from 'hooks/useMatchMedia';
 import Modal from 'components/Modal/Modal/Modal';
 import { Rate } from 'antd';
@@ -80,12 +81,12 @@ export const LibraryTable = () => {
             <Table>
               <thead>
                 <TrHead>
-                  <th>Назва книги</th>
-                  <th>Автор</th>
-                  <th>Рік</th>
-                  <th>Стор.</th>
-                  <th>Рейтинг книги</th>
-                  <th></th>
+                  <th width="30%">Назва книги</th>
+                  <th width="20%">Автор</th>
+                  <th width="10%">Рік</th>
+                  <th width="10%">Стор.</th>
+                  <th width="15%">Рейтинг книги</th>
+                  <th width="15%"></th>
                 </TrHead>
               </thead>
 
@@ -128,7 +129,7 @@ export const LibraryTable = () => {
                 return (
                   <LiMobile key={b._id}>
                     <H3Mobile>
-                      <BookIcon />
+                      <BookOrange />
                       {b.title}
                     </H3Mobile>
                     <PMobile>
@@ -153,10 +154,10 @@ export const LibraryTable = () => {
             <Table>
               <thead>
                 <TrHead>
-                  <th>Назва книги</th>
-                  <th>Автор</th>
-                  <th>Рік</th>
-                  <th>Стор.</th>
+                  <th width="50%">Назва книги</th>
+                  <th width="30%">Автор</th>
+                  <th width="10%">Рік</th>
+                  <th width="10%">Стор.</th>
                 </TrHead>
               </thead>
 
@@ -165,7 +166,7 @@ export const LibraryTable = () => {
                   return (
                     <Tr key={b._id}>
                       <td>
-                        <BookIcon />
+                        <BookOrange />
                         {b.title}
                       </td>
                       <td>{b.author}</td>
@@ -210,7 +211,7 @@ export const LibraryTable = () => {
               })}
             </UlMobile>
           ) : (
-            <Table>
+              <Table>
               <thead>
                 <TrHead>
                   <th>Назва книги</th>
@@ -224,15 +225,15 @@ export const LibraryTable = () => {
                 {goingToRead?.map(b => {
                   return (
                     <Tr key={b._id}>
-                      <td>
+                      <td width="50%">
                         <SpanIconBook>
                           <BookIcon />
                           {b.title}
                         </SpanIconBook>
                       </td>
-                      <td>{b.author}</td>
-                      <td>{b.publishYear}</td>
-                      <td>{b.pagesTotal}</td>
+                      <td width="30%">{b.author}</td>
+                      <td width="10%">{b.publishYear}</td>
+                      <td width="10%">{b.pagesTotal}</td>
                     </Tr>
                   );
                 })}
@@ -248,9 +249,9 @@ export const LibraryTable = () => {
         currentlyReading?.length === 0 && (
           <EmptyPageDiv>
             <p>Додати книжку 👇</p>
-            {/* <NavLink to="/addbook">
+            <NavLink to="/addbook">
               <More />
-            </NavLink> */}
+            </NavLink>
           </EmptyPageDiv>
         )}
       <NavLinkMore to="/addbook">
