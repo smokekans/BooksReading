@@ -18,7 +18,6 @@ export const CountdownGoals = () => {
   const { days, hours, minutes, seconds } = useCountDown(endDateGoals);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
