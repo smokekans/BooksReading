@@ -7,13 +7,11 @@ export const TimerStl = styled.section`
   justify-content: center;
   background: #ffffff;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-
-  position: absolute;
-  width: 290px;
+  width: 280px;
   height: 60px;
-  left: 517px;
-  top: 113px;
-  margin-top: 8px;
+  @media screen and (min-width: 768px) {
+    width: 290px;
+  }
 `;
 export const LaybelStl = styled.p`
   font-family: 'Montserrat';
@@ -51,11 +49,11 @@ export const СolonStl = styled.p`
 `;
 
 export const TitleStl = styled.h2`
-  position: absolute;
-  width: 125px;
+  /* position: absolute; */
+  /* width: 125px;
   height: 17px;
   left: 600px;
-  top: 88px;
+  top: 88px; */
 
   font-family: 'Montserrat';
   font-style: normal;
