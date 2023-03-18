@@ -29,6 +29,7 @@ export const WraperStl = styled.div`
   height: 269px;
   left: 976px;
   top: 160px;
+  padding: 80px 18px 79px;
 
   background: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
@@ -41,7 +42,7 @@ export const ListStl = styled.ul`
   /* margin:0; */
   /* justify-content: center; */
 
-  /* gap: 20px; */
+  gap: 18px;
   /* padding-right:5px; */
 `;
 
@@ -107,9 +108,9 @@ export const BoxStl = styled.div`
 
   background: #f5f7fa;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-  margin-top: 80px;
+  /* margin-top: 80px;
   margin-left:22px;
-  margin-bottom: 14px;
+  margin-bottom: 14px; */
   display: flex;
   /* position: absolute; */
   align-items: center;

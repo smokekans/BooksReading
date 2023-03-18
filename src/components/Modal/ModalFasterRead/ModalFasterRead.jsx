@@ -5,7 +5,7 @@ import {
   MessageSuccess,
   ModalFinish,
   OverlayModal,
-} from './ModalFinishedBooks.styled';
+} from '../ModalFasterRead/ModalFasterRead.styled';
 import { ReactComponent as IconLike } from '../../../images/like.svg';
 
 const modalRoot = document.querySelector('#modal-root');
