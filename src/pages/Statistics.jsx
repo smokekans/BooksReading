@@ -14,8 +14,9 @@ const Statistics = () => {
       <MyGoals />
       <StatisticsBookLIst />
       {/* <MyPurposeToRead /> */}
-      <StatisticsBookPages />
       <ChartLine />
+      <StatisticsBookPages />
+      {/* <ChartLine /> */}
     </>
   );
 };

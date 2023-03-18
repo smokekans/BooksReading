@@ -1,4 +1,3 @@
-import { Container } from '../../App.styled';
 import {
   MainDiv,
   Box,
@@ -18,12 +17,11 @@ import { ReactComponent as ArrowIcon } from '../../images/arrow.svg';
 export const AuthorizationInfo = () => {
   return (
     <>
-      <Container>
         <MainDiv>
           <Title>Books Reading</Title>
           <Box>
-            <UlTitle>Допоможе вам</UlTitle>
             <UlStyled>
+              <UlTitle>Допоможе вам</UlTitle>
               <LiStyled>
                 <ArrowIcon />
                 <LiText>
@@ -41,8 +39,8 @@ export const AuthorizationInfo = () => {
                 <LiText>Відстежувати особистий успіх</LiText>
               </LiStyled>
             </UlStyled>
-            <UlTitle>Також ви зможете </UlTitle>
             <UlStyled>
+              <UlTitle>Також ви зможете </UlTitle>
               <LiStyled>
                 <ArrowIcon />
                 <LiText>Формувати особисту думку незалежну від інших</LiText>
@@ -68,7 +66,6 @@ export const AuthorizationInfo = () => {
             <SignInBtn type="button">Реєстрація</SignInBtn>
           </RegLink>
         </BoxBtn>
-      </Container>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+// import { useFormik } from 'formik';
 import {
   TimerStl,
   LaybelStl,
@@ -9,11 +10,11 @@ import {
 } from './CountdownGoals.styled';
 import { getEndDate } from 'redux/planning/planningSelectors';
 import { useCountDown } from 'hooks/useCountDown';
+// import { ModalFasterRead} from '../Modal/ModalFasterRead/ModalFasterRead'
 
 export const CountdownGoals = () => {
   const endDateGoals = new Date(useSelector(getEndDate)).getTime();
   const { days, hours, minutes, seconds } = useCountDown(endDateGoals);
-
 
   return (
     <div>
