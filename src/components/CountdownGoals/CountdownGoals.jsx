@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { useFormik } from 'formik';
 import {
   TimerStl,
@@ -15,9 +15,6 @@ import { useCountDown } from 'hooks/useCountDown';
 export const CountdownGoals = () => {
   const endDateGoals = new Date(useSelector(getEndDate)).getTime();
   const { days, hours, minutes, seconds } = useCountDown(endDateGoals);
-
-
-
 
   return (
     <div>
