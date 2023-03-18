@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+// import device from 'hooks/device';
 
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 16px;
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  background-color: #fff;
 `;
 
 export const Logo = styled.p`
@@ -19,6 +22,7 @@ export const Logo = styled.p`
 
 export const Nav = styled.nav`
   display: flex;
+  
 `;
 
 export const NavList = styled.ul`
@@ -41,7 +45,6 @@ export const NavItem = styled.li`
 
 export const Link = styled(NavLink)`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   height: 33px;
 `;
@@ -60,7 +63,6 @@ export const UserInfo = styled.div`
 
 export const UserName = styled.p`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   font-family: 'Montserrat';
   font-style: normal;
@@ -85,12 +87,11 @@ export const ExitButton = styled.button`
   line-height: calc(38 / 14);
   border: none;
   background-color: #fff;
-
   text-decoration-line: underline;
-
   color: #242a37;
 
   &:hover {
     color: #f25137;
   }
 `;
+
