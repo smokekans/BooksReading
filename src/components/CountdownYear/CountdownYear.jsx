@@ -5,6 +5,7 @@ import {
   TimeStl,
   СolonStl,
   TitleStl,
+  Container
 } from './CountdownYear.styled';
 import { useCountDown } from 'hooks/useCountDown';
 
@@ -14,7 +15,7 @@ export const CountdownYears = () => {
   const { days, hours, minutes, seconds } = useCountDown(endDateYear);
 
   return (
-    <div>
+    <Container>
       <TitleStl>Years countdown</TitleStl>
       <TimerStl>
         <section>
@@ -37,6 +38,6 @@ export const CountdownYears = () => {
           <LaybelStl>SECS</LaybelStl>
         </section>
       </TimerStl>
-    </div>
+    </Container>
   );
 };
