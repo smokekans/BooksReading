@@ -115,6 +115,10 @@ const ChartLine = () => {
       },
     },
   };
+  const currentreadPagesFromStatistic = statistic?.reduce((prev, value) => {
+    return prev + value.pagesCount;
+  }, 0);
+  console.log(currentreadPagesFromStatistic);
   const labels = statistic?.map(item => item.time);
   const readPagesFromStatistic = statistic?.map(item => item.pagesCount);
   const pagesToRead = statistic?.map(item => {
@@ -123,6 +127,14 @@ const ChartLine = () => {
     }
     return Math.ceil((amountPagesForDay - item.pagesCount) / daysLeft);
   });
+  const currentamountPagesForDay = () => {
+    if (amountPagesForDay - currentreadPagesFromStatistic < 0) {
+      return '0';
+    }
+    return amountPagesForDay - currentreadPagesFromStatistic;
+  };
+
+  console.log(currentamountPagesForDay());
 
   const dataChart = {
     labels,
