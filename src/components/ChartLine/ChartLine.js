@@ -127,14 +127,14 @@ const ChartLine = () => {
     }
     return Math.ceil((amountPagesForDay - item.pagesCount) / daysLeft);
   });
-  const currentamountPagesForDay = () => {
-    if (amountPagesForDay - currentreadPagesFromStatistic < 0) {
-      return '0';
-    }
-    return amountPagesForDay - currentreadPagesFromStatistic;
-  };
+  // const currentamountPagesForDay = () => {
+  //   if (amountPagesForDay - currentreadPagesFromStatistic < 0) {
+  //     return '0';
+  //   }
+  //   return amountPagesForDay - currentreadPagesFromStatistic;
+  // };
 
-  console.log(currentamountPagesForDay());
+  // console.log(currentamountPagesForDay());  
 
   const dataChart = {
     labels,
