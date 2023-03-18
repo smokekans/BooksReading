@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import desktopBack from "../../images/backgroundDesktop.png"
+import mobileBack from "../../images/backgroundMobile.png"
+import tabletBack from "../../images/backgroundTablet.png"
 
 export const Orange = styled.span`
 color: #F25137;
@@ -8,25 +10,48 @@ color: #F25137;
 
 export const Container = styled.div`
 display: flex;
+flex-direction: column;
 height: 100%;
+
+@media screen and (min-width: 1200px){
+    flex-direction: row;
+}
 `
 
-export const RegisterDiv = styled.aside`
+export const RegisterDiv = styled.div`
 display: flex;
-width: 550px;
+flex-grow: 1;
+width: 100%;
 height: auto;
-background-image:linear-gradient(to left, rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)), url(${desktopBack});
+background-image:linear-gradient(to left, rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)), url(${mobileBack});
+background-size: cover;
 justify-content: center;
 align-items: center;
+padding: 32px 20px 44px 20px;
+@media screen and (min-width: 768px){
+background-image:linear-gradient(to left, rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)), url(${tabletBack});
+}
+@media screen and (min-width: 1200px){
+width: 550px;
+background-image:linear-gradient(to left, rgba(9, 30, 63, 0.8), rgba(9, 30, 63, 0.8)), url(${desktopBack});
+}
 `
 
 export const Form = styled.form`
+display: flex;
+flex-direction: column;
+width: 280px;
+height: 512px;
+background: transparent;
+
+@media screen and (min-width: 768px){
 display: flex;
 flex-direction: column;
 width: 400px;
 height: 609px;
 background: #FFFFFF;
 padding: 40px;
+}
 `
 
 export const GoogleBtn = styled.button`
@@ -54,29 +79,40 @@ color: #707375;
 
 export const Label = styled.label`
 font-family: 'Montserrat';
-font-weight: 500;
+font-weight: 600;
 font-size: 14px;
 line-height: calc(17/14);
 margin-top: 28px;
 
+color: #FFFFFF;
+
+@media screen and (min-width: 768px){
+font-weight: 500;
+
 color: #898F9F;
+}
 `
 
 export const Input = styled.input`
-width: 320px;
+width: 280px;
 height: 42px;
-padding: 13px 0 12px 12px;
+padding: 8px 0 12px 12px;
 margin-top: 8px;
 
 background: #F5F7FA;
 border: none;
 box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+
+@media screen and (min-width: 768px){
+width: 320px;
+padding: 13px 0 12px 12px;
+}
 `
 
 export const SignInBtn = styled.button`
-width: 320px;
+width: 280px;
 height: 60px;
-margin-top: 32px;
+margin-top: 20px;
 
 font-family: 'Montserrat';
 font-weight: 600;
@@ -87,6 +123,11 @@ border: none;
 text-align: center;
 background: #FF6B08;
 color: #FFFFFF;
+
+@media screen and (min-width: 768px){
+width: 320px;
+margin-top: 32px;
+}
 `
 
 export const LogText = styled.p`
@@ -94,12 +135,11 @@ font-family: 'Montserrat';
 font-weight: 500;
 font-size: 13px;
 line-height: 16px;
-/* identical to box height */
-
 text-align: center;
 
 color: #898F9F;
-
+margin-top: 20px;
+margin-bottom: 0;
 `
 
 export const LogLink = styled(Link)`
@@ -108,26 +148,25 @@ font-weight: 500;
 font-size: 13px;
 line-height: calc(16/13);
 text-align: center;
-margin-top: 20px;
 
 text-decoration-line: underline;
 
 color: #FF6B08;
-
 `
 
 export const MainDiv = styled.div`
-flex-grow: 1;
+display: none;
+
+@media screen and (min-width: 768px){
 display: flex;
 flex-direction: column;
-width: 397px;
-margin: 0;
 align-items: center;
 justify-content: center;
-`
-
-export const Box = styled.div`
-
+}
+@media screen and (min-width: 1200px){
+flex-grow: 1;
+margin: 0;
+}
 `
 
 export const Title = styled.p`
@@ -137,7 +176,12 @@ line-height: calc(38/34);
 margin: 0;
 text-align: center;
 
+
 color: #242A37;
+
+@media screen and (min-width: 768px) and (max-width: 1200px){
+    margin-top: 64px;
+}
 `
 
 export const UlTitle = styled.p`
@@ -150,6 +194,13 @@ text-align: start;
 
 
 color: #242A37;
+
+@media screen and (min-width: 768px){
+    
+}
+@media screen and (min-width: 1200px){
+    
+}
 `
 
 export const UlTitleSecond = styled.p`
@@ -161,6 +212,13 @@ margin: 0;
 margin-top: 32px;
 
 color: #242A37;
+
+@media screen and (min-width: 768px){
+    
+}
+@media screen and (min-width: 1200px){
+    
+}
 `
 
 export const LiStyled = styled.li`
@@ -169,7 +227,12 @@ gap: 12px;
 align-items: center;
 margin: 12px 0 0 0;
 
-
+@media screen and (min-width: 768px){
+    
+}
+@media screen and (min-width: 1200px){
+    
+}
 `
 
 
@@ -181,5 +244,12 @@ line-height: calc(17/14);
 margin: 0;
 
 color: #898F9F;
+
+@media screen and (min-width: 768px){
+    
+}
+@media screen and (min-width: 1200px){
+    
+}
 `
 

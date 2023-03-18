@@ -16,7 +16,6 @@ import {
   UlTitle,
   LiText,
   UlTitleSecond,
-  Box,
   LiStyled,
 } from './Register.styled';
 import { ReactComponent as Icon } from '../../images/googleIcon.svg';
@@ -73,9 +72,9 @@ const Register = () => {
       </RegisterDiv>
       <MainDiv>
         <Title>Books Reading</Title>
-        <Box>
-          <UlTitle>Допоможе вам</UlTitle>
+        <div>
           <ul>
+            <UlTitle>Допоможе вам</UlTitle>
             <LiStyled>
               <ArrowIcon />
               <LiText>Швидше сформулювати свою ціль і розпочати читати</LiText>
@@ -91,8 +90,8 @@ const Register = () => {
               <LiText>Відстежувати особистий успіх</LiText>
             </LiStyled>
           </ul>
-          <UlTitleSecond>Також ви зможете </UlTitleSecond>
           <ul>
+            <UlTitleSecond>Також ви зможете </UlTitleSecond>
             <LiStyled>
               <ArrowIcon />
               <LiText>Формувати особисту думку незалежну від інших</LiText>
@@ -108,7 +107,7 @@ const Register = () => {
               <LiText>Стати цікавим співрозмовником</LiText>
             </LiStyled>
           </ul>
-        </Box>
+        </div>
       </MainDiv>
     </Container>
   );
