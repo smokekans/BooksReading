@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addBook, fetchAllBooks } from './bookOperations';
+import { addBook, addBookReview, fetchAllBooks } from './bookOperations';
 
 const bookInitialState = {
   book: {
@@ -8,6 +8,8 @@ const bookInitialState = {
     finishedReading: null,
     isLoading: false,
     error: null,
+    // raiting: null,
+    // feedback: '',
   },
 };
 
@@ -44,6 +46,11 @@ const bookSlice = createSlice({
       .addCase(fetchAllBooks.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(addBookReview.fulfilled, (state, action) => {
+        state.book.finishedReading = state.book.finishedReading.map(book =>
+          book._id === action.payload._id ? action.payload : book
+        );
       });
   },
 });

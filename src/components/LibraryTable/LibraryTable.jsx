@@ -67,7 +67,7 @@ export const LibraryTable = () => {
                         <SpanMobile>Рейтинг:</SpanMobile>
                         <Rate style={{ width: '120px', fontSize: '17px' }} />
                       </div>
-                      <Button type="button" onClick={toggleModal}>
+                      <Button type="button" bookId={b._id} onClick={toggleModal}>
                         Резюме
                       </Button>
                     </PMobile>
