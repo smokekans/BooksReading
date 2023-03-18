@@ -34,7 +34,6 @@ const ChartLine = () => {
   );
 
   const books = useSelector(state => state.planning);
-  // console.log(books)
   const [statistic, setStatistic] = useState([]);
   const [daysLeft, setDaysLeft] = useState(0);
   useEffect(() => {
@@ -53,13 +52,11 @@ const ChartLine = () => {
       totalPages + statisticBookInfo.pagesTotal,
     0
   );
-  console.log(amountPagesFromStatistic);
   let amountPagesForDay = 0;
   if (daysLeft || amountPagesFromStatistic) {
     amountPagesForDay = Math.ceil(amountPagesFromStatistic / daysLeft);
-    // console.log(amountPagesForDay);
   }
-
+  // const amountPagesForDayCurrent = 0;
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -119,9 +116,13 @@ const ChartLine = () => {
     },
   };
   const labels = statistic?.map(item => item.time);
-  console.log(statistic);
   const readPagesFromStatistic = statistic?.map(item => item.pagesCount);
-  const pagesToRead = statistic?.map(item => amountPagesForDay);
+  const pagesToRead = statistic?.map(item => {
+    if (Math.ceil((amountPagesForDay - item.pagesCount) / daysLeft) < 0) {
+      return '0';
+    }
+    return Math.ceil((amountPagesForDay - item.pagesCount) / daysLeft);
+  });
 
   const dataChart = {
     labels,
