@@ -1,29 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import {
   DoneBtn,
   MessageSuccess,
   ModalFinish,
   OverlayModal,
+  WrapBtn
 } from '../ModalFasterRead/ModalFasterRead.styled';
-import { ReactComponent as IconLike } from '../../../images/like.svg';
+import { ReactComponent as IconLike } from '../../../images/likeGrey.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const ModalFasterRead = ({ onClose, onClick }) => {
+export const ModalFasterRead = ({ onClose }) => {
   return createPortal(
     <OverlayModal>
       <ModalFinish>
         <IconLike />
         <MessageSuccess>
-           Well done! <br /> but you need to be a little bit faster. <br /> You can do it)
+           Well done! <br /> But you need to be a little bit faster. You can do it ;)
         </MessageSuccess>
-        <DoneBtn onClick={() => onClick()} type="button">
+        <WrapBtn>
+          <Link to="/training">
+        <DoneBtn type="button">
         New training
         </DoneBtn>
+        </Link>
         <DoneBtn onClick={() => onClose()} type="button">
         Back
         </DoneBtn>
+        </WrapBtn>
       </ModalFinish>
     </OverlayModal>,
     modalRoot

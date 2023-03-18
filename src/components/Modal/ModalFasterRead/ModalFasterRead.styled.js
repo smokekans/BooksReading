@@ -20,14 +20,14 @@ export const ModalFinish = styled.div`
   align-items: center;
   padding: 40px 26px;
   width: 280px;
-  height: 256px;
+  height: 286px;
   background: #ffffff;
   box-shadow: 10px 10px 20px rgba(9, 30, 63, 0.2);
 
   @media screen and (min-width: 768px) {
     padding: 40px 83px;
     width: 394px;
-    height: 256px;
+    /* height: 256px; */
   }
 `;
 
@@ -39,6 +39,8 @@ export const MessageSuccess = styled.p`
   line-height: 22px;
   text-align: center;
   color: #242a37;
+
+  width: 289px;
 `;
 
 export const DoneBtn = styled.button`
@@ -50,7 +52,7 @@ export const DoneBtn = styled.button`
   text-align: center;
   color: #ffffff;
 
-  width: 130px;
+  width: 152px;
   height: 40px;
   background-color: #ff6b08;
   border: none;
@@ -61,3 +63,9 @@ export const DoneBtn = styled.button`
     border: 1px solid #ff6b08;
   }
 `;
+
+export const WrapBtn = styled.div`
+  display: flex;
+  gap: 32px;
+`;
+
