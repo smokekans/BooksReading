@@ -9,6 +9,7 @@ import {
   СolonStl,
   LabelStl,
   BoxStl,
+  BoxGoal,
   AccentStl,
 } from './MyGoals.styled';
 
@@ -28,11 +29,14 @@ export const MyGoals = () => {
   };
 
   return (
-    <section>
-      <WrapStl>
+    <BoxGoal>
+      {/* <WrapStl>
+        <TitleStl>My goals</TitleStl>
+      </WrapStl> */}
+      <WraperStl>
+          <WrapStl>
         <TitleStl>My goals</TitleStl>
       </WrapStl>
-      <WraperStl>
         <ListStl>
           <li>
             <BoxStl>
@@ -54,6 +58,6 @@ export const MyGoals = () => {
           </li>
         </ListStl>
       </WraperStl>
-    </section>
+    </BoxGoal>
   );
 };
