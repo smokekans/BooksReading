@@ -1,25 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  padding: 20px;
+  padding-bottom: 20px;
   @media screen and (min-width: 768px) {
-    padding: 32px;
+    padding-bottom: 32px;
   }
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    padding: 40px 16px;
+    padding-bottom: 40px;
     margin-left: auto;
     margin-right: auto;
   }
 `;
-
-// export const ButtonSvgBack = styled.button`
-//   border: none;
-//   background: #f6f7fb;
-//   @media screen and (min-width: 768px) {
-//     display: none;
-//   }
-// `;
 
 export const FormAll = styled.form`
   display: flex;

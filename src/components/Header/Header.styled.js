@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-// import device from 'hooks/device';
+import device from 'hooks/device';
 
 export const HeaderWrapper = styled.div`
+  position: relative;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,17 +14,20 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const Logo = styled.p`
+  height: 60px;
+  justify-content: center;
+  align-items: center;
   display: flex;
   font-family: 'Abril Fatface';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 27px;
+  margin: 0;
 `;
 
 export const Nav = styled.nav`
   display: flex;
-  
 `;
 
 export const NavList = styled.ul`
@@ -46,7 +51,14 @@ export const NavItem = styled.li`
 export const Link = styled(NavLink)`
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 33px;
+  width: 33px;
+  &:hover,
+  &:active {
+    background-color: #f5f7fa;
+    border-radius: 50%;
+  }
 `;
 
 export const Icon = styled.svg`
@@ -59,10 +71,16 @@ export const UserPanel = styled.div`
 
 export const UserInfo = styled.div`
   display: flex;
+
+  @media screen and ${device.tablet} {
+    position: absolute;
+    top: 10px;
+    left: 46%;
+  }
 `;
 
 export const UserName = styled.p`
-  display: flex;
+  display: none;
   align-items: center;
   font-family: 'Montserrat';
   font-style: normal;
@@ -70,12 +88,18 @@ export const UserName = styled.p`
   font-size: 14px;
   line-height: 1.2;
   color: #242a37;
+  margin: 0;
+
+  @media screen and ${device.tablet} {
+    display: flex;
+  }
 `;
 
 export const UserAvatar = styled.p`
   background-color: #F5F7FA;
   padding 8px 10px;
   border-radius: 50%;
+  margin: 0;
   margin-right: 12px;
 `;
 
@@ -94,4 +118,3 @@ export const ExitButton = styled.button`
     color: #f25137;
   }
 `;
-

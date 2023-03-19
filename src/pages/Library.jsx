@@ -11,6 +11,7 @@ import useMatchMedia from 'hooks/useMatchMedia';
 import { fetchAllBooks } from 'redux/book/bookOperations';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Container } from 'App.styled';
 
 const Library = () => {
   const { isMobile } = useMatchMedia();
@@ -37,7 +38,7 @@ const Library = () => {
   }, [isMobile, emptyList, navigate]);
 
   return (
-    <>
+    <Container>
       {isMobile ? (
         emptyList ? (
           <>
@@ -53,7 +54,7 @@ const Library = () => {
           {emptyList ? <ModalEmptyLibrary /> : <LibraryTable />}
         </>
       )}
-    </>
+    </Container>
   );
 };
 
