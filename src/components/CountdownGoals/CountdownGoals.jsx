@@ -12,11 +12,14 @@ import {
 import { getEndDate } from 'redux/planning/planningSelectors';
 import { useCountDown } from 'hooks/useCountDown';
 import { ModalFasterRead } from '../Modal/ModalFasterRead/ModalFasterRead';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langCountdownGoals } from 'languages/langCountdownGoals';
 
 export const CountdownGoals = () => {
   const endDateGoals = new Date(useSelector(getEndDate)).getTime();
   const { days, hours, minutes, seconds } = useCountDown(endDateGoals);
-
+  const lang = useSelector(getLanguage);
+  const { goals, day, hour, min, sec} = langCountdownGoals;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const formik = useFormik({
@@ -40,26 +43,26 @@ export const CountdownGoals = () => {
 
   return (
     <div>
-      <TitleStl>Goals countdown</TitleStl>
+      <TitleStl>{goals[lang]}</TitleStl>
       <TimerStl>
         <section>
           <TimeStl>{days}</TimeStl>
-          <LaybelStl>DAYS</LaybelStl>
+          <LaybelStl>{day[lang]}</LaybelStl>
         </section>
         <СolonStl>:</СolonStl>
         <section>
           <TimeStl>{hours}</TimeStl>
-          <LaybelStl>HRS</LaybelStl>
+          <LaybelStl>{hour[lang]}</LaybelStl>
         </section>
         <СolonStl>:</СolonStl>
         <section>
           <TimeStl>{minutes}</TimeStl>
-          <LaybelStl>MINS</LaybelStl>
+          <LaybelStl>{min[lang]}</LaybelStl>
         </section>
         <СolonStl>:</СolonStl>
         <section>
           <TimeStl>{seconds}</TimeStl>
-          <LaybelStl>SECS</LaybelStl>
+          <LaybelStl>{sec[lang]}</LaybelStl>
         </section>
       </TimerStl>
       {isModalOpen && <ModalFasterRead onClose={closeModalFaster} />}

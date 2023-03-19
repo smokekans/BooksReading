@@ -21,18 +21,27 @@ import {
   Year,
   YearMob,
 } from './StatisticsBookLIst.styled';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langLibraryTable } from 'languages/langLibraryTable';
 
 export const StatisticsBookLIst = () => {
   const books = useSelector(getPlanBooks);
- 
+  const lang = useSelector(getLanguage);
+  const {
+    title,
+    author,
+    publishYear,
+    pagesTotal,
+  } = langLibraryTable;
+
   return (
     <>
       <ListWrapp>
         <HeaderBox>
-          <Title>Назва книги</Title>
-          <Author>Автор</Author>
-          <Year>Рік</Year>
-          <Pages>Стор.</Pages>
+          <Title>{title[lang]}</Title>
+          <Author>{author[lang]}</Author>
+          <Year>{publishYear[lang]}</Year>
+          <Pages>{pagesTotal[lang]}</Pages>
         </HeaderBox>
         <List>
           {books?.map(
@@ -59,11 +68,11 @@ export const StatisticsBookLIst = () => {
                   </Checked>
                 )}
                 <BookTitle>{title}</BookTitle>
-                <AuthorMob>Автор:</AuthorMob>
+                <AuthorMob>{langLibraryTable.author[lang]}:</AuthorMob>
                 <BookAuthor>{author}</BookAuthor>
-                <YearMob>Рік:</YearMob>
+                <YearMob>{langLibraryTable.publishYear[lang]}:</YearMob>
                 <BookYear>{publishYear}</BookYear>
-                <PagesMob>Стор.:</PagesMob>
+                <PagesMob>{langLibraryTable.pagesTotal[lang]}:</PagesMob>
                 <BookPages>{pagesTotal}</BookPages>
               </Item>
             )
