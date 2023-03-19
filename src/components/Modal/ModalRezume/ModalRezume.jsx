@@ -10,8 +10,14 @@ import {
   StyledRatingText,
   StyledTextArea,
 } from './ModalRezume.styled';
+import { useSelector } from 'react-redux';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langModals } from 'languages/langModals';
 
 export const ModalRezume = ({ onClose }) => {
+  const lang = useSelector(getLanguage);
+  const { chooseRating, summary, save, back } = langModals;
+
   const [form] = Form.useForm();
   const handleCancel = () => {
     onClose();
@@ -21,19 +27,21 @@ export const ModalRezume = ({ onClose }) => {
       <StyledRatingBox>
         <>
           <Form form={form} layout="vertical" autoComplete="off">
-            <StyledRatingText>Обрати рейтинг книги</StyledRatingText>
+            <StyledRatingText>{chooseRating[lang]}</StyledRatingText>
             <Rate style={{ width: '120px', fontSize: '17px' }} />
             <FormItem name={'resume'}>
               <StyledRatingLabel>
-                <StyledRatingResumeText>Резюме</StyledRatingResumeText>
+                <StyledRatingResumeText>{summary[lang]}</StyledRatingResumeText>
                 <StyledTextArea autoSize={{ minRows: 7 }} />
               </StyledRatingLabel>
             </FormItem>
 
             <StyledBox>
-              <StyledRatingButton onClick={handleCancel}>Назад</StyledRatingButton>
+              <StyledRatingButton onClick={handleCancel}>
+                {back[lang]}
+              </StyledRatingButton>
               <StyledRatingButton type="primary" htmlType="submit">
-                Зберегти
+                {save[lang]}
               </StyledRatingButton>
             </StyledBox>
           </Form>

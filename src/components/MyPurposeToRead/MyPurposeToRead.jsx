@@ -12,11 +12,15 @@ import {
   Row,
   Column,
 } from './MyPurposeToRead.styled';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langMyGoals } from 'languages/langMyGoals';
 
 const MyPurposeToRead = () => {
   const endDate = new Date(useSelector(getEndDate)).getTime();
   const startData = Date.now();
   const booksAll = useSelector(getPlanBooks);
+  const lang = useSelector(getLanguage);
+  const { goal, bookaAm, daysAm } = langMyGoals;
 
   const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24));
 
@@ -26,20 +30,20 @@ const MyPurposeToRead = () => {
     <WrapperBox>
       <MainWrapper>
         <HeaderWrapper>
-          <HeadText>Моя мета прочитати</HeadText>
+          <HeadText>{goal[lang]}</HeadText>
         </HeaderWrapper>
         <Row>
           <Column>
             <AmountValueWrapper>
               <AmountValue>{books}</AmountValue>
             </AmountValueWrapper>
-            <Description>Кількість книжок</Description>
+            <Description>{bookaAm[lang]}</Description>
           </Column>
           <Column>
             <AmountValueWrapper>
               <AmountValue>{endDate > 0 ? days : '0'}</AmountValue>
             </AmountValueWrapper>
-            <Description>Кількість днів</Description>
+            <Description>{daysAm[lang]}</Description>
           </Column>
         </Row>
       </MainWrapper>
