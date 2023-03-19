@@ -11,6 +11,7 @@ import {
   getFinishedReading,
   getGoingToRead,
 } from 'redux/book/bookSelectors';
+import { Container } from 'App.styled';
 
 const AddBook = () => {
   const [isEmpty] = useState(true);
@@ -33,7 +34,7 @@ const AddBook = () => {
     finishedReading.length === 0;
 
   return (
-    <>
+    <Container>
       <StyledBackBtn onClick={() => navigate('/library')}>
         <BackIcon />
       </StyledBackBtn>
@@ -43,7 +44,7 @@ const AddBook = () => {
           <ModalEmptyLibrary onClick={toggleModal} isEmptyLibrary={!isEmpty} />
         </Modal>
       )}
-    </>
+    </Container>
   );
 };
 
