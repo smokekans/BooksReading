@@ -27,6 +27,7 @@ margin-bottom: 24px;
 export const Calendar = styled.div`
 display: flex;
 align-items: center;
+justify-content: space-between;
 width: 250px;
 height: 42px;
 border: solid 1px #A6ABB9;
@@ -37,6 +38,8 @@ background-repeat: no-repeat;
 background-size: 17px 17px;
 background-position: 5% 50%;
 margin-right: 44px;
+padding: 12px;
+padding-left: 45px;
 `
 export const CalendarStartText = styled.p`
   font-weight: 500;
@@ -129,17 +132,21 @@ border: none;
 
 //table
 export const Table = styled.table`
-position: relative;
-width: 928px;
-border: solid 1px red;
+  width: 928px;
+  background: #ffffff;
+  margin-bottom: 32px;
+  text-align: left;
+  background: #f6f7fb;
+  border-spacing: 0px 5px;
+  
  `
 export const TableHeader = styled.tr`
-background-color: aqua;
 height: 40px;
+border-top: solid 1px grey;
+
 `
 
 export const TableHeaderItem = styled.th`
-border: solid 1px red;
 text-align: start;
 font-weight: 500;
 font-size: 14px;
@@ -152,12 +159,17 @@ width: fit-content;
 }
 `
 export const TableBodyItem = styled.td`
-padding-left: 36px;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+color: #242A37;
+padding-bottom: 22px;
+
 `
 
 export const TableDecoration = styled.span`
-position: absolute;
 display: inline-block;
 top: 25px;
 left: 5px;
+
 `
