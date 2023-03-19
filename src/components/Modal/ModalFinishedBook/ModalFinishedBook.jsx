@@ -7,20 +7,25 @@ import {
   OverlayModal,
 } from './ModalFinishedBooks.styled';
 import { ReactComponent as IconLike } from '../../../images/like.svg';
+import { useSelector } from 'react-redux';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langModals } from 'languages/langModals';
 
 const modalRoot = document.querySelector('#modal-root');
 
 export const ModalFinishedBooks = ({ onClose }) => {
+  const lang = useSelector(getLanguage);
+  const { congrat, anotherbook, done} = langModals;
+  
   return createPortal(
     <OverlayModal>
       <ModalFinish>
         <IconLike />
         <MessageSuccess>
-          Вітаю!
-          <br /> Ще одна книга прочитана.
+          {congrat[lang]}<br /> {anotherbook[lang]}
         </MessageSuccess>
         <DoneBtn onClick={() => onClose()} type="button">
-          Готово
+          {done[lang]}
         </DoneBtn>
       </ModalFinish>
     </OverlayModal>,

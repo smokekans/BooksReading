@@ -5,7 +5,7 @@ import {
   Table,
   Tr,
   TrHead,
-  EmptyPageDiv,
+  // EmptyPageDiv,
   NavLinkMore,
   Container,
   ButtonMyTrain,
@@ -19,12 +19,16 @@ import {
 } from './LibraryTable.styled';
 import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
-import { NavLink } from 'react-router-dom';
+import { ReactComponent as BookOrange } from './svg/flat.svg';
+// import { NavLink } from 'react-router-dom';
 import useMatchMedia from 'hooks/useMatchMedia';
 import Modal from 'components/Modal/Modal/Modal';
 import { Rate } from 'antd';
 import { useState } from 'react';
 import { addIdReview } from 'redux/book/bookSlice';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langLibraryTable } from 'languages/langLibraryTable';
+import { ModalRezume } from 'components/Modal/ModalRezume/ModalRezume';
 
 export const LibraryTable = () => {
   const goingToRead = useSelector(getGoingToRead);
@@ -34,6 +38,19 @@ export const LibraryTable = () => {
   const dispatch = useDispatch();
 
   const { isMobile } = useMatchMedia();
+  const lang = useSelector(getLanguage);
+  const {
+    title,
+    author,
+    publishYear,
+    pagesTotal,
+    rate,
+    training,
+    resume,
+    readNow,
+    goingread,
+    alreadyread,
+  } = langLibraryTable;
 
   const [bookId, setBookId] = useState('');
 
@@ -49,7 +66,7 @@ export const LibraryTable = () => {
     <Container>
       {finishedReading?.length !== 0 && (
         <>
-          <TitleH2>Прочитано</TitleH2>
+          <TitleH2>{alreadyread[lang]}</TitleH2>
           {isMobile ? (
             <UlMobile>
               {finishedReading?.map(b => {
@@ -61,19 +78,19 @@ export const LibraryTable = () => {
                     </H3Mobile>
                     <PMobile>
                       <div>
-                        <SpanMobile>Автор:</SpanMobile>
+                        <SpanMobile>{author[lang]}:</SpanMobile>
                         <span>{b.author}</span>
                       </div>
                       <div>
-                        <SpanMobile>Рік:</SpanMobile>
+                        <SpanMobile>{publishYear[lang]}:</SpanMobile>
                         <span>{b.publishYear}</span>
                       </div>
                       <div>
-                        <SpanMobile>Стор.:</SpanMobile>
+                        <SpanMobile>{pagesTotal[lang]}:</SpanMobile>
                         <span>{b.pagesTotal}</span>
                       </div>
                       <div>
-                        <SpanMobile>Рейтинг:</SpanMobile>
+                        <SpanMobile>{rate[lang]}:</SpanMobile>
 
                         <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
                       </div>
@@ -84,24 +101,24 @@ export const LibraryTable = () => {
                           toggleModal();
                         }}
                       >
-                        Резюме
+                        {resume[lang]}
                       </Button>
                     </PMobile>
                   </LiMobile>
                 );
               })}
-              {isOpen && <Modal onClose={toggleModal} />}
+              {isOpen && <ModalRezume onClose={toggleModal} />}
             </UlMobile>
           ) : (
             <Table>
               <thead>
                 <TrHead>
-                  <th>Назва книги</th>
-                  <th>Автор</th>
-                  <th>Рік</th>
-                  <th>Стор.</th>
-                  <th>Рейтинг книги</th>
-                  <th></th>
+                  <th width="30%">{title[lang]}</th>
+                  <th width="20%">{author[lang]}</th>
+                  <th width="10%">{publishYear[lang]}</th>
+                  <th width="10%">{pagesTotal[lang]}</th>
+                  <th width="15%">{rate[lang]}</th>
+                  <th width="15%"></th>
                 </TrHead>
               </thead>
 
@@ -129,7 +146,7 @@ export const LibraryTable = () => {
                             toggleModal();
                           }}
                         >
-                          Резюме
+                          {resume[lang]}
                         </Button>
                       </td>
                       {isOpen && <Modal onClose={toggleModal} />}
@@ -143,27 +160,27 @@ export const LibraryTable = () => {
       )}
       {currentlyReading?.length !== 0 && (
         <>
-          <TitleH2>Читаю</TitleH2>
+          <TitleH2>{readNow[lang]}</TitleH2>
           {isMobile ? (
             <UlMobile>
               {currentlyReading?.map(b => {
                 return (
                   <LiMobile key={b._id}>
                     <H3Mobile>
-                      <BookIcon />
+                      <BookOrange />
                       {b.title}
                     </H3Mobile>
                     <PMobile>
                       <div>
-                        <SpanMobile>Автор:</SpanMobile>
+                        <SpanMobile>{author[lang]}:</SpanMobile>
                         <span>{b.author}</span>
                       </div>
                       <div>
-                        <SpanMobile>Рік:</SpanMobile>
+                        <SpanMobile>{publishYear[lang]}:</SpanMobile>
                         <span>{b.publishYear}</span>
                       </div>
                       <div>
-                        <SpanMobile>Стор.:</SpanMobile>
+                        <SpanMobile>{pagesTotal[lang]}:</SpanMobile>
                         <span>{b.pagesTotal}</span>
                       </div>
                     </PMobile>
@@ -175,10 +192,10 @@ export const LibraryTable = () => {
             <Table>
               <thead>
                 <TrHead>
-                  <th>Назва книги</th>
-                  <th>Автор</th>
-                  <th>Рік</th>
-                  <th>Стор.</th>
+                  <th width="50%">{title[lang]}</th>
+                  <th width="30%">{author[lang]}</th>
+                  <th width="10%">{publishYear[lang]}</th>
+                  <th width="10%">{pagesTotal[lang]}</th>
                 </TrHead>
               </thead>
 
@@ -187,8 +204,10 @@ export const LibraryTable = () => {
                   return (
                     <Tr key={b._id}>
                       <td>
-                        <BookIcon />
-                        {b.title}
+                        <SpanIconBook>
+                          <BookOrange />
+                          {b.title}
+                        </SpanIconBook>
                       </td>
                       <td>{b.author}</td>
                       <td>{b.publishYear}</td>
@@ -203,7 +222,7 @@ export const LibraryTable = () => {
       )}
       {goingToRead?.length !== 0 && (
         <>
-          <TitleH2>Маю намір прочитати</TitleH2>
+          <TitleH2>{goingread[lang]}</TitleH2>
           {isMobile ? (
             <UlMobile>
               {goingToRead?.map(b => {
@@ -215,15 +234,15 @@ export const LibraryTable = () => {
                     </H3Mobile>
                     <PMobile>
                       <div>
-                        <SpanMobile>Автор:</SpanMobile>
+                        <SpanMobile>{author[lang]}:</SpanMobile>
                         <span>{b.author}</span>
                       </div>
                       <div>
-                        <SpanMobile>Рік:</SpanMobile>
+                        <SpanMobile>{publishYear[lang]}:</SpanMobile>
                         <span>{b.publishYear}</span>
                       </div>
                       <div>
-                        <SpanMobile>Стор.:</SpanMobile>
+                        <SpanMobile>{pagesTotal[lang]}:</SpanMobile>
                         <span>{b.pagesTotal}</span>
                       </div>
                     </PMobile>
@@ -235,10 +254,10 @@ export const LibraryTable = () => {
             <Table>
               <thead>
                 <TrHead>
-                  <th>Назва книги</th>
-                  <th>Автор</th>
-                  <th>Рік</th>
-                  <th>Стор.</th>
+                  <th>{title[lang]}</th>
+                  <th>{author[lang]}</th>
+                  <th>{publishYear[lang]}</th>
+                  <th>{pagesTotal[lang]}</th>
                 </TrHead>
               </thead>
 
@@ -246,15 +265,15 @@ export const LibraryTable = () => {
                 {goingToRead?.map(b => {
                   return (
                     <Tr key={b._id}>
-                      <td>
+                      <td width="50%">
                         <SpanIconBook>
                           <BookIcon />
                           {b.title}
                         </SpanIconBook>
                       </td>
-                      <td>{b.author}</td>
-                      <td>{b.publishYear}</td>
-                      <td>{b.pagesTotal}</td>
+                      <td width="30%">{b.author}</td>
+                      <td width="10%">{b.publishYear}</td>
+                      <td width="10%">{b.pagesTotal}</td>
                     </Tr>
                   );
                 })}
@@ -262,10 +281,10 @@ export const LibraryTable = () => {
             </Table>
           )}
 
-          <ButtonMyTrain to="/training">Моє тренування</ButtonMyTrain>
+          <ButtonMyTrain to="/training">{training[lang]}</ButtonMyTrain>
         </>
       )}
-      {finishedReading?.length === 0 &&
+      {/* {finishedReading?.length === 0 &&
         goingToRead?.length === 0 &&
         currentlyReading?.length === 0 && (
           <EmptyPageDiv>
@@ -274,7 +293,7 @@ export const LibraryTable = () => {
               <More />
             </NavLink>
           </EmptyPageDiv>
-        )}
+        )} */}
       <NavLinkMore to="/addbook">
         <More />
       </NavLinkMore>

@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signUpThunk } from 'redux/auth/authOperations';
 import {
   Container,
@@ -20,9 +20,13 @@ import {
 } from './Register.styled';
 import { ReactComponent as Icon } from '../../images/googleIcon.svg';
 import { ReactComponent as ArrowIcon } from '../../images/arrow.svg';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langAuthorizationInfo } from 'languages/langAuthorizationInfo';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const lang = useSelector(getLanguage);
+  const { helpyou, paragraf1, paragraf2, paragraf3, paragraf4, paragraf5, paragraf6, paragraf7, sign, regist, name, mail, password, confirm, withUs, wrong } = langAuthorizationInfo;
 
   function handleSubmit(ev) {
     ev.preventDefault();
@@ -36,7 +40,7 @@ const Register = () => {
       };
       dispatch(signUpThunk(newUser));
     } else {
-      alert('Пароли не совпадают');
+      alert(`${wrong[lang]}`);
     }
   }
 
@@ -49,24 +53,24 @@ const Register = () => {
             Google
           </GoogleBtn>
           <Label htmlFor="nameInput">
-            Ім’я <Orange>*</Orange>
+            {name[lang]} <Orange>*</Orange>
           </Label>
           <Input type="text" name="name" id="nameInput" />
           <Label htmlFor="emailInput">
-            Електронна адреса <Orange>*</Orange>
+            {mail[lang]} <Orange>*</Orange>
           </Label>
           <Input type="email" name="email" id="emailInput" />
           <Label htmlFor="passInput">
-            Пароль <Orange>*</Orange>
+            {password[lang]} <Orange>*</Orange>
           </Label>
           <Input type="password" name="password" id="passInput" />
           <Label htmlFor="confPassInput">
-            Підтвердити пароль <Orange>*</Orange>
+            {confirm[lang]} <Orange>*</Orange>
           </Label>
           <Input type="password" name="confirm" id="confPassInput" />
-          <SignInBtn type="submit">Зареєструватися</SignInBtn>
+          <SignInBtn type="submit">{regist[lang]}</SignInBtn>
           <LogText>
-            Вже з нами? <LogLink to="/login">Увійти</LogLink>
+            {withUs[lang]} <LogLink to="/login">{sign[lang]}</LogLink>
           </LogText>
         </Form>
       </RegisterDiv>
@@ -74,37 +78,37 @@ const Register = () => {
         <Title>Books Reading</Title>
         <div>
           <ul>
-            <UlTitle>Допоможе вам</UlTitle>
+            <UlTitle>{helpyou[lang]}</UlTitle>
             <LiStyled>
               <ArrowIcon />
-              <LiText>Швидше сформулювати свою ціль і розпочати читати</LiText>
+              <LiText>{paragraf1[lang]}</LiText>
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
               <LiText>
-                Пропорційно розподілити навантаження на кожний день
+                {paragraf2[lang]}
               </LiText>
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
-              <LiText>Відстежувати особистий успіх</LiText>
+              <LiText>{paragraf3[lang]}</LiText>
             </LiStyled>
           </ul>
           <ul>
-            <UlTitleSecond>Також ви зможете </UlTitleSecond>
+            <UlTitleSecond>{paragraf4[lang]} </UlTitleSecond>
             <LiStyled>
               <ArrowIcon />
-              <LiText>Формувати особисту думку незалежну від інших</LiText>
+              <LiText>{paragraf5[lang]}</LiText>
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
               <LiText>
-                Підвищити свої професійні якості опираючись на нові знання
+                {paragraf6[lang]}
               </LiText>
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
-              <LiText>Стати цікавим співрозмовником</LiText>
+              <LiText>{paragraf7[lang]}</LiText>
             </LiStyled>
           </ul>
         </div>

@@ -2,6 +2,7 @@ import { Form, Rate } from 'antd';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBookReview } from 'redux/book/bookOperations';
+import Modal from '../Modal/Modal';
 import {
   FormItem,
   StyledBox,
@@ -40,38 +41,41 @@ export const ModalRezume = ({ onClose }) => {
   };
   return (
     <>
-      <StyledRatingBox>
-        <>
-          <Form form={form} layout="vertical" autoComplete="off">
-            <StyledRatingText>Обрати рейтинг книги</StyledRatingText>
-            <Rate
-              style={{ width: '120px', fontSize: '17px' }}
-              onChange={value => {
-                setRating(value);
-              }}
-              value={+rating}
-            />{' '}
-            <FormItem name={'resume'}>
-              <StyledRatingLabel>
-                <StyledRatingResumeText>Резюме</StyledRatingResumeText>
-                <StyledTextArea
-                  autoSize={{ minRows: 7 }}
-                  value={resume}
-                  onChange={e => {
-                    setResume(e.currentTarget.value);
-                  }}
-                />
-              </StyledRatingLabel>
-            </FormItem>
-            <StyledBox>
-              <StyledRatingButton onClick={handleCancel}>Назад</StyledRatingButton>
-              <StyledRatingButton type="primary" htmlType="submit" onClick={handleSave}>
-                Зберегти
-              </StyledRatingButton>
-            </StyledBox>
-          </Form>
-        </>
-      </StyledRatingBox>
+      <Modal>
+        <StyledRatingBox>
+          <>
+            <Form form={form} layout="vertical" autoComplete="off">
+              <StyledRatingText>Обрати рейтинг книги</StyledRatingText>
+              <Rate
+                style={{ width: '120px', fontSize: '17px' }}
+                onChange={value => {
+                  setRating(value);
+                }}
+                value={+rating}
+              />{' '}
+              <FormItem name={'resume'}>
+                <StyledRatingLabel>
+                  <StyledRatingResumeText>Резюме</StyledRatingResumeText>
+                  <StyledTextArea
+                    required={false}
+                    autoSize={{ minRows: 7 }}
+                    value={resume}
+                    onChange={e => {
+                      setResume(e.currentTarget.value);
+                    }}
+                  />
+                </StyledRatingLabel>
+              </FormItem>
+              <StyledBox>
+                <StyledRatingButton onClick={handleCancel}>Назад</StyledRatingButton>
+                <StyledRatingButton type="primary" htmlType="submit" onClick={handleSave}>
+                  Зберегти
+                </StyledRatingButton>
+              </StyledBox>
+            </Form>
+          </>
+        </StyledRatingBox>
+      </Modal>
     </>
   );
 };
