@@ -133,7 +133,7 @@ export const LibraryTable = () => {
                       <td>{b.publishYear}</td>
                       <td>{b.pagesTotal}</td>
                       <td>
-                        <Rate style={{ width: '120px', fontSize: '17px' }} />
+                        <Rate style={{ width: '101px', fontSize: '12px' }} />
                       </td>
                       <td>
                         <Button type="button" onClick={toggleModal}>
