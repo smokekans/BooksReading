@@ -2,7 +2,7 @@ import ChartLine from 'components/ChartLine/ChartLine';
 import MyPurposeToRead from 'components/MyPurposeToRead/MyPurposeToRead';
 import { MyTraining } from 'components/MyTraining/MyTraining';
 import { Container } from '../App.styled';
-import { Wrapper } from './Training.styled';
+import { ChartWrap, Wrapper } from './Training.styled';
 
 const Training = () => {
   return (
@@ -12,8 +12,9 @@ const Training = () => {
           <MyPurposeToRead />
           <MyTraining />
         </Wrapper>
-
-        <ChartLine />
+        <ChartWrap>
+          <ChartLine />
+        </ChartWrap>
       </Container>
     </>
   );

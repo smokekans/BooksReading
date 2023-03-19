@@ -5,3 +5,9 @@ export const Wrapper = styled.div`
     flex-direction: row-reverse;
   }
 `;
+export const ChartWrap = styled.div`
+  margin-top: 33px;
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+  }
+`;

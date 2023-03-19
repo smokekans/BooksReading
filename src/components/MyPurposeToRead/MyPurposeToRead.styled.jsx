@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 export const WrapperBox = styled.div`
-  margin: 0;
+  margin-bottom: 20px;
+  @media (min-width: 768px) {
+    margin-bottom: 40px;
+  }
   @media (min-width: 1279px) {
     margin: 0 0 0 auto;
     width: 288px;

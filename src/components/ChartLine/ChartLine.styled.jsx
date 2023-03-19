@@ -12,12 +12,12 @@ export const ChartSectionBox = styled.div`
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
   @media screen and (min-width: 768px) {
     width: 704px;
-    min-height: 340px;
+    height: 340px;
     /* margin-bottom: 30px; */
   }
   @media screen and (min-width: 1280px) {
     width: 928px;
-    max-height: 340px;
+    height: 340px;
     /* margin: 0 32px 0 0; */
   }
 `;
@@ -34,11 +34,12 @@ export const ChartInfoBox = styled.div`
 export const ChartBox = styled.div`
   position: relative;
   width: 236px;
-  min-height: 290px;
+  height: auto;
+
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {
     width: 607px;
-    height: 215px;
+    height: 230px;
   }
   @media screen and (min-width: 1280px) {
     width: 811px;
@@ -97,4 +98,7 @@ export const TitleLineValue = styled.p`
   text-transform: uppercase;
 
   color: #091e3f;
+  & ~ & {
+    color: #ff6b08;
+  }
 `;
