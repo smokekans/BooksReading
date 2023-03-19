@@ -36,7 +36,13 @@ export const Table = styled.table`
   td:last-child {
     text-align: right;
     padding-right: 23px;
-  }
+   
+  };
+  @media screen and (min-width: 1280px){
+    th:last-child,
+    td:last-child { padding-right: 77px;}
+     
+    }
 `;
 
 export const Tr = styled.tr`
@@ -56,24 +62,24 @@ export const TrHead = styled.tr`
   color: #898f9f;
 `;
 
-export const EmptyPageDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: #898f9f;
-  line-height: 1.21;
-  margin-top: 20px;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-`;
+// export const EmptyPageDiv = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 20px;
+//   align-items: center;
+//   font-size: 14px;
+//   font-weight: 500;
+//   color: #898f9f;
+//   line-height: 1.21;
+//   margin-top: 20px;
+//   @media screen and (min-width: 768px) {
+//     display: none;
+//   }
+// `;
 
 export const NavLinkMore = styled(NavLink)`
   position: fixed;
-  bottom: 12px;
+  bottom: 53px;
   left: 44%;
   z-index: 999;
   @media screen and (min-width: 768px) {

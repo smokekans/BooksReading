@@ -4,19 +4,25 @@ import { StyledBox, StyledLibButton, StyledList, StyledStepText } from './ModalE
 import { ReactComponent as BookIcon } from '../ModalEmptyLibrary/svg/bookIconGrey.svg';
 import { ReactComponent as ArrowIcon } from '../ModalEmptyLibrary/svg/arrow.svg';
 import { ReactComponent as FlagIcon } from '../ModalEmptyLibrary/svg/flag.svg';
+import { useSelector } from 'react-redux';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langModalEmptyLibrary } from 'languages/langModalEmptyLibrary';
 
 export const ModalEmptyLibrary = ({ isEmptyLibrary, onClick }) => {
   const { isMobile } = useMatchMedia();
+  const lang = useSelector(getLanguage);
+  const {step, paragraf1, paragraf2, paragraf3, paragraf4} = langModalEmptyLibrary;
+
   return (
     <>
       {!isEmptyLibrary && (
         <StyledBox>
           <StyledList>
             <li>
-              <StyledStepText>Крок 1.</StyledStepText>
+              <StyledStepText>{step[lang]} 1.</StyledStepText>
               <p className="step-text">
                 <BookIcon />
-                Створіть особисту бібліотеку
+                {paragraf1[lang]}
               </p>
 
               <p className="sup-step-text">
@@ -25,14 +31,14 @@ export const ModalEmptyLibrary = ({ isEmptyLibrary, onClick }) => {
                   {' '}
                   <ArrowIcon width={10} height={12} />
                 </span>
-                Додайте до неї книжки, які маєте намір прочитати.
+                {paragraf2[lang]}
               </p>
             </li>
             <li>
-              <StyledStepText>Крок 2.</StyledStepText>
+              <StyledStepText>{step[lang]} 2.</StyledStepText>
               <p className="step-text">
                 <FlagIcon />
-                Сформуйте своє перше тренування
+                {paragraf3[lang]}
               </p>
 
               <p className="sup-step-text">
@@ -40,7 +46,7 @@ export const ModalEmptyLibrary = ({ isEmptyLibrary, onClick }) => {
                 <span>
                   <ArrowIcon width={10} height={12} />
                 </span>
-                Визначте ціль, оберіть період, розпочинайте тренування.
+                {paragraf4[lang]}
               </p>
             </li>
           </StyledList>
