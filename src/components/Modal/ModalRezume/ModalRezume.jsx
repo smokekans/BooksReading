@@ -1,6 +1,6 @@
 import { Form, Rate } from 'antd';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addBookReview } from 'redux/book/bookOperations';
 import {
   FormItem,
@@ -13,38 +13,30 @@ import {
   StyledTextArea,
 } from './ModalRezume.styled';
 
-export const ModalRezume = ({ onClose, bookId }) => {
+export const ModalRezume = ({ onClose }) => {
   const [form] = Form.useForm();
 
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(0);
   const [resume, setResume] = useState('');
+  const id = useSelector(state => state.book.book.idR);
 
   const dispatch = useDispatch();
 
   const handleCancel = () => {
     onClose();
   };
-  console.log(resume);
-  console.log(rating);
-  const handleSave = () => {
-    console.log(bookId);
 
+  const handleSave = () => {
     dispatch(
       addBookReview({
-        // bookId: bookId,
+        bookId: id,
         review: {
           rating: rating,
           feedback: resume,
         },
-        // bookId: '64130feb3551fd60da512f4c',
-        // review: {
-        //   rating: 5,
-        //   feedback: 'Really good book',
-        // },
       })
     );
-    setRating(null);
-    setResume('');
+    onClose();
   };
   return (
     <>

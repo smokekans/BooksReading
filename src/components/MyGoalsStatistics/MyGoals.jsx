@@ -1,7 +1,6 @@
-// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getEndDate } from 'redux/planning/planningSelectors';
-import { getBooksStatistics } from 'redux/planning/planningSelectors';
+import { getPlanBooks } from 'redux/planning/planningSelectors';
 import {
   TitleStl,
   WrapStl,
@@ -10,41 +9,34 @@ import {
   СolonStl,
   LabelStl,
   BoxStl,
+  BoxGoal,
   AccentStl,
 } from './MyGoals.styled';
-// import { getDuration } from 'redux/planning/planningSelectors';
-// import { getLastBook } from 'components/StatisticsResultForm/StatisticsResultForm';
-// import { getCurrentlyReading } from 'redux/book/bookSelectors';
 
 export const MyGoals = () => {
   const endDate = new Date(useSelector(getEndDate)).getTime();
-  // const days = useSelector(getDuration);
   const startData = Date.now();
-  // const currentBooks = useSelector(getCurrentlyReading);
-  
-  const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24)) ;
+  const booksAll = useSelector(getPlanBooks);
 
-  const books = useSelector(getBooksStatistics).length ;
-  // console.log()
-  // const lastBook =() => {
-  //   const lastBook = getLastBook({currentBooks})
-  //   console.log(lastBook)
-  // };
+  const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24));
 
-  // useEffect(() => {
-  //   const lastBook = getLastBook({currentBooks})
-  //   // console.log(lastBook)
-  // }, [currentBooks]);
+  const books = booksAll.length;
 
-  // const lastBook = getLastBook(currentBooks);
- 
+  const bookLeft = () => {
+    const diffPages = booksAll.filter(
+      book => book.pagesTotal - book.pagesFinished === 0);
+    return diffPages.length;
+  };
 
   return (
-    <section>
-      <WrapStl>
+    <BoxGoal>
+      {/* <WrapStl>
+        <TitleStl>My goals</TitleStl>
+      </WrapStl> */}
+      <WraperStl>
+          <WrapStl>
         <TitleStl>My goals</TitleStl>
       </WrapStl>
-      <WraperStl>
         <ListStl>
           <li>
             <BoxStl>
@@ -60,12 +52,12 @@ export const MyGoals = () => {
           </li>
           <li>
             <BoxStl>
-              <AccentStl>00</AccentStl>
+              <AccentStl>{bookLeft()}</AccentStl>
             </BoxStl>
             <LabelStl>Books left</LabelStl>
           </li>
         </ListStl>
       </WraperStl>
-    </section>
+    </BoxGoal>
   );
 };

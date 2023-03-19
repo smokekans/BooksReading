@@ -37,6 +37,7 @@ export const addBookReview = createAsyncThunk(
   async ({ bookId, review }, { rejectWithValue }) => {
     try {
       const { data } = await axios.patch(`/book/review/${bookId}`, review);
+      console.log(data);
       return data;
     } catch (error) {
       return rejectWithValue(error);

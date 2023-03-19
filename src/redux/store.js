@@ -16,7 +16,6 @@ import { bookReducer } from './book/bookSlice';
 import { languageReducer } from './language/language';
 import { planningReducer } from './planning/planningSlice';
 import { themeReducer } from './theme/themeSlice';
-import { userReducer } from './user/userSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -36,7 +35,6 @@ const rootReducer = combineReducers({
   auth: authPersistedReducer,
   book: bookReducer,
   planning: planningReducer,
-  user: userReducer,
   theme: themeReducer,
   language: languageReducer,
 });

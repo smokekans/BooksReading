@@ -16,10 +16,10 @@ const chooseModalVariant = variant => {
             return `
                 padding: 20px 20px 40px;
                 line-height: 1.25;
-                ${device.mobile} {
+                @media screen and ${device.mobile} {
                     width: 300px;
                 }
-                ${device.tablet} {
+                @media screen and ${device.tablet} {
                     width: 608px;
                 }
             `;
@@ -30,14 +30,8 @@ const chooseModalVariant = variant => {
                 padding: 48px 24px;
                 text-align: center;
                 line-height: 1.38;
-                ${device.mobile} {
-                    width: 350px;
-                }
-                ${device.tablet} {
-                    width: 400px;
-                }
-                ${device.desktop} {
-                    width: 394px;
+                @media screen and ${device.tablet} {
+                  width: 394px;
                 }
             `;
     }
@@ -53,7 +47,7 @@ export const ModalContainer = styled.div`
     transform: translate(-50%, -50%);
     & button {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-        ${device.tablet} {
+        @media screen and ${device.tablet} {
             font-size: 14px;
         }
     }

@@ -14,9 +14,9 @@ function signUpFulfilled(state) {
   state.error = null;
 }
 
-function signInFulfilled(state, action) {
-  state.user = action.payload.userData;
-  state.token = action.payload.accessToken;
+function signInFulfilled(state, { payload }) {
+  state.user = payload.userData;
+  state.token = payload.accessToken;
   state.isLoading = false;
   state.isLoggedIn = true;
   state.error = null;

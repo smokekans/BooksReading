@@ -4,19 +4,21 @@ import { MyGoals } from 'components/MyGoalsStatistics/MyGoals';
 import { StatisticsBookLIst } from 'components/StatisticsBookLIst/StatisticsBookLIst';
 import { StatisticsBookPages } from 'components/StatisticsBookPages/StatisticsBookPages';
 import ChartLine from 'components/ChartLine/ChartLine';
-// import MyPurposeToRead from 'components/MyPurposeToRead/MyPurposeToRead';
+import { Container } from 'App.styled';
+import { Wraper } from './Statistics.styled';
 
 const Statistics = () => {
   return (
-    <>
+    <Container>
+      < Wraper>
       <CountdownYears />
       <CountdownGoals />
       <MyGoals />
-      <StatisticsBookLIst />
-      {/* <MyPurposeToRead /> */}
-      <StatisticsBookPages />
+      </ Wraper>
+      <StatisticsBookLIst />    
       <ChartLine />
-    </>
+      <StatisticsBookPages />
+    </Container>
   );
 };
 

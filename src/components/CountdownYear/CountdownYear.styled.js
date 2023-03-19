@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Container = styled.section`
+  /* width:290px; */
+`;
+
 export const TimerStl = styled.section`
   display: flex;
   flex: column;
@@ -7,13 +11,17 @@ export const TimerStl = styled.section`
   justify-content: center;
   background: #ffffff;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-
-  position: absolute;
-  width: 290px;
+  width: 280px;
   height: 60px;
-  left: 153px;
-  top: 113px;
-  margin-top:8px;
+  @media screen and (min-width: 768px) {
+    width: 290px;
+    margin-right: 32px;
+    margin-left: 78px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 74px;
+    margin-left: 153px;
+  }
 `;
 export const LaybelStl = styled.p`
   font-family: 'Montserrat';
@@ -32,8 +40,6 @@ export const TimeStl = styled.p`
   font-weight: 700;
   font-size: 25px;
   line-height: 38px;
-  /* align-items:center; */
-  /* width: 28px; */
   height: 15px;
 
   color: #091e3f;
@@ -52,19 +58,14 @@ export const СolonStl = styled.p`
 `;
 
 export const TitleStl = styled.h2`
-  position: absolute;
-  width: 124px;
-  height: 17px;
-  left: 239px;
-  top: 88px;
-
-  font-family: 'Montserrat';
+   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  /* margin-bottom:8px; */
   text-align: center;
-
   color: #898f9f;
+  @media screen and (min-width: 768px) {
+    margin-left: 75px;
+  }
 `;
