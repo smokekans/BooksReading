@@ -32,6 +32,19 @@ export const fetchAllBooks = createAsyncThunk(
   }
 );
 
+export const addBookReview = createAsyncThunk(
+  'book/addBookReview',
+  async ({ bookId, review }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(`/book/review/${bookId}`, review);
+      console.log(data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 // const postApiBook = axios.create({
 //     baseURL: 'https://bookread-backend.goit.global',
 //     method: 'post',
