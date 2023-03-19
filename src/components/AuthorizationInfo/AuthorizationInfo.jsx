@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   MainDiv,
   Box,
@@ -13,59 +14,73 @@ import {
   UlTitle,
 } from './AuthorizationInfo.styled';
 import { ReactComponent as ArrowIcon } from '../../images/arrow.svg';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langAuthorizationInfo } from 'languages/langAuthorizationInfo';
 
 export const AuthorizationInfo = () => {
+  const lang = useSelector(getLanguage);
+  const {
+    helpyou,
+    paragraf1,
+    paragraf2,
+    paragraf3,
+    paragraf4,
+    paragraf5,
+    paragraf6,
+    paragraf7,
+    sign,
+    registr,
+  } = langAuthorizationInfo;
+
   return (
     <>
-        <MainDiv>
-          <Title>Books Reading</Title>
-          <Box>
-            <UlStyled>
-              <UlTitle>Допоможе вам</UlTitle>
-              <LiStyled>
-                <ArrowIcon />
-                <LiText>
-                  Швидше сформулювати свою ціль і розпочати читати
-                </LiText>
-              </LiStyled>
-              <LiStyled>
-                <ArrowIcon />
-                <LiText>
-                  Пропорційно розподілити навантаження на кожний день
-                </LiText>
-              </LiStyled>
-              <LiStyled>
-                <ArrowIcon />
-                <LiText>Відстежувати особистий успіх</LiText>
-              </LiStyled>
-            </UlStyled>
-            <UlStyled>
-              <UlTitle>Також ви зможете </UlTitle>
-              <LiStyled>
-                <ArrowIcon />
-                <LiText>Формувати особисту думку незалежну від інших</LiText>
-              </LiStyled>
-              <LiStyled>
-                <ArrowIcon />
-                <LiText>
-                  Підвищити свої професійні якості опираючись на нові знання
-                </LiText>
-              </LiStyled>
-              <LiStyled>
-                <ArrowIcon />
-                <LiText>Стати цікавим співрозмовником</LiText>
-              </LiStyled>
-            </UlStyled>
-          </Box>
-        </MainDiv>
-        <BoxBtn>
-          <LogLink to="/login">
-            <LogInBtn type="button">Увійти</LogInBtn>
-          </LogLink>
-          <RegLink to="/register">
-            <SignInBtn type="button">Реєстрація</SignInBtn>
-          </RegLink>
-        </BoxBtn>
+      <MainDiv>
+        <Title>Books Reading</Title>
+        <Box>
+          <UlStyled>
+            <UlTitle>{helpyou[lang]}</UlTitle>
+            <LiStyled>
+              <ArrowIcon />
+              <LiText>{paragraf1[lang]}</LiText>
+            </LiStyled>
+            <LiStyled>
+              <ArrowIcon />
+              <LiText>
+                {paragraf2[lang]}
+              </LiText>
+            </LiStyled>
+            <LiStyled>
+              <ArrowIcon />
+              <LiText>{paragraf3[lang]}</LiText>
+            </LiStyled>
+          </UlStyled>
+          <UlStyled>
+            <UlTitle>{paragraf4[lang]} </UlTitle>
+            <LiStyled>
+              <ArrowIcon />
+              <LiText>{paragraf5[lang]}</LiText>
+            </LiStyled>
+            <LiStyled>
+              <ArrowIcon />
+              <LiText>
+                {paragraf6[lang]}
+              </LiText>
+            </LiStyled>
+            <LiStyled>
+              <ArrowIcon />
+              <LiText>{paragraf7[lang]}</LiText>
+            </LiStyled>
+          </UlStyled>
+        </Box>
+      </MainDiv>
+      <BoxBtn>
+        <LogLink to="/login">
+          <LogInBtn type="button">{sign[lang]}</LogInBtn>
+        </LogLink>
+        <RegLink to="/register">
+          <SignInBtn type="button">{registr[lang]}</SignInBtn>
+        </RegLink>
+      </BoxBtn>
     </>
   );
 };

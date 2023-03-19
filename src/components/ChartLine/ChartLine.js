@@ -21,6 +21,9 @@ import {
 } from './ChartLine.styled';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langChartLine } from 'languages/langChartLine';
+import { useLocation } from 'react-router-dom';
 
 const ChartLine = () => {
   ChartJS.register(
@@ -34,7 +37,9 @@ const ChartLine = () => {
   );
 
   const books = useSelector(state => state.planning);
-  // console.log(books)
+  const lang = useSelector(getLanguage);
+  const {pages, plan, fact } = langChartLine;
+  const { pathname } = useLocation();
   const [statistic, setStatistic] = useState([]);
   const [daysLeft, setDaysLeft] = useState(0);
   useEffect(() => {
@@ -53,13 +58,11 @@ const ChartLine = () => {
       totalPages + statisticBookInfo.pagesTotal,
     0
   );
-  console.log(amountPagesFromStatistic);
   let amountPagesForDay = 0;
   if (daysLeft || amountPagesFromStatistic) {
     amountPagesForDay = Math.ceil(amountPagesFromStatistic / daysLeft);
-    // console.log(amountPagesForDay);
   }
-
+  // const amountPagesForDayCurrent = 0;
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -118,18 +121,38 @@ const ChartLine = () => {
       },
     },
   };
+  const currentReadPagesFromStatistic = statistic?.reduce((prev, value) => {
+    return prev + value.pagesCount;
+  }, 0);
+  const currentAmountPagesForDay = () => {
+    if (amountPagesForDay - currentReadPagesFromStatistic < 0) {
+      return 0;
+    }
+    return amountPagesForDay - currentReadPagesFromStatistic;
+  };
+  console.log(currentReadPagesFromStatistic);
   const labels = statistic?.map(item => item.time);
-  console.log(statistic);
   const readPagesFromStatistic = statistic?.map(item => item.pagesCount);
-  const pagesToRead = statistic?.map(item => amountPagesForDay);
+  const pagesToRead = statistic?.map(item => {
+    if (
+      Math.ceil((amountPagesForDay - item.pagesCount) / daysLeft) < 0 ||
+      currentAmountPagesForDay() === 0
+    ) {
+      return 0;
+    }
+    return Math.ceil((amountPagesForDay - item.pagesCount) / daysLeft);
+  });
+
+  console.log(currentAmountPagesForDay());
+  console.log(pagesToRead);
 
   const dataChart = {
     labels,
     datasets: [
       {
         label: 'План',
-        //  data: pathname === '/statistics' ? pagesToRead : [],
-        data: pagesToRead,
+        data: pathname === '/statistics' ? pagesToRead : [],
+        // data: pagesToRead,
         borderColor: '#091E3F',
         backgroundColor: '#091E3F',
         pointRadius: 5,
@@ -137,8 +160,8 @@ const ChartLine = () => {
       },
       {
         label: 'Факт',
-        //  data: pathname === '/statistics' ? readPagesFromStatistic : [],
-        data: readPagesFromStatistic,
+        data: pathname === '/statistics' ? readPagesFromStatistic : [],
+        // data: readPagesFromStatistic,
         borderColor: '#FF6B08',
         backgroundColor: '#FF6B08',
         pointRadius: 5,
@@ -150,12 +173,14 @@ const ChartLine = () => {
     <ChartSectionBox>
       <ChartInfoBox>
         <AxisSignatureBox>
-          <AmountText>КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ</AmountText>
-          <AmountValue>{amountPagesForDay}</AmountValue>
+          <AmountText>{pages[lang]}</AmountText>
+          <AmountValue>
+            {pathname === '/statistics' ? currentAmountPagesForDay() : 0}
+          </AmountValue>
         </AxisSignatureBox>
         <TitleLineBox>
-          <TitleLineValue>План</TitleLineValue>
-          <TitleLineValue>Факт</TitleLineValue>
+          <TitleLineValue>{plan[lang]}</TitleLineValue>
+          <TitleLineValue>{fact[lang]}</TitleLineValue>
         </TitleLineBox>
       </ChartInfoBox>
       <ChartBox>
