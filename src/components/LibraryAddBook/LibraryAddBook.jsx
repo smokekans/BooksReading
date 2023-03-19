@@ -73,7 +73,7 @@ export const LibraryAddBook = () => {
                 name="author"
                 minlength="1"
                 maxlength="254"
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Author name may contain only letters, apostrophe, dash and spaces. For example: Miyamoto Musashi"
                 placeholder="..."
                 autoComplete="on"
@@ -103,7 +103,7 @@ export const LibraryAddBook = () => {
                 name="pagesTotal"
                 min="1"
                 max="5000"
-                pattern="[0-9]*$"
+                pattern="[0-9]{1,2}/[0-9]{1,2}/[0-9]"
                 title="Total pages may contain only numbers from 1 to 5000. For example 10, 253, 999"
                 placeholder="..."
                 required

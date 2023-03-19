@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addBook, addBookReview, fetchAllBooks } from './bookOperations';
+import { addBook, fetchAllBooks, addBookReview, deleteBook } from './bookOperations';
 
 const bookInitialState = {
   book: {
@@ -49,6 +49,18 @@ const bookSlice = createSlice({
         state.book.finishedReading = payload.finishedReading;
       })
       .addCase(fetchAllBooks.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(deleteBook.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteBook.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.book.goingToRead = state.book.goingToRead.filter( ({ _id }) => _id !== payload._id);
+      })
+      .addCase(deleteBook.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
