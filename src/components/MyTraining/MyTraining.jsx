@@ -6,7 +6,7 @@ import {MainTitle, MainTitleContainer, BeginTrainingBtn} from './MyTraining.styl
 import { Calendars } from './Calendar/Calendar';
 import { BooksCustomSelector } from './BooksSelector/BooksSelector';
 import { TableComponent } from './Table/Table';
-import { langMyTraining} from 'languages/langMyTraining'
+import { langMyTraining } from 'languages/langMyTraining'; 
 import { getLanguage } from 'redux/language/languageSelectors';
 
 export const MyTraining = () => {
@@ -14,6 +14,7 @@ export const MyTraining = () => {
   const filter = useSelector(state => state.planning.filter);
   const dispatch = useDispatch();
   const lang = useSelector(getLanguage);
+ 
   const {training, startTraining} = langMyTraining
 
 

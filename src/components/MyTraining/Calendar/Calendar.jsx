@@ -3,7 +3,7 @@ import { addEndDate, addStartDate } from "redux/planning/planningSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Calendar, CalendarContainer, CalendarEndText, CalendarStartText } from "../MyTraining.styled";
 import DatePicker from "react-datepicker";
-import { langMyTraining } from 'languages/langMyTraining'
+import { langMyTraining } from "languages/langMyTraining"; 
 import "react-datepicker/dist/react-datepicker.css";
 import { getLanguage } from "redux/language/languageSelectors";
 

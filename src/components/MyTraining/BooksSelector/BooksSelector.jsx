@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToBooks, filteredBooksList } from "redux/planning/planningSlice";
 import { BooksContainer, BooksSelector, Button, SelectorArrow, SelectorItem, SelectorItemContainer, SelectorText } from "../MyTraining.styled";
-import { langMyTraining } from 'languages/langMyTraining'
+import { langMyTraining } from "languages/langMyTraining"; 
 import { getLanguage } from "redux/language/languageSelectors";
 
 export const BooksCustomSelector = () => {

@@ -3,7 +3,7 @@ import { deleteBook } from "redux/planning/planningSlice";
 import { Table, TableBodyItem, TableHeader, TableHeaderItem } from "../MyTraining.styled";
 import { ReactComponent as BookIcon } from '../../LibraryTable/svg/bookIconGrey.svg'
 import {ReactComponent as DeleteIcon} from '../svg/delete.svg'
-import {langMyTraining} from 'languages/langMyTraining'
+import { langMyTraining } from "languages/langMyTraining"; 
 import { getLanguage } from "redux/language/languageSelectors";
 
 export const TableComponent = () => {
@@ -26,10 +26,10 @@ export const TableComponent = () => {
         <Table>
         <thead>
         <TableHeader>
-                        <TableHeaderItem>{ title}</TableHeaderItem>
-            <TableHeaderItem>{author}</TableHeaderItem>
-            <TableHeaderItem>{publishYear}</TableHeaderItem>
-          <TableHeaderItem>{pagesTotal}.</TableHeaderItem>
+            <TableHeaderItem>{title[lang]}</TableHeaderItem>
+            <TableHeaderItem>{author[lang]}</TableHeaderItem>
+            <TableHeaderItem>{publishYear[lang]}</TableHeaderItem>
+          <TableHeaderItem>{pagesTotal[lang]}.</TableHeaderItem>
           </TableHeader>
           </thead>
         <tbody>
@@ -38,11 +38,11 @@ export const TableComponent = () => {
               <tr key={_id} id={_id}>
                 <TableBodyItem>
                   <BookIcon style={{ marginRight: "14px" }}/>
-                  {title[lang]}
+                  {title}
                   </TableBodyItem>
-                <TableBodyItem>{author[lang]}</TableBodyItem>
-                <TableBodyItem>{publishYear[lang]}</TableBodyItem>
-                <TableBodyItem>{pagesTotal[lang]}</TableBodyItem>
+                <TableBodyItem>{author}</TableBodyItem>
+                <TableBodyItem>{publishYear}</TableBodyItem>
+                <TableBodyItem>{pagesTotal}</TableBodyItem>
                 <TableBodyItem onClick={handleDeleteBook}>
                   <DeleteIcon/>
                 </TableBodyItem>
