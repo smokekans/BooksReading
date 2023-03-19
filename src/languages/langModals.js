@@ -21,7 +21,7 @@ export const langModals = {
     },
  anotherbook: {
     ua: 'Ще одна книга прочитана.',
-    en: 'Another book read.',
+    en: 'One another book read.',
     },
  done: {
     ua: 'Готово',
@@ -38,5 +38,17 @@ export const langModals = {
  exit: {
     ua: 'Вийти',
     en: 'Exit',
+  },
+ chooseRating: {
+    ua: 'Обрати рейтинг книги',
+    en: 'Choose a book rating',
+    },
+ summary: {
+    ua: 'Резюме',
+    en: 'Summary',
+  },
+ save: {
+    ua: 'Зберегти',
+    en: 'Save',
   },
 };
