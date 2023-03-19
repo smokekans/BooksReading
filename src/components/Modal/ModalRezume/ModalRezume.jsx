@@ -50,17 +50,17 @@ export const ModalRezume = ({ onClose }) => {
         <StyledRatingBox>
           <>
             <Form form={form} layout="vertical" autoComplete="off">
-              <StyledRatingText>Обрати рейтинг книги</StyledRatingText>
+              <StyledRatingText>{chooseRating[lang]}</StyledRatingText>
               <Rate
                 style={{ width: '120px', fontSize: '17px' }}
                 onChange={value => {
                   setRating(value);
                 }}
                 value={+rating}
-              />{' '}
+              />
               <FormItem name={'resume'}>
                 <StyledRatingLabel>
-                  <StyledRatingResumeText>Резюме</StyledRatingResumeText>
+                  <StyledRatingResumeText>{summary[lang]}</StyledRatingResumeText>
                   <StyledTextArea
                     required={false}
                     autoSize={{ minRows: 7 }}
@@ -72,9 +72,9 @@ export const ModalRezume = ({ onClose }) => {
                 </StyledRatingLabel>
               </FormItem>
               <StyledBox>
-                <StyledRatingButton onClick={handleCancel}>Назад</StyledRatingButton>
+                <StyledRatingButton onClick={handleCancel}>{back[lang]}</StyledRatingButton>
                 <StyledRatingButton type="primary" htmlType="submit" onClick={handleSave}>
-                  Зберегти
+                  {save[lang]}
                 </StyledRatingButton>
               </StyledBox>
             </Form>
