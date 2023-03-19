@@ -1,11 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getGoingToRead, getCurrentlyReading, getFinishedReading } from 'redux/book/bookSelectors';
+import {
+  getGoingToRead,
+  getCurrentlyReading,
+  getFinishedReading,
+} from 'redux/book/bookSelectors';
 import {
   TitleH2,
   Table,
   Tr,
   TrHead,
-  // EmptyPageDiv,
   NavLinkMore,
   Container,
   ButtonMyTrain,
@@ -20,9 +23,7 @@ import {
 import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
 import { ReactComponent as BookOrange } from './svg/flat.svg';
-// import { NavLink } from 'react-router-dom';
 import useMatchMedia from 'hooks/useMatchMedia';
-import Modal from 'components/Modal/Modal/Modal';
 import { Rate } from 'antd';
 import { useState } from 'react';
 import { addIdReview } from 'redux/book/bookSlice';
@@ -92,7 +93,10 @@ export const LibraryTable = () => {
                       <div>
                         <SpanMobile>{rate[lang]}:</SpanMobile>
 
-                        <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
+                        <Rate
+                          value={b.rating}
+                          style={{ width: '120px', fontSize: '17px' }}
+                        />
                       </div>
                       <Button
                         type="button"
@@ -135,7 +139,10 @@ export const LibraryTable = () => {
                       <td>{b.publishYear}</td>
                       <td>{b.pagesTotal}</td>
                       <td>
-                        <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
+                        <Rate
+                          value={b.rating}
+                          style={{ width: '120px', fontSize: '17px' }}
+                        />
                       </td>
                       <td>
                         <Button
@@ -148,7 +155,7 @@ export const LibraryTable = () => {
                           {resume[lang]}
                         </Button>
                       </td>
-                      {isOpen && <Modal onClose={toggleModal} />}
+                      {isOpen && <ModalRezume onClose={toggleModal} />}
                     </Tr>
                   );
                 })}
