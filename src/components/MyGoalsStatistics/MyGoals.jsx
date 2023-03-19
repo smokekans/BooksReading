@@ -12,11 +12,15 @@ import {
   BoxGoal,
   AccentStl,
 } from './MyGoals.styled';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langMyGoals } from 'languages/langMyGoals';
 
 export const MyGoals = () => {
   const endDate = new Date(useSelector(getEndDate)).getTime();
   const startData = Date.now();
   const booksAll = useSelector(getPlanBooks);
+  const lang = useSelector(getLanguage);
+  const { goal, bookaAm, daysAm, left } = langMyGoals;
 
   const days = Math.floor((endDate - startData) / (1000 * 60 * 60 * 24));
 
@@ -35,26 +39,26 @@ export const MyGoals = () => {
       </WrapStl> */}
       <WraperStl>
           <WrapStl>
-        <TitleStl>My goals</TitleStl>
+        <TitleStl>{goal[lang]}</TitleStl>
       </WrapStl>
         <ListStl>
           <li>
             <BoxStl>
               <СolonStl>{books}</СolonStl>
             </BoxStl>
-            <LabelStl>Amount of books</LabelStl>
+            <LabelStl>{bookaAm[lang]}</LabelStl>
           </li>
           <li>
             <BoxStl>
               <СolonStl>{days}</СolonStl>
             </BoxStl>
-            <LabelStl>Amount of days</LabelStl>
+            <LabelStl>{daysAm[lang]}</LabelStl>
           </li>
           <li>
             <BoxStl>
               <AccentStl>{bookLeft()}</AccentStl>
             </BoxStl>
-            <LabelStl>Books left</LabelStl>
+            <LabelStl>{left[lang]}</LabelStl>
           </li>
         </ListStl>
       </WraperStl>

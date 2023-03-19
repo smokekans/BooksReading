@@ -19,6 +19,8 @@ import { addPages } from 'redux/planning/planningOperations';
 import { useFormik } from 'formik';
 import { getPlanBooks } from 'redux/planning/planningSelectors';
 import { ModalFinishedBooks } from 'components/Modal/ModalFinishedBook/ModalFinishedBook';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langStatisticsBookData } from 'languages/langStatisticsBookData';
 
 const getRemainPages = ({ planBooks }) => {
   const diffPages = planBooks
@@ -33,6 +35,8 @@ export const StatisticsResultForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
   const planBooks = useSelector(getPlanBooks);
+  const lang = useSelector(getLanguage);
+  const { results, dateLang, numberOfPages, addResult, only, left} = langStatisticsBookData;
 
   const formik = useFormik({
     initialValues: { pages: '' },
@@ -41,7 +45,7 @@ export const StatisticsResultForm = () => {
       pages = Number(pages);
       if (pages > lastsPages) {
         formik.resetForm();
-        formik.setErrors({ pages: 'Залишилось ' + lastsPages + ' стор.' });
+        formik.setErrors({ pages: `${only[lang]} ` + lastsPages + ` ${left[lang]}` });
         return;
       } else if (pages === lastsPages) {
         setIsModalOpen(true);
@@ -61,11 +65,11 @@ export const StatisticsResultForm = () => {
 
   return (
     <>
-      <ResultTitle>Результати</ResultTitle>
+      <ResultTitle>{results[lang]}</ResultTitle>
       <FormRes onSubmit={formik.handleSubmit}>
         <ResultBox>
           <DataBox>
-            <LabelDate>Дата</LabelDate>
+            <LabelDate>{dateLang[lang]}</LabelDate>
             <DatePicker
               className={css.picker}
               selected={startDate}
@@ -77,7 +81,7 @@ export const StatisticsResultForm = () => {
             />
           </DataBox>
           <PageBox>
-            <LabelPages>Кількість сторінок</LabelPages>
+            <LabelPages>{numberOfPages[lang]}</LabelPages>
             <InputPages
               type="text"
               name="pages"
@@ -90,7 +94,7 @@ export const StatisticsResultForm = () => {
             )}
           </PageBox>
         </ResultBox>
-        <ResultBtn type="submit">Додати результат</ResultBtn>
+        <ResultBtn type="submit">{addResult[lang]}</ResultBtn>
       </FormRes>
       {isModalOpen && <ModalFinishedBooks onClose={closeModalFinished} />}
     </>

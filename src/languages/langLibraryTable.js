@@ -5,7 +5,7 @@ export const langLibraryTable = {
   },
   author: {
     ua: 'Автор',
-    en: 'Book',
+    en: 'Author',
   },
   publishYear: {
     ua: 'Рік',
