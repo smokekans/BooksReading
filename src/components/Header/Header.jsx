@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { /*useDispatch*/ useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   HeaderWrapper,
   Icon,
@@ -15,7 +15,6 @@ import {
   UserInfo,
 } from './Header.styled';
 import { getUserName, getIsLoggedIn } from '../../redux/auth/authSelectors';
-// import { logOutThunk } from 'redux/auth/authOperations';
 import icons from '../../images/symbol-defs.svg';
 import ExitModal from 'components/Modal/ModalHeader/ModalHeader';
 import { SwitchLanguage } from 'components/SwitchLanguage/SwitchLanguage';
@@ -24,8 +23,6 @@ import { langHeader } from 'languages/langHeader';
 
 export const Header = () => {
    const [isModalOpen, setIsModalOpen] = useState(false);
-
-//   const dispatch = useDispatch();
   const isLoggedIn = useSelector(getIsLoggedIn);
   const userName = useSelector(getUserName);
   const userAvatar = userName?.at(0)?.toUpperCase();
@@ -46,12 +43,8 @@ const closeModal = () => {
         <Logo isLoggedIn={isLoggedIn}>BR</Logo>
         {isLoggedIn && (
           <>
-            <UserInfo>
-              <UserAvatar>{userAvatar}</UserAvatar>
-              <UserName>{userName}</UserName>
-            </UserInfo>
-            <UserPanel>
-              <Nav>
+          <UserPanel>
+          <Nav>
                 <NavList>
                   <NavItem>
                     <Link to={'training'}>
@@ -69,17 +62,16 @@ const closeModal = () => {
                   </NavItem>
                 </NavList>
               </Nav>
-              {/* <ExitButton
-                type="button"
-                onClick={() => {
-                  dispatch(logOutThunk());
-                }}
-              > */}
+              
+            <UserInfo>
+              <UserAvatar>{userAvatar}</UserAvatar>
+              <UserName>{userName}</UserName>
+            </UserInfo>
+            
               <SwitchLanguage/>
               <ExitButton onClick={openExitModal}>
                 {exit[lang]}
               </ExitButton>
-              {/* </ExitButton> */}
             </UserPanel>
           </>
         )}{!isLoggedIn && <SwitchLanguage/>}

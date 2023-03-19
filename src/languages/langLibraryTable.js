@@ -39,4 +39,12 @@ export const langLibraryTable = {
     ua: 'Моє тренування',
     en: 'My training',
   },
+   bookl: {
+    ua: 'Книга',
+    en: 'The book',
+  },
+    deletel: {
+    ua: 'видалена з вашої бібліотеки',
+    en: 'has been removed from your library',
+  },
 };
