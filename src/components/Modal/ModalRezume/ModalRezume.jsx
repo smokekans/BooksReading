@@ -13,8 +13,14 @@ import {
   StyledRatingText,
   StyledTextArea,
 } from './ModalRezume.styled';
+import { useSelector } from 'react-redux';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langModals } from 'languages/langModals';
 
 export const ModalRezume = ({ onClose }) => {
+  const lang = useSelector(getLanguage);
+  const { chooseRating, summary, save, back } = langModals;
+
   const [form] = Form.useForm();
 
   const [rating, setRating] = useState(0);

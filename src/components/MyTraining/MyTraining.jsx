@@ -14,7 +14,8 @@ import {
   filteredBooksList,
 } from 'redux/planning/planningSlice';
 import { Button, BooksSelector, Calendar, CalendarContainer, CalendarEndText,  CalendarStartText,  MainTitle, MainTitleContainer, BeginTrainingBtn, BooksContainer, SelectorText, SelectorArrow, SelectorItem, SelectorItemContainer } from './MyTraining.styled';
-
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langMyTraining } from 'languages/langMyTraining';
 
 export const MyTraining = () => {
   const state = useSelector(state => state.book.book.goingToRead);
@@ -26,6 +27,9 @@ export const MyTraining = () => {
   const [list, setList] = useState(false)
   const dispatch = useDispatch();
   const filterId = filter.map(filterBook => filterBook._id);
+  const lang = useSelector(getLanguage);
+  const { start, finish, training, chooseBooks, add, title, author, publishYear, pagesTotal, startTraining} = langMyTraining;
+
 
   // форматування дати та запис у стан
   useEffect(() => {
@@ -78,7 +82,7 @@ export const MyTraining = () => {
   // стилі для бібліотеки dataPiker
   const Start = forwardRef(({ value, onClick }, ref) => (
     <Calendar onClick={onClick} ref={ref}>
-      {value} <CalendarStartText>Початок</CalendarStartText>
+      {value} <CalendarStartText>{start[lang]}</CalendarStartText>
       <svg
         width="13"
         height="6"
@@ -93,7 +97,7 @@ export const MyTraining = () => {
 
   const End = forwardRef(({ value, onClick }, ref) => (
     <Calendar onClick={onClick} ref={ref}>
-      {value} <CalendarEndText>Завершення</CalendarEndText>
+      {value} <CalendarEndText>{finish[lang]}</CalendarEndText>
       <svg
         width="13"
         height="6"
@@ -110,7 +114,7 @@ export const MyTraining = () => {
   return (
     <>
       <MainTitleContainer>
-        <MainTitle>Моє тренування</MainTitle>
+        <MainTitle>{training[lang]}</MainTitle>
       </MainTitleContainer>
       <CalendarContainer>
         <DatePicker
@@ -128,7 +132,7 @@ export const MyTraining = () => {
       </CalendarContainer>
       <BooksContainer>
         <BooksSelector onClick={handleReadId}>
-          <SelectorText>Обрати книги з бібліотеки</SelectorText>
+          <SelectorText>{chooseBooks[lang]}</SelectorText>
           {list ?<SelectorItemContainer>
             {state.map(({ _id, title }) => {
               return (
@@ -143,16 +147,16 @@ export const MyTraining = () => {
       </SelectorArrow>
         </BooksSelector>
       <Button onClick={handleAddBtn} type="button">
-        Додати
+        {add[lang]}
         </Button>
         </BooksContainer>
       <table>
         <thead>
           <tr>
-            <th>Назва книги</th>
-            <th>Автор</th>
-            <th>Рік</th>
-            <th>Стор.</th>
+            <th>{title[lang]}</th>
+            <th>{author[lang]}</th>
+            <th>{publishYear[lang]}</th>
+            <th>{pagesTotal[lang]}</th>
           </tr>
         </thead>
         <tbody>
@@ -199,7 +203,7 @@ export const MyTraining = () => {
       </table>
       <Link to="/statistics">
         {filter.length > 0 ? <BeginTrainingBtn onClick={handleBeginTrainingBtn} type="button">
-          Почати тренування
+          {startTraining[lang]}
         </BeginTrainingBtn>: ''}
       </Link>
     </>
