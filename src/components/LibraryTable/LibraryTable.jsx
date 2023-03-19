@@ -39,9 +39,6 @@ export const LibraryTable = () => {
   const goingToRead = useSelector(getGoingToRead);
   const currentlyReading = useSelector(getCurrentlyReading);
   const finishedReading = useSelector(getFinishedReading);
-
-  const dispatch = useDispatch();
-
   const { isMobile } = useMatchMedia();
   const lang = useSelector(getLanguage);
   const {
