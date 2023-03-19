@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import calendarImg from '../../images/calendar.png';
+
+export const MyTrainingContainer = styled.div`
+width: 928px;
+position: relative;
+`
+
 export const MainTitleContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -40,6 +46,9 @@ background-position: 5% 50%;
 margin-right: 44px;
 padding: 12px;
 padding-left: 45px;
+:hover{
+  cursor: pointer;
+}
 `
 export const CalendarStartText = styled.p`
   font-weight: 500;
@@ -65,6 +74,7 @@ position: relative;
 
 export const BooksSelector = styled.div`
 padding-top: 12px;
+padding-left: 12px;
 width: 715px;
 height: 42px;
 background-color: #FFFFFF;
@@ -83,10 +93,11 @@ margin: 0;
 export const SelectorArrow = styled.svg`
 position: absolute;
 top: 50%;
-left: 45%;
+left: 55%;
 `
 export const SelectorItemContainer = styled.div`
 top: 99%;
+left: 0%;
 position: absolute;
 width: inherit;
 background-color: #fff;
@@ -128,6 +139,7 @@ background-color: #FF6B08;
 width: 200px;
 height: 40px;
 border: none;
+margin: auto;
 `
 
 //table
@@ -150,26 +162,41 @@ export const TableHeaderItem = styled.th`
 text-align: start;
 font-weight: 500;
 font-size: 14px;
-line-height: 17px;
+line-height: calc(17/14);
 color: #898F9F;
-width: fit-content;
 :first-child{
-  width: 300px;
-  
+  width: 392px;
 }
+:nth-child(2){
+  width: 230px;
+}
+:nth-child(3){
+  width: 95px;
+}
+:nth-child(4){
+width: 40px;
+}
+
+
+
 `
 export const TableBodyItem = styled.td`
 font-weight: 500;
 font-size: 14px;
-line-height: 17px;
+line-height: calc(17/14);
 color: #242A37;
 padding-bottom: 22px;
+:first-child{
+  display: flex;
+  align-items: center;
+}
+:nth-child(4){
+  text-align: end;
+}
+:nth-child(5){
+  width: 134px;
+  display: flex;
+  justify-content: flex-end;
 
-`
-
-export const TableDecoration = styled.span`
-display: inline-block;
-top: 25px;
-left: 5px;
-
+}
 `
