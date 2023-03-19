@@ -13,7 +13,6 @@ import {
   StyledRatingText,
   StyledTextArea,
 } from './ModalRezume.styled';
-import { useSelector } from 'react-redux';
 import { getLanguage } from 'redux/language/languageSelectors';
 import { langModals } from 'languages/langModals';
 
