@@ -2,14 +2,18 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToBooks, filteredBooksList } from "redux/planning/planningSlice";
 import { BooksContainer, BooksSelector, Button, SelectorArrow, SelectorItem, SelectorItemContainer, SelectorText } from "../MyTraining.styled";
+import { langMyTraining } from 'languages/langMyTraining'
+import { getLanguage } from "redux/language/languageSelectors";
 
 export const BooksCustomSelector = () => {
+    const lang = useSelector(getLanguage);
+    const { chooseBooks, add } = langMyTraining;
     const state = useSelector(state => state.book.book.goingToRead);
     const filter = useSelector(state => state.planning.filter);
     const filterId = filter.map(filterBook => filterBook._id);
     const [id, setId] = useState(null);
     const [list, setList] = useState(false);
-    const [selector, setSelector] = useState('Обрати книги з бібліотеки')
+    const [selector, setSelector] = useState(chooseBooks[lang])
      const dispatch = useDispatch();
    
     
@@ -52,7 +56,7 @@ export const BooksCustomSelector = () => {
       </SelectorArrow>
         </BooksSelector>
       <Button onClick={handleAddBtn} type="button">
-        Додати
+        {add[lang]}
         </Button>
       </BooksContainer>
         </>

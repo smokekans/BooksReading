@@ -1,19 +1,25 @@
 import React, { forwardRef, useEffect, useState } from "react";
 import { addEndDate, addStartDate } from "redux/planning/planningSlice";
-
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Calendar, CalendarContainer, CalendarEndText, CalendarStartText } from "../MyTraining.styled";
 import DatePicker from "react-datepicker";
-
+import { langMyTraining } from 'languages/langMyTraining'
 import "react-datepicker/dist/react-datepicker.css";
+import { getLanguage } from "redux/language/languageSelectors";
 
 
 
 export const Calendars = () => {
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const lang = useSelector(getLanguage);
+    const dispatch = useDispatch();
+    const {start, finish} = langMyTraining
+    
+    
 
-  const dispatch = useDispatch();
+
+
     useEffect(() => {
     const formattedDate = date => {
       const incomeDate = new Date(date);
@@ -32,7 +38,7 @@ export const Calendars = () => {
     // стилі для бібліотеки dataPiker
   const Start = forwardRef(({ value, onClick }, ref) => (
     <Calendar onClick={onClick} ref={ref}>
-      {value} {startDate ? '':<CalendarStartText>Початок</CalendarStartText>}
+      {value} {startDate ? '':<CalendarStartText>{start[lang]}</CalendarStartText>}
       <svg
         width="13"
         height="6"
@@ -47,7 +53,7 @@ export const Calendars = () => {
 
   const End = forwardRef(({ value, onClick }, ref) => (
     <Calendar onClick={onClick} ref={ref}>
-      {value} {endDate ? '':<CalendarEndText>Завершення</CalendarEndText>}
+      {value} {endDate ? '':<CalendarEndText>{finish[lang]}</CalendarEndText>}
       <svg
         width="13"
         height="6"

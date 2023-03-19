@@ -3,10 +3,14 @@ import { deleteBook } from "redux/planning/planningSlice";
 import { Table, TableBodyItem, TableHeader, TableHeaderItem } from "../MyTraining.styled";
 import { ReactComponent as BookIcon } from '../../LibraryTable/svg/bookIconGrey.svg'
 import {ReactComponent as DeleteIcon} from '../svg/delete.svg'
+import {langMyTraining} from 'languages/langMyTraining'
+import { getLanguage } from "redux/language/languageSelectors";
 
 export const TableComponent = () => {
     const filter = useSelector(state => state.planning.filter);
-     const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const lang = useSelector(getLanguage);
+    const {title, author, publishYear, pagesTotal} = langMyTraining
     // відправка інформації на сервер при кліку на кнопку тренування
   
   // видалення книжки
@@ -22,10 +26,10 @@ export const TableComponent = () => {
         <Table>
         <thead>
         <TableHeader>
-            <TableHeaderItem>Назва книги</TableHeaderItem>
-            <TableHeaderItem>Автор</TableHeaderItem>
-            <TableHeaderItem>Рік</TableHeaderItem>
-          <TableHeaderItem>Стор.</TableHeaderItem>
+                        <TableHeaderItem>{ title}</TableHeaderItem>
+            <TableHeaderItem>{author}</TableHeaderItem>
+            <TableHeaderItem>{publishYear}</TableHeaderItem>
+          <TableHeaderItem>{pagesTotal}.</TableHeaderItem>
           </TableHeader>
           </thead>
         <tbody>
@@ -34,11 +38,11 @@ export const TableComponent = () => {
               <tr key={_id} id={_id}>
                 <TableBodyItem>
                   <BookIcon style={{ marginRight: "14px" }}/>
-                  {title}
+                  {title[lang]}
                   </TableBodyItem>
-                <TableBodyItem>{author}</TableBodyItem>
-                <TableBodyItem>{publishYear}</TableBodyItem>
-                <TableBodyItem>{pagesTotal}</TableBodyItem>
+                <TableBodyItem>{author[lang]}</TableBodyItem>
+                <TableBodyItem>{publishYear[lang]}</TableBodyItem>
+                <TableBodyItem>{pagesTotal[lang]}</TableBodyItem>
                 <TableBodyItem onClick={handleDeleteBook}>
                   <DeleteIcon/>
                 </TableBodyItem>
