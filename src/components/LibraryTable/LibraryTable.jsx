@@ -125,7 +125,6 @@ export const LibraryTable = () => {
                   <th width="15%"></th>
                 </TrHead>
               </thead>
-
               <tbody>
                 {finishedReading?.map(b => {
                   return (
