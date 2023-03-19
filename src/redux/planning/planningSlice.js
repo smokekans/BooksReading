@@ -7,41 +7,40 @@ const planningInitialState = {
   books: [],
   stats: [],
   filter: [],
-  duration: null,
+  // duration: null,
 };
 
 const planningSlice = createSlice({
   name: 'planning',
   initialState: planningInitialState,
   reducers: {
-    addStartDate(state, action) {
-      state.startDate = action.payload;
+    addStartDate(state, { payload }) {
+      state.startDate = payload;
     },
-    addEndDate(state, action) {
-      state.endDate = action.payload;
+    addEndDate(state, { payload }) {
+      state.endDate = payload;
     },
-    addToBooks(state, action) {
-      state.books.push(action.payload);
+    addToBooks(state, { payload }) {
+      state.books.push(payload);
     },
-    filteredBooksList(state, action) {
-      state.filter.push(action.payload);
+    filteredBooksList(state, { payload }) {
+      state.filter.push(payload);
     },
-    deleteBook(state, action) {
-      state.filter = action.payload;
+    deleteBook(state, { payload }) {
+      state.filter = payload;
     },
   },
   extraReducers: builder => {
     builder
-      .addCase(addTrainingConfig.fulfilled, (state, action) => {
-        state.startDate = action.payload.startDate;
-        state.endDate = action.payload.endDate;
-        state.stats = action.payload.stats;
-        state.duration = action.payload.duration;
+      .addCase(addTrainingConfig.fulfilled, (state, { payload }) => {
+        state.startDate = payload.startDate;
+        state.endDate = payload.endDate;
+        state.stats = payload.stats;
       })
-      .addCase(addPages.fulfilled, (state, action) => {
-        state.stats = action.payload.planning.stats;
+      .addCase(addPages.fulfilled, (state, { payload }) => {
+        state.stats = payload.planning.stats;
         state.filter = state.filter.map(book =>
-          book._id === action.payload.book._id ? action.payload.book : book
+          book._id === payload.book._id ? payload.book : book
         );
       });
   },

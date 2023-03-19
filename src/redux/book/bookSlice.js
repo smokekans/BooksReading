@@ -22,14 +22,14 @@ const bookSlice = createSlice({
       .addCase(addBook.pending, state => {
         state.isLoading = true;
       })
-      .addCase(addBook.fulfilled, (state, action) => {
+      .addCase(addBook.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.book.goingToRead.push(action.payload.newBook);
+        state.book.goingToRead.push(payload);
       })
-      .addCase(addBook.rejected, (state, action) => {
+      .addCase(addBook.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = payload;
       })
       .addCase(fetchAllBooks.pending, state => {
         state.isLoading = true;
@@ -41,9 +41,9 @@ const bookSlice = createSlice({
         state.book.currentlyReading = payload.currentlyReading;
         state.book.finishedReading = payload.finishedReading;
       })
-      .addCase(fetchAllBooks.rejected, (state, action) => {
+      .addCase(fetchAllBooks.rejected, (state, { payload }) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = payload;
       });
   },
 });

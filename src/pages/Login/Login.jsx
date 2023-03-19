@@ -23,9 +23,9 @@ const Login = () => {
             <Icon/>
             Google
           </GoogleBtn>
-          <Label htmlFor='emailInput'>Електронна адреса <Orange>*</Orange></Label>
+          <Label className='label' htmlFor='emailInput'>Електронна адреса <Orange>*</Orange></Label>
           <Input type="email" name="email" id='emailInput' placeholder='your@email.com'/>
-          <Label htmlFor="passwordInput">Пароль <Orange>*</Orange></Label>
+          <Label style={{marginTop: 20}} className='label' htmlFor="passwordInput">Пароль <Orange>*</Orange></Label>
           <Input type="password" name="password" id='passwordInput'placeholder='Пароль'/>
           <LogInBtn type="submit">Увійти</LogInBtn>
           <RegLink to="/register">Реєстрація</RegLink>
@@ -38,7 +38,7 @@ const Login = () => {
           несущие свой драгоценный груз от поколения к поколению.{' '}
         </MainText>
         <Stick></Stick>
-          <AddText>Бэкон Ф.</AddText>
+        <AddText>Бэкон Ф.</AddText>
       </MainDiv>
     </Container>
   );

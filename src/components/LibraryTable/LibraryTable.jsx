@@ -1,5 +1,9 @@
 import { useSelector } from 'react-redux';
-import { getGoingToRead, getCurrentlyReading, getFinishedReading } from 'redux/book/bookSelectors';
+import {
+  getGoingToRead,
+  getCurrentlyReading,
+  getFinishedReading,
+} from 'redux/book/bookSelectors';
 import {
   TitleH2,
   Table,
