@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const BoxGoal = styled.section`
-  margin-top: 36px;
+  margin-top: 0;
   @media screen and (min-width: 768px) {
-    margin-top: 36px;
+    margin-top: 0;
   }
   @media screen and (min-width: 1280px) {
-    margin-left: 169px;
-    margin-top: 20px;
+    margin-left: 0;
+    margin-top: 0;
   }
 `;
 
