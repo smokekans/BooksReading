@@ -11,9 +11,13 @@ import {
   StatTitle,
   StatWrap,
 } from './StatisticsBookData.styled';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langStatisticsBookData } from 'languages/langStatisticsBookData';
 
 export const StatisticsBookData = () => {
   const stats = useSelector(getStats);
+  const lang = useSelector(getLanguage);
+  const { statist, pages } = langStatisticsBookData;
 
   const formatTime = time => {
     return time < 10 ? '0' + time : time;
@@ -22,7 +26,7 @@ export const StatisticsBookData = () => {
   return (
     <>
       <StatWrap>
-        <StatTitle>СТАТИСТИКА</StatTitle>
+        <StatTitle>{statist[lang]}</StatTitle>
         <StatList>
           {stats.map((stat, index) => (
             <StatItem key={index}>
@@ -37,7 +41,7 @@ export const StatisticsBookData = () => {
                 :00
               </StatTime>
               <StatPages>
-                {stat.pagesCount}&ensp;<StatPage>стор.</StatPage>
+                {stat.pagesCount}&ensp;<StatPage>{pages[lang]}</StatPage>
               </StatPages>
             </StatItem>
           ))}

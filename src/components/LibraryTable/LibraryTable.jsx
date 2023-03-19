@@ -1,9 +1,5 @@
-import { useSelector } from 'react-redux';
-import {
-  getGoingToRead,
-  getCurrentlyReading,
-  getFinishedReading,
-} from 'redux/book/bookSelectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getGoingToRead, getCurrentlyReading, getFinishedReading } from 'redux/book/bookSelectors';
 import {
   TitleH2,
   Table,
@@ -29,13 +25,18 @@ import useMatchMedia from 'hooks/useMatchMedia';
 import Modal from 'components/Modal/Modal/Modal';
 import { Rate } from 'antd';
 import { useState } from 'react';
+import { addIdReview } from 'redux/book/bookSlice';
 import { getLanguage } from 'redux/language/languageSelectors';
 import { langLibraryTable } from 'languages/langLibraryTable';
+import { ModalRezume } from 'components/Modal/ModalRezume/ModalRezume';
 
 export const LibraryTable = () => {
   const goingToRead = useSelector(getGoingToRead);
   const currentlyReading = useSelector(getCurrentlyReading);
   const finishedReading = useSelector(getFinishedReading);
+
+  const dispatch = useDispatch();
+
   const { isMobile } = useMatchMedia();
   const lang = useSelector(getLanguage);
   const {
@@ -51,11 +52,16 @@ export const LibraryTable = () => {
     alreadyread,
   } = langLibraryTable;
 
+  const [bookId, setBookId] = useState('');
+
+  dispatch(addIdReview(bookId));
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <Container>
       {finishedReading?.length !== 0 && (
@@ -85,16 +91,23 @@ export const LibraryTable = () => {
                       </div>
                       <div>
                         <SpanMobile>{rate[lang]}:</SpanMobile>
-                        <Rate style={{ width: '120px', fontSize: '17px' }} />
+
+                        <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
                       </div>
-                      <Button type="button" onClick={toggleModal}>
+                      <Button
+                        type="button"
+                        onClick={() => {
+                          setBookId(b?._id);
+                          toggleModal();
+                        }}
+                      >
                         {resume[lang]}
                       </Button>
                     </PMobile>
                   </LiMobile>
                 );
               })}
-              {isOpen && <Modal onClose={toggleModal} />}
+              {isOpen && <ModalRezume onClose={toggleModal} />}
             </UlMobile>
           ) : (
             <Table>
@@ -122,10 +135,16 @@ export const LibraryTable = () => {
                       <td>{b.publishYear}</td>
                       <td>{b.pagesTotal}</td>
                       <td>
-                        <Rate style={{ width: '120px', fontSize: '17px' }} />
+                        <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
                       </td>
                       <td>
-                        <Button type="button" onClick={toggleModal}>
+                        <Button
+                          type="button"
+                          onClick={() => {
+                            setBookId(b?._id);
+                            toggleModal();
+                          }}
+                        >
                           {resume[lang]}
                         </Button>
                       </td>

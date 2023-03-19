@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addBook, fetchAllBooks } from './bookOperations';
+import { addBook, addBookReview, fetchAllBooks } from './bookOperations';
 
 const bookInitialState = {
   book: {
@@ -8,6 +8,9 @@ const bookInitialState = {
     finishedReading: null,
     isLoading: false,
     error: null,
+    rating: null,
+    feedback: '',
+    idR: '',
   },
 };
 
@@ -15,7 +18,11 @@ const bookSlice = createSlice({
   name: 'book',
   initialState: bookInitialState,
 
-  reducers: {},
+  reducers: {
+    addIdReview(state, { payload }) {
+      state.book.idR = payload;
+    },
+  },
 
   extraReducers: builder => {
     builder
@@ -44,8 +51,16 @@ const bookSlice = createSlice({
       .addCase(fetchAllBooks.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
+      })
+      .addCase(addBookReview.fulfilled, (state, action) => {
+        state.book.finishedReading = state.book.finishedReading.map(book =>
+          book._id === action.payload._id ? action.payload : book
+        );
+        state.book.rating = action.payload.rating;
+        state.book.idR = action.payload._id;
       });
   },
 });
 
 export const bookReducer = bookSlice.reducer;
+export const { addIdReview } = bookSlice.actions;

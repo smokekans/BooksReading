@@ -22,7 +22,7 @@ export const MyTraining = () => {
     <>
       <div>
       <MainTitleContainer>
-        <MainTitle>Моє тренування</MainTitle>
+        <MainTitle>{training[lang]}</MainTitle>
       </MainTitleContainer>
       <Calendars/>
      <BooksCustomSelector/>
@@ -31,7 +31,7 @@ export const MyTraining = () => {
           style={{position: 'absolute', left: '50%', transform: 'translateX(-100%)'}}
         to="/statistics">
         {filter.length > 0 ? <BeginTrainingBtn onClick={handleBeginTrainingBtn} type="button">
-          Почати тренування
+          {startTraining[lang]}
         </BeginTrainingBtn>: ''}
         </Link>
         </div>

@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './NotFound.css';
+import { useSelector } from 'react-redux';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langNotFound } from 'languages/langNotFound';
 
 export default function NotFound() {
   const location = useLocation();
+  const lang = useSelector(getLanguage);
+  const { lost, pageNotFound, goBack } = langNotFound;
 
   const backLink = location.state?.from ?? '/';
 
@@ -17,12 +22,12 @@ export default function NotFound() {
               <div className="four_zero_four_bg"></div>
 
               <div className="contant_box_404">
-                <h3 className="h2">Look like you're lost</h3>
+                <h3 className="h2">{lost[lang]}</h3>
 
-                <p>the page you are looking for not avaible!</p>
+                <p>{pageNotFound[lang]}</p>
 
                 <Link href="" className="link_404" to={backLink}>
-                  Go back
+                  {goBack[lang]}
                 </Link>
               </div>
             </div>
