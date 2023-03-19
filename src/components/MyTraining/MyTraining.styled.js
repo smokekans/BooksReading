@@ -126,3 +126,38 @@ width: 200px;
 height: 40px;
 border: none;
 `
+
+//table
+export const Table = styled.table`
+position: relative;
+width: 928px;
+border: solid 1px red;
+ `
+export const TableHeader = styled.tr`
+background-color: aqua;
+height: 40px;
+`
+
+export const TableHeaderItem = styled.th`
+border: solid 1px red;
+text-align: start;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+color: #898F9F;
+width: fit-content;
+:first-child{
+  width: 300px;
+  
+}
+`
+export const TableBodyItem = styled.td`
+padding-left: 36px;
+`
+
+export const TableDecoration = styled.span`
+position: absolute;
+display: inline-block;
+top: 25px;
+left: 5px;
+`

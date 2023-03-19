@@ -88,7 +88,6 @@ export const LibraryTable = () => {
                   <th></th>
                 </TrHead>
               </thead>
-
               <tbody>
                 {finishedReading?.map(b => {
                   return (
