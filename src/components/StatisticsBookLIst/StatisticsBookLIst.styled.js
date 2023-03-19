@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ListWrapp = styled.div`
-  margin: 140px 20px;
   width: 280px;
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -9,6 +8,8 @@ export const ListWrapp = styled.div`
 
   @media screen and (min-width: 1280px) {
     width: 928px;
+    position: absolute;
+    top: 205px;
   }
 `;
 
@@ -81,7 +82,7 @@ export const Pages = styled.span`
 
 export const List = styled.ul`
   @media screen and (min-width: 768px) {
-    height: 186px;
+    height: 172px;
     overflow-y: scroll;
   }
   &::-webkit-scrollbar {

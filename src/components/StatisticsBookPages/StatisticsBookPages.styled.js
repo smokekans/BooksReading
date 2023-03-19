@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const ResultWrapp = styled.div`
-  margin: 20px;
   padding: 20px;
   width: 280px;
-  border-color: #ffffff;
+  background: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   @media screen and (min-width: 768px) {
     width: 704px;

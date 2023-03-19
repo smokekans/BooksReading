@@ -5,19 +5,21 @@ import { StatisticsBookLIst } from 'components/StatisticsBookLIst/StatisticsBook
 import { StatisticsBookPages } from 'components/StatisticsBookPages/StatisticsBookPages';
 import ChartLine from 'components/ChartLine/ChartLine';
 import { Container } from 'App.styled';
-import { Wraper } from './Statistics.styled';
+import { StatsWrapp, Wraper } from './Statistics.styled';
 
 const Statistics = () => {
   return (
     <Container>
-      < Wraper>
-      <CountdownYears />
-      <CountdownGoals />
-      <MyGoals />
-      </ Wraper>
-      <StatisticsBookLIst />    
-      <ChartLine />
-      <StatisticsBookPages />
+      <StatsWrapp>
+        <Wraper>
+          <CountdownYears />
+          <CountdownGoals />
+        </Wraper>
+        <MyGoals />
+        <StatisticsBookLIst />
+        <ChartLine />
+        <StatisticsBookPages />
+      </StatsWrapp>
     </Container>
   );
 };
