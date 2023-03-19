@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import calendarImg from '../../images/calendar.png';
+
+export const MyTrainingContainer = styled.div`
+width: 928px;
+position: relative;
+`
+
 export const MainTitleContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -27,6 +33,7 @@ margin-bottom: 24px;
 export const Calendar = styled.div`
 display: flex;
 align-items: center;
+justify-content: space-between;
 width: 250px;
 height: 42px;
 border: solid 1px #A6ABB9;
@@ -37,6 +44,11 @@ background-repeat: no-repeat;
 background-size: 17px 17px;
 background-position: 5% 50%;
 margin-right: 44px;
+padding: 12px;
+padding-left: 45px;
+:hover{
+  cursor: pointer;
+}
 `
 export const CalendarStartText = styled.p`
   font-weight: 500;
@@ -62,6 +74,7 @@ position: relative;
 
 export const BooksSelector = styled.div`
 padding-top: 12px;
+padding-left: 12px;
 width: 715px;
 height: 42px;
 background-color: #FFFFFF;
@@ -80,10 +93,11 @@ margin: 0;
 export const SelectorArrow = styled.svg`
 position: absolute;
 top: 50%;
-left: 45%;
+left: 55%;
 `
 export const SelectorItemContainer = styled.div`
 top: 99%;
+left: 0%;
 position: absolute;
 width: inherit;
 background-color: #fff;
@@ -125,4 +139,64 @@ background-color: #FF6B08;
 width: 200px;
 height: 40px;
 border: none;
+margin: auto;
+`
+
+//table
+export const Table = styled.table`
+  width: 928px;
+  background: #ffffff;
+  margin-bottom: 32px;
+  text-align: left;
+  background: #f6f7fb;
+  border-spacing: 0px 5px;
+  
+ `
+export const TableHeader = styled.tr`
+height: 40px;
+border-top: solid 1px grey;
+
+`
+
+export const TableHeaderItem = styled.th`
+text-align: start;
+font-weight: 500;
+font-size: 14px;
+line-height: calc(17/14);
+color: #898F9F;
+:first-child{
+  width: 392px;
+}
+:nth-child(2){
+  width: 230px;
+}
+:nth-child(3){
+  width: 95px;
+}
+:nth-child(4){
+width: 40px;
+}
+
+
+
+`
+export const TableBodyItem = styled.td`
+font-weight: 500;
+font-size: 14px;
+line-height: calc(17/14);
+color: #242A37;
+padding-bottom: 22px;
+:first-child{
+  display: flex;
+  align-items: center;
+}
+:nth-child(4){
+  text-align: end;
+}
+:nth-child(5){
+  width: 134px;
+  display: flex;
+  justify-content: flex-end;
+
+}
 `

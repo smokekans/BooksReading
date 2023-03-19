@@ -26,18 +26,22 @@ import { ReactComponent as BookIcon } from './svg/bookIconGrey.svg';
 import { ReactComponent as More } from './svg/more.svg';
 import { ReactComponent as BookOrange } from './svg/flat.svg';
 import useMatchMedia from 'hooks/useMatchMedia';
-import Modal from 'components/Modal/Modal/Modal';
 import { Rate } from 'antd';
 import { useState } from 'react';
+import { addIdReview } from 'redux/book/bookSlice';
 import { getLanguage } from 'redux/language/languageSelectors';
 import { langLibraryTable } from 'languages/langLibraryTable';
 import { ToastContainer, toast } from 'react-toastify';
+import { ModalRezume } from 'components/Modal/ModalRezume/ModalRezume';
 
 export const LibraryTable = () => {
   const dispatch = useDispatch();
   const goingToRead = useSelector(getGoingToRead);
   const currentlyReading = useSelector(getCurrentlyReading);
   const finishedReading = useSelector(getFinishedReading);
+
+  const dispatch = useDispatch();
+
   const { isMobile } = useMatchMedia();
   const lang = useSelector(getLanguage);
   const {
@@ -54,6 +58,10 @@ export const LibraryTable = () => {
     bookl, 
     deletel
   } = langLibraryTable;
+
+  const [bookId, setBookId] = useState('');
+
+  dispatch(addIdReview(bookId));
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -95,16 +103,26 @@ export const LibraryTable = () => {
                       </div>
                       <div>
                         <SpanMobile>{rate[lang]}:</SpanMobile>
-                        <Rate style={{ width: '120px', fontSize: '17px' }} />
+
+                        <Rate
+                          value={b.rating}
+                          style={{ width: '120px', fontSize: '17px' }}
+                        />
                       </div>
-                      <Button type="button" onClick={toggleModal}>
+                      <Button
+                        type="button"
+                        onClick={() => {
+                          setBookId(b?._id);
+                          toggleModal();
+                        }}
+                      >
                         {resume[lang]}
                       </Button>
                     </PMobile>
                   </LiMobile>
                 );
               })}
-              {isOpen && <Modal onClose={toggleModal} />}
+              {isOpen && <ModalRezume onClose={toggleModal} />}
             </UlMobile>
           ) : (
             <Table>
@@ -118,7 +136,6 @@ export const LibraryTable = () => {
                   <th width="15%"></th>
                 </TrHead>
               </thead>
-
               <tbody>
                 {finishedReading?.map(b => {
                   return (
@@ -133,14 +150,23 @@ export const LibraryTable = () => {
                       <td>{b.publishYear}</td>
                       <td>{b.pagesTotal}</td>
                       <td>
-                        <Rate style={{ width: '101px', fontSize: '12px' }} />
+                        <Rate
+                          value={b.rating}
+                          style={{ width: '120px', fontSize: '17px' }}
+                        />
                       </td>
                       <td>
-                        <Button type="button" onClick={toggleModal}>
+                        <Button
+                          type="button"
+                          onClick={() => {
+                            setBookId(b?._id);
+                            toggleModal();
+                          }}
+                        >
                           {resume[lang]}
                         </Button>
                       </td>
-                      {isOpen && <Modal onClose={toggleModal} />}
+                      {isOpen && <ModalRezume onClose={toggleModal} />}
                     </Tr>
                   );
                 })}

@@ -2,21 +2,23 @@ import styled from 'styled-components';
 export const ChartSectionBox = styled.div`
   width: 280px;
   min-height: 290px;
+
   background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 0;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
   @media screen and (min-width: 768px) {
     width: 704px;
     min-height: 340px;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
   }
   @media screen and (min-width: 1280px) {
     width: 928px;
-    margin: 0 32px 0 0;
+    max-height: 340px;
+    /* margin: 0 32px 0 0; */
   }
 `;
 export const ChartInfoBox = styled.div`
