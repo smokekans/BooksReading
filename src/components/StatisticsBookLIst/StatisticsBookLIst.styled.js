@@ -37,8 +37,12 @@ export const Title = styled.span`
   font-size: 14px;
   line-height: 17px;
   color: #898f9f;
+  width: 130px;
+  @media screen and (min-width: 768px) {
+    margin-right: 152px;
+  }
   @media screen and (min-width: 1280px) {
-    margin-right: 300px;
+    margin-right: 262px;
   }
 `;
 
@@ -65,6 +69,7 @@ export const Year = styled.span`
   font-size: 14px;
   line-height: 17px;
   color: #898f9f;
+  width: 40px;
   @media screen and (min-width: 1280px) {
     margin-right: 139px;
   }
@@ -150,13 +155,16 @@ export const BookTitle = styled.span`
   color: #242a37;
   display: inline-block;
   width: 240px;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @media screen and (min-width: 768px) {
     margin-right: 45px;
     width: 200px;
   }
   @media screen and (min-width: 1280px) {
     width: 300px;
-    margin-right: 57px;
+    margin-right: 115px;
   }
 `;
 
@@ -168,15 +176,17 @@ export const BookAuthor = styled.span`
   line-height: 17px;
   color: #242a37;
   display: inline-block;
-  width: 155px;
-
+  max-width: 145px;
+  width: 145px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @media screen and (min-width: 768px) {
-    margin-right: 45px;
+    margin-right: 65px;
     width: 160px;
   }
   @media screen and (min-width: 1280px) {
     width: 180px;
-    margin-right: 42px;
+    margin-right: 85px;
   }
 `;
 
@@ -188,9 +198,12 @@ export const BookYear = styled.span`
   line-height: 17px;
   display: inline-block;
   color: #242a37;
-  width: 155px;
+  max-width: 155px;
+  min-width: 145px;
   @media screen and (min-width: 768px) {
     margin-right: 32px;
+    max-width: 80px;
+    min-width: 80px;
     width: 80px;
   }
   @media screen and (min-width: 1280px) {
@@ -232,7 +245,8 @@ export const YearMob = styled.span`
     font-size: 14px;
     line-height: 17px;
     color: #898f9f;
-    margin: 0 62px 14px 34px;
+    width: 40px;
+    margin: 0 48px 14px 34px;
   }
   @media screen and (min-width: 768px) {
     display: none;
