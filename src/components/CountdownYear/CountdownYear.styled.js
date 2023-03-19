@@ -16,7 +16,7 @@ export const TimerStl = styled.section`
   @media screen and (min-width: 768px) {
     width: 290px;
     margin-right: 32px;
-    margin-left: 78px;
+    /* margin-left: 78px; */
   }
   @media screen and (min-width: 1280px) {
     margin-right: 74px;
@@ -66,6 +66,10 @@ export const TitleStl = styled.h2`
   text-align: center;
   color: #898f9f;
   @media screen and (min-width: 768px) {
+    /* margin-left: 75px; */
+  }
+  @media screen and (min-width: 1280px) {
+    /* margin-right: 74px; */
     margin-left: 75px;
   }
 `;
