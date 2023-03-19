@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import device from 'hooks/device';
 
 export const HeaderWrapper = styled.div`
-position: relative;
-height: 60px;
+  position: relative;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +14,9 @@ height: 60px;
 `;
 
 export const Logo = styled.p`
+  height: 60px;
+  justify-content: center;
+  align-items: center;
   display: flex;
   font-family: 'Abril Fatface';
   font-style: normal;
@@ -25,7 +28,6 @@ export const Logo = styled.p`
 
 export const Nav = styled.nav`
   display: flex;
-  
 `;
 
 export const NavList = styled.ul`
@@ -54,8 +56,8 @@ export const Link = styled(NavLink)`
   width: 33px;
   &:hover,
   &:active {
-   background-color: #F5F7FA;
-   border-radius: 50%;
+    background-color: #f5f7fa;
+    border-radius: 50%;
   }
 `;
 
@@ -71,10 +73,10 @@ export const UserInfo = styled.div`
   display: flex;
 
   @media screen and ${device.tablet} {
-   position: absolute;
-  top: 10px;
-  left: 46%;
- }
+    position: absolute;
+    top: 10px;
+    left: 46%;
+  }
 `;
 
 export const UserName = styled.p`
@@ -89,8 +91,8 @@ export const UserName = styled.p`
   margin: 0;
 
   @media screen and ${device.tablet} {
-   display: flex;
- }
+    display: flex;
+  }
 `;
 
 export const UserAvatar = styled.p`
@@ -116,4 +118,3 @@ export const ExitButton = styled.button`
     color: #f25137;
   }
 `;
-
