@@ -62,20 +62,20 @@ export const TrHead = styled.tr`
   color: #898f9f;
 `;
 
-export const EmptyPageDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 500;
-  color: #898f9f;
-  line-height: 1.21;
-  margin-top: 20px;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-`;
+// export const EmptyPageDiv = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 20px;
+//   align-items: center;
+//   font-size: 14px;
+//   font-weight: 500;
+//   color: #898f9f;
+//   line-height: 1.21;
+//   margin-top: 20px;
+//   @media screen and (min-width: 768px) {
+//     display: none;
+//   }
+// `;
 
 export const NavLinkMore = styled(NavLink)`
   position: fixed;

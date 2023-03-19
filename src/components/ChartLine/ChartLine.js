@@ -21,6 +21,8 @@ import {
 } from './ChartLine.styled';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langChartLine } from 'languages/langChartLine';
 
 const ChartLine = () => {
   ChartJS.register(
@@ -34,6 +36,8 @@ const ChartLine = () => {
   );
 
   const books = useSelector(state => state.planning);
+  const lang = useSelector(getLanguage);
+  const {pages, plan, fact } = langChartLine;
   // console.log(books)
   const [statistic, setStatistic] = useState([]);
   const [daysLeft, setDaysLeft] = useState(0);
@@ -150,12 +154,12 @@ const ChartLine = () => {
     <ChartSectionBox>
       <ChartInfoBox>
         <AxisSignatureBox>
-          <AmountText>КІЛЬКІСТЬ СТОРІНОК / ДЕНЬ</AmountText>
+          <AmountText>{pages[lang]}</AmountText>
           <AmountValue>{amountPagesForDay}</AmountValue>
         </AxisSignatureBox>
         <TitleLineBox>
-          <TitleLineValue>План</TitleLineValue>
-          <TitleLineValue>Факт</TitleLineValue>
+          <TitleLineValue>{plan[lang]}</TitleLineValue>
+          <TitleLineValue>{fact[lang]}</TitleLineValue>
         </TitleLineBox>
       </ChartInfoBox>
       <ChartBox>

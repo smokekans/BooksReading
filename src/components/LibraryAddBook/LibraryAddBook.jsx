@@ -1,5 +1,5 @@
 import React from 'react';
-import {ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from 'redux/book/bookOperations';
@@ -13,13 +13,22 @@ import {
   Container,
 } from './LibraryAddBook.styled';
 import { getLanguage } from 'redux/language/languageSelectors';
-import { langOptionsLibraryAddBook } from 'languages/langOptionsLibraryAddBook';
+import { langLibraryAddBook } from 'languages/langLibraryAddBook';
 
 export const LibraryAddBook = () => {
   const dispatch = useDispatch();
   const books = useSelector(getGoingToRead);
   const lang = useSelector(getLanguage);
-  const { titlel, authorl, publishYearl, pagesTotall, addl, bookl } = langOptionsLibraryAddBook;
+  const {
+    titlel,
+    authorl,
+    publishYearl,
+    pagesTotall,
+    addl,
+    bookl,
+    successl,
+    errorl,
+  } = langLibraryAddBook;
 
   const addNewBook = e => {
     e.preventDefault();
@@ -29,26 +38,28 @@ export const LibraryAddBook = () => {
     const pagesTotal = Number(e.target.pagesTotal.value);
 
     if (books?.find(book => book.title === title)) {
-     toast.warn(`${bookl} "${title}" уже є в списку`);
+      toast.warn(`${bookl[lang]} "${title}" ${errorl[lang]}`);
     } else {
       const goingToRead = { title, author, publishYear, pagesTotal };
       dispatch(addBook(goingToRead));
-     toast.success(`${bookl} "${title}" успішно додана в вашу бібліотеку`)
+      toast.success(`${bookl[lang]} "${title}" ${successl[lang]}`);
     }
     e.target.reset();
   };
 
   return (
-    <Container><ToastContainer autoClose={2000} />
+    <Container>
+      <ToastContainer autoClose={2000} />
       <FormAll onSubmit={addNewBook}>
         <Form>
           <Label className="title">
-           {titlel[lang]}
+            {titlel[lang]}
             <Input
               type="text"
               name="title"
-              minlength="1" maxlength="254"
-               title="Title may contain letters, numbers, apostrophe, dash and spaces. For example: The Book of Five Rings"
+              minlength="1"
+              maxlength="254"
+              title="Title may contain letters, numbers, apostrophe, dash and spaces. For example: The Book of Five Rings"
               placeholder="..."
               required
             />
@@ -60,7 +71,8 @@ export const LibraryAddBook = () => {
                 className="author"
                 type="text"
                 name="author"
-                minlength="1" maxlength="254"
+                minlength="1"
+                maxlength="254"
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Author name may contain only letters, apostrophe, dash and spaces. For example: Miyamoto Musashi"
                 placeholder="..."

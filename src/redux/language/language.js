@@ -12,7 +12,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-const languageInitialState = {language: "en"};
+const languageInitialState = "en";
 
 const languageSlice = createSlice({
   name: 'language',

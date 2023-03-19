@@ -9,7 +9,6 @@ export const addBook = createAsyncThunk('book/addBook', async (goingToRead, thun
     const value = thunkAPI.getState().auth.token;
     token.set(value);
     const { data } = await axios.post('/book', goingToRead);
-    console.log(data)
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

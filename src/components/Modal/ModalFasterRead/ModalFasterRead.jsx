@@ -9,25 +9,31 @@ import {
   WrapBtn
 } from '../ModalFasterRead/ModalFasterRead.styled';
 import { ReactComponent as IconLike } from '../../../images/likeGrey.svg';
+import { useSelector } from 'react-redux';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langModals } from 'languages/langModals';
 
 const modalRoot = document.querySelector('#modal-root');
 
 export const ModalFasterRead = ({ onClose }) => {
+  const lang = useSelector(getLanguage);
+  const { well, faster, training, back} = langModals;
+
   return createPortal(
     <OverlayModal>
       <ModalFinish>
         <IconLike />
         <MessageSuccess>
-           Well done! <br /> But you need to be a little bit faster. You can do it ;)
+           {well[lang]} <br /> {faster[lang]}
         </MessageSuccess>
         <WrapBtn>
           <Link to="/training">
         <DoneBtn type="button">
-        New training
+        {training[lang]}
         </DoneBtn>
         </Link>
         <DoneBtn onClick={() => onClose()} type="button">
-        Back
+        {back[lang]}
         </DoneBtn>
         </WrapBtn>
       </ModalFinish>

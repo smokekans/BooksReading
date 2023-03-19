@@ -19,6 +19,8 @@ import { getUserName, getIsLoggedIn } from '../../redux/auth/authSelectors';
 import icons from '../../images/symbol-defs.svg';
 import ExitModal from 'components/Modal/ModalHeader/ModalHeader';
 import { SwitchLanguage } from 'components/SwitchLanguage/SwitchLanguage';
+import { getLanguage } from 'redux/language/languageSelectors';
+import { langHeader } from 'languages/langHeader';
 
 export const Header = () => {
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,6 +29,8 @@ export const Header = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const userName = useSelector(getUserName);
   const userAvatar = userName?.at(0)?.toUpperCase();
+  const lang = useSelector(getLanguage);
+  const { exit } = langHeader;
 
   const openExitModal = () => {
    setIsModalOpen(true);
@@ -73,7 +77,7 @@ const closeModal = () => {
               > */}
               <SwitchLanguage/>
               <ExitButton onClick={openExitModal}>
-                Вихід
+                {exit[lang]}
               </ExitButton>
               {/* </ExitButton> */}
             </UserPanel>
