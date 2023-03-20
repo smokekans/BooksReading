@@ -8,6 +8,7 @@ import { persistor, store } from './redux/store';
 import { Provider } from 'react-redux';
 // import { ThemeProvider } from '@emotion/react';
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>

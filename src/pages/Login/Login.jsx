@@ -7,7 +7,7 @@ import { langAuthorizationInfo } from 'languages/langAuthorizationInfo';
 
 const Login = () => {
   const dispatch = useDispatch();
-   const lang = useSelector(getLanguage);
+  const lang = useSelector(getLanguage);
   const { sign, registr, quote, author, mail, password } = langAuthorizationInfo;
 
   function handleSubmit(ev) {
@@ -18,15 +18,31 @@ const Login = () => {
     };
     dispatch(signInThunk(loginData));
   }
+
+  // function handleCallbackResponse() {
+  //   console.log('hallo')
+  // }
+  // useEffect(() => {
+  //   /* global google */
+  //   google.accounts.id.initialize({
+  //     client_id: "249004500108-g95jv7nti5gn52l7lg069km78db3begm.apps.googleusercontent.com",
+  //     callback: handleCallbackResponse
+  //   })
+  //   google.accounts.id.renderButton(
+  //     document.getElementById('googleSignIn'),
+  //     {theme: 'outline', size: 'large'}
+  //   )
+  // }, [])
   
   return (
     <Container>
       <LoginDiv>
         <Form onSubmit={handleSubmit}>
-          <GoogleBtn type='button'>
+          <GoogleBtn href="https://bookread-backend.goit.global/auth/google">
             <Icon/>
             Google
           </GoogleBtn>
+          {/* <div id='googleSignIn'></div> */}
           <Label className='label' htmlFor='emailInput'>{mail[lang]} <Orange>*</Orange></Label>
           <Input type="email" name="email" id='emailInput' placeholder='your@email.com'/>
           <Label style={{marginTop: 20}} className='label' htmlFor="passwordInput">{password[lang]} <Orange>*</Orange></Label>
