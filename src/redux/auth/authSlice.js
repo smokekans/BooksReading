@@ -1,5 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { signInThunk, logOutThunk, signUpThunk } from './authOperations';
+import { createAction, createSlice } from '@reduxjs/toolkit';
+import { signInThunk, logOutThunk, signUpThunk, getUserThunk } from './authOperations';
 
 const authInitialState = {
   user: {},
@@ -29,6 +29,15 @@ function logOutFulfilled(state) {
   state.token = null;
 }
 
+function getUserFulfilled(state, { payload }) {
+  state.user = payload;
+  state.isLoading = false;
+  state.isLoggedIn = true;
+  state.error = null;
+}
+
+export const addAccessToken = createAction('auth/addtoken');
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: authInitialState,
@@ -52,6 +61,15 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
+      .addCase(getUserThunk.pending, state => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getUserThunk.fulfilled, getUserFulfilled)
+      .addCase(getUserThunk.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
       .addCase(logOutThunk.pending, state => {
         state.isLoading = true;
         state.error = null;
@@ -60,7 +78,10 @@ const authSlice = createSlice({
       .addCase(logOutThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-      });
+      })
+      .addCase(addAccessToken, (state, { payload }) => {
+      state.token = payload;
+    },)
   },
 });
 
