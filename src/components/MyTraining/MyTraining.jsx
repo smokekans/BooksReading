@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addTrainingConfig } from 'redux/planning/planningOperations';
-import {MainTitle, MainTitleContainer, BeginTrainingBtn} from './MyTraining.styled';
+import {MainTitle, MainTitleContainer, BeginTrainingBtn, BeginTrainingBtnContainer} from './MyTraining.styled';
 import { Calendars } from './Calendar/Calendar';
 import { BooksCustomSelector } from './BooksSelector/BooksSelector';
 import { TableComponent } from './Table/Table';
@@ -25,21 +25,20 @@ export const MyTraining = () => {
   //Розмітка
   return (
     <>
-      <div>
       <MainTitleContainer>
         <MainTitle>{training[lang]}</MainTitle>
       </MainTitleContainer>
       <Calendars/>
      <BooksCustomSelector/>
-      <TableComponent/>
+      <TableComponent />
+      <BeginTrainingBtnContainer>
         <Link
-          style={{position: 'absolute', left: '50%', transform: 'translateX(-100%)'}}
         to="/statistics">
         {filter.length > 0 ? <BeginTrainingBtn onClick={handleBeginTrainingBtn} type="button">
           {startTraining[lang]}
         </BeginTrainingBtn>: ''}
         </Link>
-        </div>
+        </BeginTrainingBtnContainer>
     </>
   );
 };
