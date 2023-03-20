@@ -36,13 +36,13 @@ export const Table = styled.table`
   td:last-child {
     text-align: right;
     padding-right: 23px;
-   
-  };
-  @media screen and (min-width: 1280px){
+  }
+  @media screen and (min-width: 1280px) {
     th:last-child,
-    td:last-child { padding-right: 60px;}
-     
+    td:last-child {
+      padding-right: 60px;
     }
+  }
 `;
 
 export const Tr = styled.tr`
@@ -61,21 +61,6 @@ export const TrHead = styled.tr`
   line-height: 17px;
   color: #898f9f;
 `;
-
-// export const EmptyPageDiv = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 20px;
-//   align-items: center;
-//   font-size: 14px;
-//   font-weight: 500;
-//   color: #898f9f;
-//   line-height: 1.21;
-//   margin-top: 20px;
-//   @media screen and (min-width: 768px) {
-//     display: none;
-//   }
-// `;
 
 export const NavLinkMore = styled(NavLink)`
   position: fixed;
@@ -119,7 +104,7 @@ export const UlMobile = styled.ul`
 `;
 
 export const LiMobile = styled.li`
- position: relative;
+  position: relative;
   padding: 20px;
   background: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
@@ -183,25 +168,25 @@ export const SpanIconBook = styled.span`
   display: flex;
   margin-left: 23px;
   gap: 18px;
-  // @media screen and (min-width: 768px) {
-  // }
 `;
 
 export const ButtonDelete = styled.button`
-border: 2px solid white;
-background-color: white;
-:hover, :focus{
-  border: 2px solid #ff6b08;
-};
+  border: 2px solid white;
+  background-color: white;
+  :hover,
+  :focus {
+    border: 2px solid #ff6b08;
+  }
 `;
 
 export const ButtonDeleteMob = styled.button`
-border: 2px solid white;
-background-color: white;
-:hover, :focus{
-  border: 2px solid #ff6b08;
-};
-position: absolute;
-top: 18px; 
-right: 15px;
+  border: 2px solid white;
+  background-color: white;
+  :hover,
+  :focus {
+    border: 2px solid #ff6b08;
+  }
+  position: absolute;
+  top: 18px;
+  right: 15px;
 `;

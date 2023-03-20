@@ -16,14 +16,14 @@ export const Container = styled.section`
 export const FormAll = styled.form`
   display: flex;
   flex-direction: column;
-@media screen and (min-width: 768px) {
-  align-items: center;
-};
-@media screen and (min-width: 1280px){
-  width: 100%;
-  flex-direction: row;
-  gap: 48px;
-  // justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    align-items: center;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 100%;
+    flex-direction: row;
+    gap: 48px;
+  }
 `;
 
 export const Form = styled.div`
@@ -56,7 +56,6 @@ export const Form = styled.div`
   @media screen and (min-width: 1280px) {
     flex-direction: row;
     flex-wrap: nowrap;
-    // gap: 16px;
     width: 100%;
     & .title {
       width: 346px;

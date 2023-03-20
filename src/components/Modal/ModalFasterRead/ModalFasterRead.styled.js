@@ -27,7 +27,6 @@ export const ModalFinish = styled.div`
   @media screen and (min-width: 768px) {
     padding: 40px 83px;
     width: 394px;
-    /* height: 256px; */
   }
 `;
 
@@ -68,4 +67,3 @@ export const WrapBtn = styled.div`
   display: flex;
   gap: 32px;
 `;
-

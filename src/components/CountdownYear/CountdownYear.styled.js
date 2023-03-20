@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.section`
-  /* width:290px; */
-`;
+export const Container = styled.section``;
 
 export const TimerStl = styled.section`
   display: flex;
@@ -16,7 +14,6 @@ export const TimerStl = styled.section`
   @media screen and (min-width: 768px) {
     width: 290px;
     margin-right: 32px;
-    /* margin-left: 78px; */
   }
   @media screen and (min-width: 1280px) {
     margin-right: 74px;
@@ -58,7 +55,7 @@ export const СolonStl = styled.p`
 `;
 
 export const TitleStl = styled.h2`
-   font-family: 'Montserrat';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -66,10 +63,8 @@ export const TitleStl = styled.h2`
   text-align: center;
   color: #898f9f;
   @media screen and (min-width: 768px) {
-    /* margin-left: 75px; */
   }
   @media screen and (min-width: 1280px) {
-    /* margin-right: 74px; */
     margin-left: 75px;
   }
 `;

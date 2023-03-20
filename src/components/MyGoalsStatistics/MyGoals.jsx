@@ -28,19 +28,17 @@ export const MyGoals = () => {
 
   const bookLeft = () => {
     const diffPages = booksAll.filter(
-      book => book.pagesTotal - book.pagesFinished === 0);
+      book => book.pagesTotal - book.pagesFinished === 0
+    );
     return diffPages.length;
   };
 
   return (
     <BoxGoal>
-      {/* <WrapStl>
-        <TitleStl>My goals</TitleStl>
-      </WrapStl> */}
       <WraperStl>
-          <WrapStl>
-        <TitleStl>{goal[lang]}</TitleStl>
-      </WrapStl>
+        <WrapStl>
+          <TitleStl>{goal[lang]}</TitleStl>
+        </WrapStl>
         <ListStl>
           <li>
             <BoxStl>

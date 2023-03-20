@@ -36,7 +36,6 @@ h4,
 h5,
 h6 {
   font-size: inherit;
-  /* margin: 0; */
 }
 
 ul,
@@ -51,7 +50,6 @@ img {
 }
 
 p {
-  /* margin: 0; */
   padding: 0;
 }
 
@@ -60,7 +58,6 @@ button {
 }
 
 #root {
-  /* min-height: 100%; */
   display: flex;
   flex-direction: column;
   height: 100%;

@@ -6,7 +6,7 @@ import {
   TimeStl,
   СolonStl,
   TitleStl,
-  Container
+  Container,
 } from './CountdownYear.styled';
 import { useCountDown } from 'hooks/useCountDown';
 import { getLanguage } from 'redux/language/languageSelectors';
@@ -16,9 +16,9 @@ const endDateYear = new Date('December 31, 2023 23:59:59').getTime();
 
 export const CountdownYears = () => {
   const { days, hours, minutes, seconds } = useCountDown(endDateYear);
-const lang = useSelector(getLanguage);
-  const { countdown, day, hour, min, sec} = langCountdownGoals;
-  
+  const lang = useSelector(getLanguage);
+  const { countdown, day, hour, min, sec } = langCountdownGoals;
+
   return (
     <Container>
       <TitleStl>{countdown[lang]}</TitleStl>

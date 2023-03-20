@@ -97,12 +97,7 @@ export const LibraryTable = () => {
                       </div>
                       <div>
                         <SpanMobile>{rate[lang]}:</SpanMobile>
-
-                        <Rate
-                          value={b.rating}
-                          disabled
-                          style={{ width: '120px', fontSize: '17px' }}
-                        />
+                        <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
                       </div>
                       <Button
                         type="button"
@@ -145,11 +140,7 @@ export const LibraryTable = () => {
                       <td>{b.publishYear}</td>
                       <td>{b.pagesTotal}</td>
                       <td>
-                        <Rate
-                          value={b.rating}
-                          disabled
-                          style={{ width: '120px', fontSize: '17px' }}
-                        />
+                        <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
                       </td>
                       <td>
                         <Button
@@ -327,16 +318,6 @@ export const LibraryTable = () => {
           <ButtonMyTrain to="/training">{training[lang]}</ButtonMyTrain>
         </>
       )}
-      {/* {finishedReading?.length === 0 &&
-        goingToRead?.length === 0 &&
-        currentlyReading?.length === 0 && (
-          <EmptyPageDiv>
-            <p>Додати книжку 👇</p>
-            <NavLink to="/addbook">
-              <More />
-            </NavLink>
-          </EmptyPageDiv>
-        )} */}
       <NavLinkMore to="/addbook">
         <More />
       </NavLinkMore>

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-
-
 export const MainDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,7 +13,8 @@ export const Title = styled.p`
   font-family: 'Abril Fatface';
   font-size: 34px;
   line-height: calc(38 / 34);
-  margin: 0;
+  margin-top: 32px;
+  margin-bottom: 0;
   text-align: center;
 
   color: #242a37;
@@ -28,13 +27,13 @@ export const UlTitle = styled.p`
   font-weight: 500;
   font-size: 20px;
   line-height: calc(38 / 20);
-  margin: 24px 0;
+  margin: 24px 0 14px;
 
   color: #242a37;
 `;
 
 export const UlStyled = styled.ul`
-width: 270px;
+  width: 270px;
   gap: 12px;
   align-items: center;
   margin: 12px 0 0 0;
@@ -75,12 +74,12 @@ export const BoxBtn = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+  margin-top: 40px;
 `;
 
 export const LogInBtn = styled.button`
   width: 130px;
   height: 40px;
-  margin-top: 60px;
 
   font-family: 'Montserrat';
   font-style: normal;
@@ -112,7 +111,6 @@ export const RegLink = styled(Link)`
 export const SignInBtn = styled.button`
   width: 130px;
   height: 40px;
-  margin-top: 60px;
 
   font-family: 'Montserrat';
   font-weight: 600;

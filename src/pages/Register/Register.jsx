@@ -26,7 +26,24 @@ import { langAuthorizationInfo } from 'languages/langAuthorizationInfo';
 const Register = () => {
   const dispatch = useDispatch();
   const lang = useSelector(getLanguage);
-  const { helpyou, paragraf1, paragraf2, paragraf3, paragraf4, paragraf5, paragraf6, paragraf7, sign, regist, name, mail, password, confirm, withUs, wrong } = langAuthorizationInfo;
+  const {
+    helpyou,
+    paragraf1,
+    paragraf2,
+    paragraf3,
+    paragraf4,
+    paragraf5,
+    paragraf6,
+    paragraf7,
+    sign,
+    regist,
+    name,
+    mail,
+    password,
+    confirm,
+    withUs,
+    wrong,
+  } = langAuthorizationInfo;
 
   function handleSubmit(ev) {
     ev.preventDefault();
@@ -85,9 +102,7 @@ const Register = () => {
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
-              <LiText>
-                {paragraf2[lang]}
-              </LiText>
+              <LiText>{paragraf2[lang]}</LiText>
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
@@ -102,9 +117,7 @@ const Register = () => {
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
-              <LiText>
-                {paragraf6[lang]}
-              </LiText>
+              <LiText>{paragraf6[lang]}</LiText>
             </LiStyled>
             <LiStyled>
               <ArrowIcon />

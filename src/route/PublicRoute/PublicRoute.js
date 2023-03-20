@@ -9,16 +9,3 @@ export const PublicRoute = ({ restricted = false, redirectTo = '/' }) => {
 
   return shouldRedirect ? <Navigate to={redirectTo} /> : <Outlet />;
 };
-
-// import React from 'react';
-// import { useSelector } from 'react-redux';
-// import { Navigate } from 'react-router-dom';
-// import { getToken } from '../../redux/auth/authSelectors';
-
-// export const PublicRoute = ({ children }) => {
-//   const authToken = useSelector(getToken);
-//   if (authToken) {
-//     return <Navigate to="/library" />;
-//   }
-//   return children;
-// };
