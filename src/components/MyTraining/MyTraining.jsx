@@ -25,6 +25,7 @@ export const MyTraining = () => {
   //Розмітка
   return (
     <>
+      <div>
       <MainTitleContainer>
         <MainTitle>{training[lang]}</MainTitle>
       </MainTitleContainer>
@@ -39,6 +40,7 @@ export const MyTraining = () => {
         </BeginTrainingBtn>: ''}
         </Link>
         </BeginTrainingBtnContainer>
+        </div>
     </>
   );
 };
