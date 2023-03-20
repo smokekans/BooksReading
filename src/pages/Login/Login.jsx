@@ -70,7 +70,7 @@ const Login = () => {
         </Form>
       </LoginDiv>
       <MainDiv>
-        <Quotes>''</Quotes>
+        <Quotes>,,</Quotes>
         <MainText>{quote[lang]} </MainText>
         <Stick></Stick>
         <AddText>{author[lang]}</AddText>

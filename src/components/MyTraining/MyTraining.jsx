@@ -6,6 +6,7 @@ import {
   MainTitle,
   MainTitleContainer,
   BeginTrainingBtn,
+  BeginTrainingBtnContainer,
 } from './MyTraining.styled';
 import { Calendars } from './Calendar/Calendar';
 import { BooksCustomSelector } from './BooksSelector/BooksSelector';
@@ -27,21 +28,14 @@ export const MyTraining = () => {
 
   return (
     <>
-      <div>
-        <MainTitleContainer>
-          <MainTitle>{training[lang]}</MainTitle>
-        </MainTitleContainer>
-        <Calendars />
-        <BooksCustomSelector />
-        <TableComponent />
-        <Link
-          style={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-100%)',
-          }}
-          to="/statistics"
-        >
+      <MainTitleContainer>
+        <MainTitle>{training[lang]}</MainTitle>
+      </MainTitleContainer>
+      <Calendars />
+      <BooksCustomSelector />
+      <TableComponent />
+      <BeginTrainingBtnContainer>
+        <Link to="/statistics">
           {filter.length > 0 ? (
             <BeginTrainingBtn onClick={handleBeginTrainingBtn} type="button">
               {startTraining[lang]}
@@ -50,7 +44,7 @@ export const MyTraining = () => {
             ''
           )}
         </Link>
-      </div>
+      </BeginTrainingBtnContainer>
     </>
   );
 };

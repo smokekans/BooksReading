@@ -69,9 +69,9 @@ export const StyledLibButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   color: white;
-  background-color: orange;
+  background-color: #ff6b08;
   border: none;
-  outline: 1px solid orange;
+  outline: 1px solid #ff6b08;
   transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   &:hover,

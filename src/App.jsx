@@ -1,11 +1,3 @@
-// import Library from 'pages/Library';
-// import Login from 'pages/Login/Login';
-// import Register from 'pages/Register/Register';
-// import Statistics from 'pages/Statistics/Statistics';
-// import Training from 'pages/Training';
-// import AddBook from 'pages/AddBook';
-// import NotFound from 'pages/NotFound/NotFound';
-
 import { Layout } from './components/Layout/Layout';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { PublicRoute } from 'route/PublicRoute/PublicRoute';

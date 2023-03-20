@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BoxGoal = styled.section`
-  margin-top: 0;
+  margin-top: 20px;
   @media screen and (min-width: 768px) {
     margin-top: 0;
   }
@@ -131,7 +131,9 @@ export const LabelStl = styled.p`
   height: 30px;
   width: 66px;
   @media screen and (min-width: 768px) {
+    width: 100%;
     font-size: 11px;
+    padding-top: 4px;
   }
   @media screen and (min-width: 1280px) {
     font-size: 12px;

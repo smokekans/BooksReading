@@ -58,4 +58,8 @@ export const TitleStl = styled.h2`
   text-align: center;
 
   color: #898f9f;
+  margin-top: 24px;
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
 `;

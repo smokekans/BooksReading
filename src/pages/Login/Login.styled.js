@@ -188,19 +188,18 @@ export const MainDiv = styled.div`
 `;
 
 export const Quotes = styled.p`
-  font-family: Abril Fatface;
+  font-family: 'Abril Fatface';
   font-size: 59px;
   line-height: calc(59 / 72);
-  margin: 32px 0 0 0;
-
+  margin: 35px 0 -25px;
+  transform: scale(-1, -1);
   text-align: center;
-
   color: #ff6b08;
 
   @media screen and (min-width: 768px) {
     font-size: 69px;
     line-height: 0.8;
-    margin: 80px 0 0 0;
+    margin: 80px 0 -25px 0;
   }
 `;
 
@@ -250,7 +249,7 @@ export const Stick = styled.span`
 export const AddText = styled.p`
   margin: 0;
   margin-top: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 
   font-family: 'Montserrat';
   font-style: normal;
@@ -262,8 +261,7 @@ export const AddText = styled.p`
   color: #898f9f;
 
   @media screen and (min-width: 768px) {
-    margin: 0;
-    margin-top: 12px;
+    margin: 12px 0 60px;
     width: 397px;
 
     font-family: 'Montserrat';

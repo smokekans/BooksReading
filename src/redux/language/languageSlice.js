@@ -7,7 +7,7 @@ const languageSlice = createSlice({
   initialState: languageInitialState,
 
   reducers: {
-    changeLang({ payload }) {
+    changeLang(state, { payload }) {
       return payload;
     },
   },

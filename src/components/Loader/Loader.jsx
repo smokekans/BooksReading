@@ -17,6 +17,7 @@ export const Loader = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}
+      strokeWidth={1}
       wrapperClassName=""
       visible={true}
     />
