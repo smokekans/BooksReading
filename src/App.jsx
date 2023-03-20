@@ -18,6 +18,7 @@ const Register = lazy(() => import('./pages/Register/Register'));
 const Library = lazy(() => import('./pages/Library'));
 const Statistics = lazy(() => import('./pages/Statistics/Statistics'));
 const Training = lazy(() => import('./pages/Training/Training'));
+const AddTraining = lazy(() => import('./pages/AddTraining'));
 const AddBook = lazy(() => import('./pages/AddBook'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
@@ -65,6 +66,12 @@ export const App = () => {
             />
             <Route path="library" element={<Library />} />
             <Route path="training" element={<Training />} />
+            <Route
+              path="addtraining"
+              element={
+                isMobile ? <AddTraining /> : <Navigate to={'/training'} />
+              }
+            />
             <Route path="statistics" element={<Statistics />} />
           </Route>
         </Route>

@@ -20,6 +20,7 @@ import ExitModal from 'components/Modal/ModalHeader/ModalHeader';
 import { SwitchLanguage } from 'components/SwitchLanguage/SwitchLanguage';
 import { getLanguage } from 'redux/language/languageSelectors';
 import { langHeader } from 'languages/langHeader';
+import { getPlanBooks } from 'redux/planning/planningSelectors';
 
 export const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -28,6 +29,7 @@ export const Header = () => {
   const userAvatar = userName?.at(0)?.toUpperCase();
   const lang = useSelector(getLanguage);
   const { exit } = langHeader;
+  const filter = useSelector(getPlanBooks);
 
   const openExitModal = () => {
     setIsModalOpen(true);
@@ -47,11 +49,23 @@ export const Header = () => {
               <Nav>
                 <NavList>
                   <NavItem>
-                    <Link to={'training'}>
-                      <Icon width="22" height="17">
-                        <use href={`${icons}#group`} />
-                      </Icon>
-                    </Link>
+                    {filter.length === 0 ? (
+                      <>
+                        <Link to={'training'}>
+                          <Icon width="22" height="17">
+                            <use href={`${icons}#group`} />
+                          </Icon>
+                        </Link>
+                      </>
+                    ) : (
+                      <>
+                        <Link to={'statistics'}>
+                          <Icon width="22" height="17">
+                            <use href={`${icons}#group`} />
+                          </Icon>
+                        </Link>
+                      </>
+                    )}
                   </NavItem>
                   <NavItem>
                     <Link to={'library'}>

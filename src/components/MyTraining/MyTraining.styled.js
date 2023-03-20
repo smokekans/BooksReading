@@ -33,11 +33,14 @@ export const CalendarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   max-width: 928px;
   margin-bottom: 20px;
+  margin-left: 18%;
   @media screen and (min-width: 768px) {
     flex-direction: row;
     max-width: 704px;
+    margin-left: 0%;
   }
   @media screen and (min-width: 1280px) {
     justify-content: center;
@@ -288,6 +291,8 @@ export const MobileBooksItem = styled.li`
   padding-bottom: 20px;
   border-top: 1px solid #e0e5eb;
   border-bottom: 1px solid #e0e5eb;
+  width: 280px;
+  margin-left: 80px;
 `;
 export const MobileFirstChildContainer = styled.div`
   display: flex;
