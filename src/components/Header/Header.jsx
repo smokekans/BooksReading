@@ -22,7 +22,7 @@ import { getLanguage } from 'redux/language/languageSelectors';
 import { langHeader } from 'languages/langHeader';
 
 export const Header = () => {
-   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const isLoggedIn = useSelector(getIsLoggedIn);
   const userName = useSelector(getUserName);
   const userAvatar = userName?.at(0)?.toUpperCase();
@@ -30,12 +30,12 @@ export const Header = () => {
   const { exit } = langHeader;
 
   const openExitModal = () => {
-   setIsModalOpen(true);
-};
+    setIsModalOpen(true);
+  };
 
-const closeModal = () => {
-   setIsModalOpen(false);
-};
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
@@ -43,8 +43,8 @@ const closeModal = () => {
         <Logo isLoggedIn={isLoggedIn}>BR</Logo>
         {isLoggedIn && (
           <>
-          <UserPanel>
-          <Nav>
+            <UserPanel>
+              <Nav>
                 <NavList>
                   <NavItem>
                     <Link to={'training'}>
@@ -62,19 +62,18 @@ const closeModal = () => {
                   </NavItem>
                 </NavList>
               </Nav>
-              
-            <UserInfo>
-              <UserAvatar>{userAvatar}</UserAvatar>
-              <UserName>{userName}</UserName>
-            </UserInfo>
-            
-              <SwitchLanguage/>
-              <ExitButton onClick={openExitModal}>
-                {exit[lang]}
-              </ExitButton>
+
+              <UserInfo>
+                <UserAvatar>{userAvatar}</UserAvatar>
+                <UserName>{userName}</UserName>
+              </UserInfo>
+
+              <SwitchLanguage />
+              <ExitButton onClick={openExitModal}>{exit[lang]}</ExitButton>
             </UserPanel>
           </>
-        )}{!isLoggedIn && <SwitchLanguage/>}
+        )}
+        {!isLoggedIn && <SwitchLanguage />}
       </HeaderWrapper>
       {isModalOpen && <ExitModal closeModal={closeModal} />}
     </>
