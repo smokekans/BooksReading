@@ -1,5 +1,23 @@
 import styled from 'styled-components';
 
+export const MyCustomInput = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 12px 0;
+  width: 110px;
+  height: 42px;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #242a37;
+  background-color: #f6f7fb;
+  border: 1px solid #a6abb9;
+`;
+
 export const ResultTitle = styled.h3`
   margin: 0 0 12px 0;
   font-family: 'Montserrat';

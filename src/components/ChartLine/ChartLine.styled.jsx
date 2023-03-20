@@ -17,7 +17,8 @@ export const ChartSectionBox = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 928px;
-    max-height: 340px;
+    height: 340px;
+    margin: 0;
   }
 `;
 

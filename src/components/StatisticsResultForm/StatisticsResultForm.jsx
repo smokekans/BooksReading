@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { forwardRef, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
@@ -8,12 +8,12 @@ import {
   InputPages,
   LabelDate,
   LabelPages,
+  MyCustomInput,
   PageBox,
   ResultBox,
   ResultBtn,
   ResultTitle,
 } from './StatisticsResultForm.styled';
-import css from './StatisticsResultForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPages } from 'redux/planning/planningOperations';
 import { useFormik } from 'formik';
@@ -65,6 +65,20 @@ export const StatisticsResultForm = () => {
   const closeModalFinished = () => {
     setIsModalOpen(false);
   };
+  const DateReading = forwardRef(({ value, onClick }, ref) => (
+    <MyCustomInput onClick={onClick} ref={ref}>
+      {value} {startDate ? '' : <div>{startDate[lang]}</div>}
+      <svg
+        width="13"
+        height="6"
+        viewBox="0 0 13 6"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M6.5 6L0.870834 0.750001L12.1292 0.75L6.5 6Z" fill="#242A37" />
+      </svg>
+    </MyCustomInput>
+  ));
 
   return (
     <>
@@ -74,7 +88,7 @@ export const StatisticsResultForm = () => {
           <DataBox>
             <LabelDate>{dateLang[lang]}</LabelDate>
             <DatePicker
-              className={css.picker}
+              customInput={<DateReading />}
               selected={startDate}
               disabled
               onChange={date => {
