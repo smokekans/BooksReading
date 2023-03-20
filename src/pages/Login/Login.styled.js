@@ -69,7 +69,7 @@ padding: 40px;
 }
 `
 
-export const GoogleBtn = styled.button`
+export const GoogleBtn = styled.a`
 display: flex;
 width: 150px;
 height: 40px;
