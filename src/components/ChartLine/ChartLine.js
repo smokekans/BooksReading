@@ -77,7 +77,7 @@ const ChartLine = () => {
         },
         title: {
           display: true,
-          text: 'ЧАС',
+          text: 'TIME',
           align: 'end',
           color: '#091E3F',
           padding: -3,
