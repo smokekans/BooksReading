@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
-import { Backdrop, ModalContainer, ModalContent } from './ModalHeaderWrapper.styled';
+import {
+  Backdrop,
+  ModalContainer,
+  ModalContent,
+} from './ModalHeaderWrapper.styled';
 
 const ModalWrapper = ({ closeModal, children, variant }) => {
   const modalRoot = document.querySelector('#modal-root');

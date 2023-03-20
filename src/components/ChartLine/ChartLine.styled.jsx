@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const ChartSectionBox = styled.div`
   width: 280px;
   min-height: 290px;
@@ -13,14 +14,13 @@ export const ChartSectionBox = styled.div`
   @media screen and (min-width: 768px) {
     width: 704px;
     min-height: 340px;
-    /* margin-bottom: 30px; */
   }
   @media screen and (min-width: 1280px) {
     width: 928px;
     max-height: 340px;
-    /* margin: 0 32px 0 0; */
   }
 `;
+
 export const ChartInfoBox = styled.div`
   margin-top: 25px;
   @media screen and (min-width: 768px) {
@@ -31,6 +31,7 @@ export const ChartInfoBox = styled.div`
     margin-top: 35px;
   }
 `;
+
 export const ChartBox = styled.div`
   position: relative;
   width: 236px;
@@ -44,11 +45,13 @@ export const ChartBox = styled.div`
     width: 811px;
   }
 `;
+
 export const AxisSignatureBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
 export const TitleLineBox = styled.div`
   display: flex;
   justify-content: center;
@@ -60,6 +63,7 @@ export const TitleLineBox = styled.div`
     margin-left: 150px;
   }
 `;
+
 export const AmountText = styled.p`
   font-family: 'Montserrat';
   font-weight: 500;
@@ -69,6 +73,7 @@ export const AmountText = styled.p`
   color: #242a37;
   margin: 0 8px 0 0;
 `;
+
 export const AmountValue = styled.p`
   display: flex;
   justify-content: center;
@@ -82,6 +87,7 @@ export const AmountValue = styled.p`
   color: #242a37;
   margin: 0;
 `;
+
 export const TitleLineValue = styled.p`
   display: flex;
   justify-content: center;

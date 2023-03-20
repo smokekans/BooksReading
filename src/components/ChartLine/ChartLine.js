@@ -35,13 +35,13 @@ const ChartLine = () => {
     Tooltip,
     Legend
   );
-
   const books = useSelector(state => state.planning);
   const lang = useSelector(getLanguage);
-  const {pages, plan, fact } = langChartLine;
+  const { pages, plan, fact } = langChartLine;
   const { pathname } = useLocation();
   const [statistic, setStatistic] = useState([]);
   const [daysLeft, setDaysLeft] = useState(0);
+
   useEffect(() => {
     if (books) {
       setStatistic(books.stats);
@@ -53,12 +53,15 @@ const ChartLine = () => {
       setDaysLeft(daysLeft);
     }
   }, [books]);
+
   const amountPagesFromStatistic = books?.filter?.reduce(
     (totalPages, statisticBookInfo) =>
       totalPages + statisticBookInfo.pagesTotal,
     0
   );
+
   let amountPagesForDay = 0;
+
   if (daysLeft || amountPagesFromStatistic) {
     amountPagesForDay = Math.ceil(amountPagesFromStatistic / daysLeft);
   }
@@ -121,16 +124,20 @@ const ChartLine = () => {
       },
     },
   };
+
   const currentReadPagesFromStatistic = statistic?.reduce((prev, value) => {
     return prev + value.pagesCount;
   }, 0);
+
   const currentAmountPagesForDay = () => {
     if (amountPagesForDay - currentReadPagesFromStatistic < 0) {
       return 0;
     }
     return amountPagesForDay - currentReadPagesFromStatistic;
   };
+
   console.log(currentReadPagesFromStatistic);
+
   const labels = statistic?.map(item => item.time);
   const readPagesFromStatistic = statistic?.map(item => item.pagesCount);
   const pagesToRead = statistic?.map(item => {
@@ -169,6 +176,7 @@ const ChartLine = () => {
       },
     ],
   };
+
   return (
     <ChartSectionBox>
       <ChartInfoBox>

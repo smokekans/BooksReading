@@ -55,7 +55,6 @@ export const StyledStepText = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 19px;
     margin-bottom: 16px;
-    /* margin-top: ${props => props.marTopTablet}; */
   }
 `;
 

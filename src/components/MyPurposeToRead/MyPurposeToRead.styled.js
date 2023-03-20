@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const MainWrapper = styled.div`
   width: 280px;
   height: 296px;
@@ -14,6 +15,7 @@ export const MainWrapper = styled.div`
     height: 105px;
   }
 `;
+
 export const HeaderWrapper = styled.div`
   background-color: #b1b5c2;
   width: 280px;
@@ -28,6 +30,7 @@ export const HeaderWrapper = styled.div`
     margin-left: 28px;
   }
 `;
+
 export const HeadText = styled.p`
   font-family: 'Montserrat';
   font-style: normal;
@@ -38,7 +41,6 @@ export const HeadText = styled.p`
   margin: 0;
   padding: 0;
 `;
-
 
 export const AmountValueWrapper = styled.div`
   width: 100px;
@@ -57,6 +59,7 @@ export const AmountValueWrapper = styled.div`
     padding-top: 7px;
   }
 `;
+
 export const AmountValue = styled.span`
   font-family: 'Open Sans';
   font-style: normal;
@@ -64,6 +67,7 @@ export const AmountValue = styled.span`
   font-size: 45px;
   line-height: 38px;
 `;
+
 export const WrapperBox = styled.div`
   margin-top: 20px;
   @media (min-width: 1279px) {
@@ -71,6 +75,7 @@ export const WrapperBox = styled.div`
     margin-top: 20px;
   }
 `;
+
 export const Description = styled.p`
   font-family: 'Montserrat';
   font-style: normal;
@@ -82,10 +87,12 @@ export const Description = styled.p`
     font-size: 11px;
   }
 `;
+
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
 export const Column = styled.div`
   display: flex;
   flex-direction: column;

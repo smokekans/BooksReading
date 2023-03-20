@@ -27,12 +27,7 @@ import { langLibraryTable } from 'languages/langLibraryTable';
 export const StatisticsBookLIst = () => {
   const books = useSelector(getPlanBooks);
   const lang = useSelector(getLanguage);
-  const {
-    title,
-    author,
-    publishYear,
-    pagesTotal,
-  } = langLibraryTable;
+  const { title, author, publishYear, pagesTotal } = langLibraryTable;
 
   return (
     <>
