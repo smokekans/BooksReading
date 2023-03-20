@@ -24,6 +24,7 @@ import { useEffect, useState } from 'react';
 import { getLanguage } from 'redux/language/languageSelectors';
 import { langChartLine } from 'languages/langChartLine';
 import { useLocation } from 'react-router-dom';
+import useMatchMedia from 'hooks/useMatchMedia';
 
 const ChartLine = () => {
   ChartJS.register(
@@ -35,10 +36,10 @@ const ChartLine = () => {
     Tooltip,
     Legend
   );
-
+  const { isMobile } = useMatchMedia();
   const books = useSelector(state => state.planning);
   const lang = useSelector(getLanguage);
-  const {pages, plan, fact } = langChartLine;
+  const { pages, plan, fact } = langChartLine;
   const { pathname } = useLocation();
   const [statistic, setStatistic] = useState([]);
   const [daysLeft, setDaysLeft] = useState(0);
@@ -62,7 +63,6 @@ const ChartLine = () => {
   if (daysLeft || amountPagesFromStatistic) {
     amountPagesForDay = Math.ceil(amountPagesFromStatistic / daysLeft);
   }
-  // const amountPagesForDayCurrent = 0;
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -70,8 +70,8 @@ const ChartLine = () => {
       x: {
         grid: {
           color: '#B1B5C2',
-          // display: isMobile ? false : true,
-          display: true,
+          display: isMobile ? false : true,
+          // display: true,
           tickWidth: 0,
           borderColor: '#B1B5C2',
         },
@@ -130,7 +130,6 @@ const ChartLine = () => {
     }
     return amountPagesForDay - currentReadPagesFromStatistic;
   };
-  console.log(currentReadPagesFromStatistic);
   const labels = statistic?.map(item => item.time);
   const readPagesFromStatistic = statistic?.map(item => item.pagesCount);
   const pagesToRead = statistic?.map(item => {
@@ -143,16 +142,12 @@ const ChartLine = () => {
     return Math.ceil((amountPagesForDay - item.pagesCount) / daysLeft);
   });
 
-  console.log(currentAmountPagesForDay());
-  console.log(pagesToRead);
-
   const dataChart = {
     labels,
     datasets: [
       {
         label: 'План',
         data: pathname === '/statistics' ? pagesToRead : [],
-        // data: pagesToRead,
         borderColor: '#091E3F',
         backgroundColor: '#091E3F',
         pointRadius: 5,
@@ -161,7 +156,6 @@ const ChartLine = () => {
       {
         label: 'Факт',
         data: pathname === '/statistics' ? readPagesFromStatistic : [],
-        // data: readPagesFromStatistic,
         borderColor: '#FF6B08',
         backgroundColor: '#FF6B08',
         pointRadius: 5,
