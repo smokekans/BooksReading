@@ -36,7 +36,8 @@ export const StatisticsResultForm = () => {
   const dispatch = useDispatch();
   const planBooks = useSelector(getPlanBooks);
   const lang = useSelector(getLanguage);
-  const { results, dateLang, numberOfPages, addResult, only, left} = langStatisticsBookData;
+  const { results, dateLang, numberOfPages, addResult, only, left } =
+    langStatisticsBookData;
 
   const formik = useFormik({
     initialValues: { pages: '' },
@@ -45,7 +46,9 @@ export const StatisticsResultForm = () => {
       pages = Number(pages);
       if (pages > lastsPages) {
         formik.resetForm();
-        formik.setErrors({ pages: `${only[lang]} ` + lastsPages + ` ${left[lang]}` });
+        formik.setErrors({
+          pages: `${only[lang]} ` + lastsPages + ` ${left[lang]}`,
+        });
         return;
       } else if (pages === lastsPages) {
         setIsModalOpen(true);

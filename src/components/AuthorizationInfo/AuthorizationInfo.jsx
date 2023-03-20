@@ -45,9 +45,7 @@ export const AuthorizationInfo = () => {
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
-              <LiText>
-                {paragraf2[lang]}
-              </LiText>
+              <LiText>{paragraf2[lang]}</LiText>
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
@@ -62,9 +60,7 @@ export const AuthorizationInfo = () => {
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
-              <LiText>
-                {paragraf6[lang]}
-              </LiText>
+              <LiText>{paragraf6[lang]}</LiText>
             </LiStyled>
             <LiStyled>
               <ArrowIcon />
@@ -72,15 +68,16 @@ export const AuthorizationInfo = () => {
             </LiStyled>
           </UlStyled>
         </Box>
+
+        <BoxBtn>
+          <LogLink to="/login">
+            <LogInBtn type="button">{sign[lang]}</LogInBtn>
+          </LogLink>
+          <RegLink to="/register">
+            <SignInBtn type="button">{registr[lang]}</SignInBtn>
+          </RegLink>
+        </BoxBtn>
       </MainDiv>
-      <BoxBtn>
-        <LogLink to="/login">
-          <LogInBtn type="button">{sign[lang]}</LogInBtn>
-        </LogLink>
-        <RegLink to="/register">
-          <SignInBtn type="button">{registr[lang]}</SignInBtn>
-        </RegLink>
-      </BoxBtn>
     </>
   );
 };

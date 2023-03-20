@@ -22,24 +22,30 @@ export const addTrainingConfig = createAsyncThunk(
   }
 );
 
-export const getTraining = createAsyncThunk('planning/getTraining', async (_, thunkAPI) => {
-  try {
-    const value = thunkAPI.getState().auth.token;
-    token.set(value);
-    const response = await axios.get('/planning');
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const getTraining = createAsyncThunk(
+  'planning/getTraining',
+  async (_, thunkAPI) => {
+    try {
+      const value = thunkAPI.getState().auth.token;
+      token.set(value);
+      const response = await axios.get('/planning');
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
-export const addPages = createAsyncThunk('planning/addPages', async ({ pages }, thunkAPI) => {
-  try {
-    const value = thunkAPI.getState().auth.token;
-    token.set(value);
-    const response = await axios.patch('/planning', { pages });
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const addPages = createAsyncThunk(
+  'planning/addPages',
+  async ({ pages }, thunkAPI) => {
+    try {
+      const value = thunkAPI.getState().auth.token;
+      token.set(value);
+      const response = await axios.patch('/planning', { pages });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);

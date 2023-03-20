@@ -1,24 +1,25 @@
-import Library from 'pages/Library';
-import Login from 'pages/Login/Login';
-import Register from 'pages/Register/Register';
-import Statistics from 'pages/Statistics/Statistics';
-import Training from 'pages/Training/Training';
 import { Layout } from './components/Layout/Layout';
 import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 import { PublicRoute } from 'route/PublicRoute/PublicRoute';
 import { PrivateRoute } from 'route/PrivateRoute/PrivateRoute';
-import NotFound from 'pages/NotFound/NotFound';
 import 'antd/dist/reset.css';
-
-import useMatchMedia from 'hooks/useMatchMedia';
-import AddBook from 'pages/AddBook';
-import AuthInfo from 'pages/AuthInfo';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAccessToken } from 'redux/auth/authSlice';
 import { useEffect } from 'react';
 import { token } from 'redux/auth/token';
 import { getToken } from 'redux/auth/authSelectors';
 import { getUserThunk } from 'redux/auth/authOperations';
+import useMatchMedia from 'hooks/useMatchMedia';
+import AuthInfo from 'pages/AuthInfo';
+import { lazy } from 'react';
+
+const Login = lazy(() => import('./pages/Login/Login'));
+const Register = lazy(() => import('./pages/Register/Register'));
+const Library = lazy(() => import('./pages/Library'));
+const Statistics = lazy(() => import('./pages/Statistics/Statistics'));
+const Training = lazy(() => import('./pages/Training/Training'));
+const AddBook = lazy(() => import('./pages/AddBook'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 export const App = () => {
   const { isMobile } = useMatchMedia();
@@ -26,7 +27,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   const [searchParams] = useSearchParams();
-  const userToken = useSelector(getToken)
+  const userToken = useSelector(getToken);
 
   const accessToken = searchParams.get('accessToken');
   useEffect(() => {
@@ -38,9 +39,9 @@ export const App = () => {
 
   useEffect(() => {
     if (userToken !== null) {
-      dispatch(getUserThunk())
+      dispatch(getUserThunk());
     }
-  },[userToken, dispatch])
+  }, [userToken, dispatch]);
 
   return (
     <>

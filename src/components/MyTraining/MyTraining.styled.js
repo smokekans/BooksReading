@@ -94,7 +94,7 @@ export const CalendarEndText = styled.p`
   margin: 0;
 
   @media screen and (min-width: 1280px) {
-    margin-right: 118px;
+    margin-right: 83px;
   }
 `;
 export const BooksContainer = styled.div`
@@ -218,7 +218,6 @@ export const BeginTrainingBtn = styled.button`
   margin: 0 auto;
 `;
 
-//table
 export const Table = styled.table`
   @media screen and (min-width: 768px) {
     width: 100%;
@@ -232,6 +231,7 @@ export const Table = styled.table`
     width: 928px;
   }
 `;
+
 export const TableHeader = styled.tr`
   height: 40px;
   border-bottom: 1px solid #e0e5eb;
@@ -256,6 +256,7 @@ export const TableHeaderItem = styled.th`
     width: 40px;
   }
 `;
+
 export const TableBodyItem = styled.td`
   font-weight: 500;
   font-size: 14px;

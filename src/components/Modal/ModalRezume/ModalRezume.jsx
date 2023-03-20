@@ -60,7 +60,9 @@ export const ModalRezume = ({ onClose }) => {
               />
               <FormItem name={'resume'}>
                 <StyledRatingLabel>
-                  <StyledRatingResumeText>{summary[lang]}</StyledRatingResumeText>
+                  <StyledRatingResumeText>
+                    {summary[lang]}
+                  </StyledRatingResumeText>
                   <StyledTextArea
                     required={false}
                     autoSize={{ minRows: 7 }}
@@ -72,8 +74,14 @@ export const ModalRezume = ({ onClose }) => {
                 </StyledRatingLabel>
               </FormItem>
               <StyledBox>
-                <StyledRatingButton onClick={handleCancel}>{back[lang]}</StyledRatingButton>
-                <StyledRatingButton type="primary" htmlType="submit" onClick={handleSave}>
+                <StyledRatingButton onClick={handleCancel}>
+                  {back[lang]}
+                </StyledRatingButton>
+                <StyledRatingButton
+                  type="primary"
+                  htmlType="submit"
+                  onClick={handleSave}
+                >
                   {save[lang]}
                 </StyledRatingButton>
               </StyledBox>

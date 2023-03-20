@@ -30,12 +30,8 @@ export const ResultBox = styled.div`
   }
 `;
 
-export const DataBox = styled.div`
-  /* display: flex; */
-`;
-export const PageBox = styled.div`
-  /* display: flex; */
-`;
+export const DataBox = styled.div``;
+export const PageBox = styled.div``;
 
 export const FormRes = styled.form`
   @media screen and (min-width: 768px) and (max-width: 1279px) {

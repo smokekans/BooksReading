@@ -26,9 +26,7 @@ export const TableComponent = () => {
   const { title, author, publishYear, pagesTotal } = langMyTraining;
   const { isMobile } = useMatchMedia();
 
-  // видалення книжки
   const handleDeleteBook = e => {
-    console.dir(e.currentTarget);
     const removeBook = filter.filter(book => {
       return book._id !== e.currentTarget.parentElement.id;
     });

@@ -1,6 +1,11 @@
 import useMatchMedia from 'hooks/useMatchMedia';
 import React from 'react';
-import { StyledBox, StyledLibButton, StyledList, StyledStepText } from './ModalEmptyLibrary.styled';
+import {
+  StyledBox,
+  StyledLibButton,
+  StyledList,
+  StyledStepText,
+} from './ModalEmptyLibrary.styled';
 import { ReactComponent as BookIcon } from '../ModalEmptyLibrary/svg/bookIconGrey.svg';
 import { ReactComponent as ArrowIcon } from '../ModalEmptyLibrary/svg/arrow.svg';
 import { ReactComponent as FlagIcon } from '../ModalEmptyLibrary/svg/flag.svg';
@@ -11,7 +16,8 @@ import { langModalEmptyLibrary } from 'languages/langModalEmptyLibrary';
 export const ModalEmptyLibrary = ({ isEmptyLibrary, onClick }) => {
   const { isMobile } = useMatchMedia();
   const lang = useSelector(getLanguage);
-  const {step, paragraf1, paragraf2, paragraf3, paragraf4} = langModalEmptyLibrary;
+  const { step, paragraf1, paragraf2, paragraf3, paragraf4 } =
+    langModalEmptyLibrary;
 
   return (
     <>
