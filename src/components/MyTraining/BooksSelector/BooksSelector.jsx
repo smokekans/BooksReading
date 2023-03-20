@@ -41,9 +41,7 @@ export const BooksCustomSelector = () => {
     dispatch(addToBooks(id));
     const checkSameId = filter.map(book => book._id)?.includes(id);
     state.forEach(book => {
-      if (checkSameId === false) {
-        return;
-      } else if (book._id === id) {
+      if (book._id === id && !checkSameId) {
         dispatch(filteredBooksList(book));
       }
     });
