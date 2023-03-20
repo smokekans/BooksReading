@@ -28,23 +28,25 @@ export const MyTraining = () => {
 
   return (
     <>
-      <MainTitleContainer>
-        <MainTitle>{training[lang]}</MainTitle>
-      </MainTitleContainer>
-      <Calendars />
-      <BooksCustomSelector />
-      <TableComponent />
-      <BeginTrainingBtnContainer>
-        <Link to="/statistics">
-          {filter.length > 0 ? (
-            <BeginTrainingBtn onClick={handleBeginTrainingBtn} type="button">
-              {startTraining[lang]}
-            </BeginTrainingBtn>
-          ) : (
-            ''
-          )}
-        </Link>
-      </BeginTrainingBtnContainer>
+      <div>
+        <MainTitleContainer>
+          <MainTitle>{training[lang]}</MainTitle>
+        </MainTitleContainer>
+        <Calendars />
+        <BooksCustomSelector />
+        <TableComponent />
+        <BeginTrainingBtnContainer>
+          <Link to="/statistics">
+            {filter.length > 0 ? (
+              <BeginTrainingBtn onClick={handleBeginTrainingBtn} type="button">
+                {startTraining[lang]}
+              </BeginTrainingBtn>
+            ) : (
+              ''
+            )}
+          </Link>
+        </BeginTrainingBtnContainer>
+      </div>
     </>
   );
 };

@@ -35,14 +35,30 @@ const Login = () => {
     dispatch(signInThunk(loginData));
   }
 
+  // function handleCallbackResponse() {
+  //   console.log('hallo')
+  // }
+  // useEffect(() => {
+  //   /* global google */
+  //   google.accounts.id.initialize({
+  //     client_id: "249004500108-g95jv7nti5gn52l7lg069km78db3begm.apps.googleusercontent.com",
+  //     callback: handleCallbackResponse
+  //   })
+  //   google.accounts.id.renderButton(
+  //     document.getElementById('googleSignIn'),
+  //     {theme: 'outline', size: 'large'}
+  //   )
+  // }, [])
+
   return (
     <Container>
       <LoginDiv>
         <Form onSubmit={handleSubmit}>
-          <GoogleBtn type="button">
+          <GoogleBtn href="https://bookread-backend.goit.global/auth/google">
             <Icon />
             Google
           </GoogleBtn>
+          {/* <div id='googleSignIn'></div> */}
           <Label className="label" htmlFor="emailInput">
             {mail[lang]} <Orange>*</Orange>
           </Label>

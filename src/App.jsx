@@ -1,9 +1,14 @@
 import { Layout } from './components/Layout/Layout';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
 import { PublicRoute } from 'route/PublicRoute/PublicRoute';
 import { PrivateRoute } from 'route/PrivateRoute/PrivateRoute';
 import 'antd/dist/reset.css';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addAccessToken } from 'redux/auth/authSlice';
+import { useEffect } from 'react';
+import { token } from 'redux/auth/token';
+import { getToken } from 'redux/auth/authSelectors';
+import { getUserThunk } from 'redux/auth/authOperations';
 import useMatchMedia from 'hooks/useMatchMedia';
 import AuthInfo from 'pages/AuthInfo';
 import { lazy } from 'react';
@@ -12,12 +17,31 @@ const Login = lazy(() => import('./pages/Login/Login'));
 const Register = lazy(() => import('./pages/Register/Register'));
 const Library = lazy(() => import('./pages/Library'));
 const Statistics = lazy(() => import('./pages/Statistics/Statistics'));
-const Training = lazy(() => import('./pages/Training'));
+const Training = lazy(() => import('./pages/Training/Training'));
 const AddBook = lazy(() => import('./pages/AddBook'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 export const App = () => {
   const { isMobile } = useMatchMedia();
+
+  const dispatch = useDispatch();
+
+  const [searchParams] = useSearchParams();
+  const userToken = useSelector(getToken);
+
+  const accessToken = searchParams.get('accessToken');
+  useEffect(() => {
+    if (accessToken !== null) {
+      dispatch(addAccessToken(accessToken));
+      token.set(accessToken);
+    }
+  }, [accessToken, dispatch]);
+
+  useEffect(() => {
+    if (userToken !== null) {
+      dispatch(getUserThunk());
+    }
+  }, [userToken, dispatch]);
 
   return (
     <>

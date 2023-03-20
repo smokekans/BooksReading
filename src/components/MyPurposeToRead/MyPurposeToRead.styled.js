@@ -17,7 +17,7 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   background-color: #ffffff;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  margin-top: 0px;
+  margin: 0 auto;
   align-items: center;
   @media (min-width: 768px) {
     flex-direction: row;

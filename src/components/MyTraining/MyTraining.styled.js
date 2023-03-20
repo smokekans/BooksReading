@@ -18,6 +18,8 @@ export const MainTitleContainer = styled.div`
   background-color: #b1b5c2;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   margin-bottom: 24px;
+  @media screen and (min-width: 1280px) {
+  }
 `;
 
 export const MainTitle = styled.h2`
@@ -47,7 +49,7 @@ export const Calendar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 92vw;
+  width: 280px;
   height: 42px;
   border: solid 1px #a6abb9;
   margin: 0;
@@ -99,19 +101,32 @@ export const BooksContainer = styled.div`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 768px) {
-    flex-direction: row;
     margin-bottom: 23px;
-    position: relative;
+    flex-direction: row;
   }
   @media screen and (min-width: 1280px) {
     margin-bottom: 23px;
   }
 `;
+export const SelectorAndListContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    margin-right: 32px;
+    width: 485px;
+    @media screen and (min-width: 1280px) {
+      width: 715px;
+      margin-right: 32px;
+    }
+  } ;
+`;
 export const BooksSelector = styled.div`
-  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-right: 12px;
   padding-top: 12px;
   padding-left: 12px;
-  margin-bottom: 32px;
   width: 100%;
   height: 42px;
   background-color: #ffffff;
@@ -124,11 +139,13 @@ export const BooksSelector = styled.div`
     cursor: pointer;
   }
   @media screen and (min-width: 768px) {
-    width: 485px;
+    max-width: 485px;
     margin-right: 32px;
+    align-items: center;
+    padding-top: 0;
   }
   @media screen and (min-width: 1280px) {
-    width: 715px;
+    max-width: 715px;
     margin-right: 32px;
   }
 `;
@@ -140,32 +157,20 @@ export const SelectorText = styled.p`
   margin: 0;
 `;
 export const SelectorArrow = styled.svg`
-  position: absolute;
-  top: 45%;
-  left: 91%;
   @media screen and (min-width: 768px) {
-    left: 95%;
   }
   @media screen and (min-width: 1280px) {
-    top: 50%;
-    left: 55%;
   }
 `;
-export const SelectorItemContainer = styled.div`
-  top: 244%;
-  left: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: inherit;
+export const SelectorItemContainer = styled.ul`
+  width: 100%;
   background-color: #fff;
   max-height: 200px;
   overflow-y: auto;
   @media screen and (min-width: 1280px) {
-    top: 99%;
-    left: 0%;
   }
 `;
-export const SelectorItem = styled.p`
+export const SelectorItem = styled.li`
   margin: 0;
   padding: 10px;
   :hover,
@@ -182,6 +187,7 @@ export const Button = styled.button`
   width: 181px;
   height: 42px;
   margin: auto;
+  margin-top: 32px;
   margin-bottom: 20px;
   background-color: #f6f7fb;
   border: 1px solid #242a37;
@@ -194,6 +200,9 @@ export const Button = styled.button`
 `;
 export const BeginTrainingBtnContainer = styled.div`
   max-width: 928px;
+  @media screen and (min-width: 768px) {
+    margin-top: 32px;
+  }
 `;
 export const BeginTrainingBtn = styled.button`
   display: block;
@@ -213,7 +222,6 @@ export const Table = styled.table`
   @media screen and (min-width: 768px) {
     width: 100%;
     background: #ffffff;
-    margin-bottom: 32px;
     text-align: left;
     background: #f6f7fb;
     border-top: 1px solid #e0e5eb;
@@ -270,6 +278,8 @@ export const TableBodyItem = styled.td`
     justify-content: flex-end;
   }
 `;
+
+//MObile books training list
 export const MobileBooksList = styled.ul`
   margin-bottom: 32px;
 `;

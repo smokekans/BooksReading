@@ -9,7 +9,7 @@ export const ChartSectionBox = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0;
+  margin: 0 auto;
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
   @media screen and (min-width: 768px) {
     width: 704px;
