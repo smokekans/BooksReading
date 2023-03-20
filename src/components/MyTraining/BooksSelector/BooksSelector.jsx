@@ -40,7 +40,6 @@ export const BooksCustomSelector = () => {
   const handleAddBtn = e => {
     dispatch(addToBooks(id));
     const checkSameId = filter.map(book => book._id)?.includes(id);
-    console.log('handleAddBtn ~ checkSameId:', checkSameId);
     state.forEach(book => {
       if (book._id === id && !checkSameId) {
         dispatch(filteredBooksList(book));
