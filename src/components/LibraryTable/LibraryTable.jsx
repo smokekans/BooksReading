@@ -1,9 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  getGoingToRead,
-  getCurrentlyReading,
-  getFinishedReading,
-} from 'redux/book/bookSelectors';
+import { getGoingToRead, getCurrentlyReading, getFinishedReading } from 'redux/book/bookSelectors';
 import { deleteBook } from 'redux/book/bookOperations';
 import {
   TitleH2,
@@ -52,8 +48,8 @@ export const LibraryTable = () => {
     readNow,
     goingread,
     alreadyread,
-    bookl, 
-    deletel
+    bookl,
+    deletel,
   } = langLibraryTable;
 
   const [bookId, setBookId] = useState('');
@@ -72,7 +68,8 @@ export const LibraryTable = () => {
   };
 
   return (
-    <><ToastContainer autoClose={2000} />
+    <>
+      <ToastContainer autoClose={2000} />
       {finishedReading?.length !== 0 && (
         <>
           <TitleH2>{alreadyread[lang]}</TitleH2>
@@ -103,6 +100,7 @@ export const LibraryTable = () => {
 
                         <Rate
                           value={b.rating}
+                          disabled
                           style={{ width: '120px', fontSize: '17px' }}
                         />
                       </div>
@@ -149,6 +147,7 @@ export const LibraryTable = () => {
                       <td>
                         <Rate
                           value={b.rating}
+                          disabled
                           style={{ width: '120px', fontSize: '17px' }}
                         />
                       </td>
@@ -246,10 +245,7 @@ export const LibraryTable = () => {
                       <BookIcon />
                       {b.title}
                     </H3Mobile>
-                    <ButtonDeleteMob
-                      type="button"
-                      onClick={() => deleteBookk(b._id)}
-                    >
+                    <ButtonDeleteMob type="button" onClick={() => deleteBookk(b._id)}>
                       <svg
                         width="14"
                         height="18"
@@ -306,10 +302,7 @@ export const LibraryTable = () => {
                       <td width="10%">{b.publishYear}</td>
                       <td width="6%">{b.pagesTotal}</td>
                       <td width="4%">
-                        <ButtonDelete
-                          type="button"
-                          onClick={() => deleteBookk(b._id)}
-                        >
+                        <ButtonDelete type="button" onClick={() => deleteBookk(b._id)}>
                           <svg
                             width="14"
                             height="18"
