@@ -94,7 +94,7 @@ export const CalendarEndText = styled.p`
   margin: 0;
 
   @media screen and (min-width: 1280px) {
-    margin-right: 118px;
+    margin-right: 83px;
   }
 `;
 export const BooksContainer = styled.div`
