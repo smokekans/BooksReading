@@ -39,7 +39,7 @@ export const BooksCustomSelector = () => {
   // функція-слухач кліку на кнопці Додати,
   const handleAddBtn = e => {
     dispatch(addToBooks(id));
-    const checkSameId = filter?.map(book => book._id).incudes(id);
+    const checkSameId = filter.map(book => book._id)?.incudes(id);
     state.forEach(book => {
       if (checkSameId === false) {
         return;
