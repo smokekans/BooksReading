@@ -52,8 +52,8 @@ export const LibraryTable = () => {
     readNow,
     goingread,
     alreadyread,
-    bookl, 
-    deletel
+    bookl,
+    deletel,
   } = langLibraryTable;
 
   const [bookId, setBookId] = useState('');
@@ -72,7 +72,8 @@ export const LibraryTable = () => {
   };
 
   return (
-    <><ToastContainer autoClose={2000} />
+    <>
+      <ToastContainer autoClose={2000} />
       {finishedReading?.length !== 0 && (
         <>
           <TitleH2>{alreadyread[lang]}</TitleH2>
@@ -100,10 +101,9 @@ export const LibraryTable = () => {
                       </div>
                       <div>
                         <SpanMobile>{rate[lang]}:</SpanMobile>
-
                         <Rate
                           value={b.rating}
-                          style={{ width: '120px', fontSize: '17px' }}
+                          style={{ width: '101px', fontSize: '12px' }}
                         />
                       </div>
                       <Button
@@ -149,7 +149,7 @@ export const LibraryTable = () => {
                       <td>
                         <Rate
                           value={b.rating}
-                          style={{ width: '120px', fontSize: '17px' }}
+                          style={{ width: '101px', fontSize: '12px' }}
                         />
                       </td>
                       <td>
@@ -334,16 +334,6 @@ export const LibraryTable = () => {
           <ButtonMyTrain to="/training">{training[lang]}</ButtonMyTrain>
         </>
       )}
-      {/* {finishedReading?.length === 0 &&
-        goingToRead?.length === 0 &&
-        currentlyReading?.length === 0 && (
-          <EmptyPageDiv>
-            <p>Додати книжку 👇</p>
-            <NavLink to="/addbook">
-              <More />
-            </NavLink>
-          </EmptyPageDiv>
-        )} */}
       <NavLinkMore to="/addbook">
         <More />
       </NavLinkMore>

@@ -29,7 +29,9 @@ const AddBook = () => {
   const finishedReading = useSelector(getFinishedReading);
 
   const emptyList =
-    goingToRead.length === 0 && currentlyReading.length === 0 && finishedReading.length === 0;
+    goingToRead.length === 0 &&
+    currentlyReading.length === 0 &&
+    finishedReading.length === 0;
 
   return (
     <Container>

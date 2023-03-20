@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import device from 'hooks/device';
 
 export const Text = styled.p`
   font-family: 'Montserrat';
@@ -10,8 +9,8 @@ export const Text = styled.p`
   text-align: center;
   color: #242a37;
   margin-bottom: 20px;
-  
-  @media screen and ${device.tablet} {
+
+  @media screen and (min-width: 768px) {
     margin-bottom: 24px;
   }
 `;
@@ -28,8 +27,8 @@ export const Button = styled.button`
   border: 1px solid #242a37;
   background-color: #fff;
 
-  @media screen and ${device.tablet} {
-   width: 130px;
+  @media screen and (min-width: 768px) {
+    width: 130px;
   }
 `;
 
@@ -40,7 +39,7 @@ export const ButtonExit = styled.button`
   border: none;
   background-color: #ff6b08;
 
-  @media screen and ${device.tablet} {
-   width: 130px;
+  @media screen and (min-width: 768px) {
+    width: 130px;
   }
 `;

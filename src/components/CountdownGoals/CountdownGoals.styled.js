@@ -13,6 +13,7 @@ export const TimerStl = styled.section`
     width: 290px;
   }
 `;
+
 export const LaybelStl = styled.p`
   font-family: 'Montserrat';
   font-style: normal;
@@ -30,7 +31,6 @@ export const TimeStl = styled.p`
   font-weight: 700;
   font-size: 25px;
   line-height: 38px;
-  /* width: 28px; */
   height: 12px;
 
   color: #091e3f;
@@ -49,12 +49,6 @@ export const СolonStl = styled.p`
 `;
 
 export const TitleStl = styled.h2`
-  /* position: absolute; */
-  /* width: 125px;
-  height: 17px;
-  left: 600px;
-  top: 88px; */
-
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
@@ -64,4 +58,8 @@ export const TitleStl = styled.h2`
   text-align: center;
 
   color: #898f9f;
+  margin-top: 24px;
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+  }
 `;

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import device from 'hooks/device';
 
 export const HeaderWrapper = styled.div`
   position: relative;
@@ -12,11 +11,11 @@ export const HeaderWrapper = styled.div`
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   background-color: #fff;
 
-  @media screen and ${device.tablet} {
+  @media screen and (min-width: 768px) {
     padding: 0 32px;
   }
 
-  @media screen and ${device.desktop} {
+  @media screen and (min-width: 1280px) {
     padding: 0 16px;
   }
 `;
@@ -44,7 +43,7 @@ export const NavList = styled.ul`
   justify-content: center;
   align-items: center;
 
-  @media screen and ${device.tablet} {
+  @media screen and (min-width: 768px) {
     margin-right: 20px;
   }
 `;
@@ -60,7 +59,7 @@ export const NavItem = styled.li`
     border-right: 1px solid #e0e5eb;
   }
 
-  @media screen and ${device.tablet} {
+  @media screen and (min-width: 768px) {
     margin-right: 13px;
   }
 `;
@@ -90,8 +89,10 @@ export const UserPanel = styled.div`
 
 export const UserInfo = styled.div`
   display: flex;
+  margin: auto;
 
-  @media screen and ${device.tablet} {
+  @media screen and (min-width: 768px) {
+    margin: 0;
     position: absolute;
     top: 10px;
     left: 46%;
@@ -105,28 +106,33 @@ export const UserName = styled.p`
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
-  line-height: calc(17 / 14);
+  /* line-height: calc(17 / 14); */
   color: #242a37;
-  margin: 0;
 
-  @media screen and ${device.tablet} {
+  @media screen and (min-width: 768px) {
     display: flex;
+    margin: 0;
+    margin-top: -2px;
+    margin-left: 10px;
   }
 
-  @media screen and ${device.tablet} {
+  @media screen and (min-width: 768px) {
     line-height: calc(38 / 14);
   }
 `;
 
 export const UserAvatar = styled.p`
-  background-color: #F5F7FA;
-  padding 8px 10px;
+  background-color: #f5f7fa;
+  padding: 8px 10px;
   border-radius: 50%;
-  margin: 0;
-  
-  @media screen and ${device.tablet} {
-   margin-right: 12px;
- }
+  margin: auto;
+
+  @media screen and (min-width: 320px) {
+    margin: auto;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
 `;
 
 export const ExitButton = styled.button`
@@ -144,7 +150,7 @@ export const ExitButton = styled.button`
     color: #f25137;
   }
 
-  @media screen and ${device.desktop} {
+  @media screen and (min-width: 1280px) {
     line-height: calc(38 / 14);
   }
 `;

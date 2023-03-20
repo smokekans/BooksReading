@@ -15,14 +15,15 @@ const modalRoot = document.querySelector('#modal-root');
 
 export const ModalFinishedBooks = ({ onClose }) => {
   const lang = useSelector(getLanguage);
-  const { congrat, anotherbook, done} = langModals;
-  
+  const { congrat, anotherbook, done } = langModals;
+
   return createPortal(
     <OverlayModal>
       <ModalFinish>
         <IconLike />
         <MessageSuccess>
-          {congrat[lang]}<br /> {anotherbook[lang]}
+          {congrat[lang]}
+          <br /> {anotherbook[lang]}
         </MessageSuccess>
         <DoneBtn onClick={() => onClose()} type="button">
           {done[lang]}

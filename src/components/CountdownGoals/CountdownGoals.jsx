@@ -19,7 +19,7 @@ export const CountdownGoals = () => {
   const endDateGoals = new Date(useSelector(getEndDate)).getTime();
   const { days, hours, minutes, seconds } = useCountDown(endDateGoals);
   const lang = useSelector(getLanguage);
-  const { goals, day, hour, min, sec} = langCountdownGoals;
+  const { goals, day, hour, min, sec } = langCountdownGoals;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const formik = useFormik({

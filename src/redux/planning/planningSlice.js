@@ -7,7 +7,6 @@ const planningInitialState = {
   books: [],
   stats: [],
   filter: [],
-  // duration: null,
 };
 
 const planningSlice = createSlice({

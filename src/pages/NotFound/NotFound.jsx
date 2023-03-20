@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { getLanguage } from 'redux/language/languageSelectors';
 import { langNotFound } from 'languages/langNotFound';
 
-export default function NotFound() {
+const NotFound = () => {
   const location = useLocation();
   const lang = useSelector(getLanguage);
   const { lost, pageNotFound, goBack } = langNotFound;
@@ -36,4 +36,6 @@ export default function NotFound() {
       </div>
     </section>
   );
-}
+};
+
+export default NotFound;
