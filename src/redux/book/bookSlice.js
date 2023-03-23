@@ -1,10 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  addBook,
-  fetchAllBooks,
-  addBookReview,
-  deleteBook,
-} from './bookOperations';
+import { getUserThunk } from 'redux/auth/authOperations';
+import { addBook, addBookReview, deleteBook } from './bookOperations';
 
 const bookInitialState = {
   book: {
@@ -43,17 +39,17 @@ const bookSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
       })
-      .addCase(fetchAllBooks.pending, state => {
+      .addCase(getUserThunk.pending, state => {
         state.isLoading = true;
       })
-      .addCase(fetchAllBooks.fulfilled, (state, { payload }) => {
+      .addCase(getUserThunk.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         state.book.goingToRead = payload.goingToRead;
         state.book.currentlyReading = payload.currentlyReading;
         state.book.finishedReading = payload.finishedReading;
       })
-      .addCase(fetchAllBooks.rejected, (state, { payload }) => {
+      .addCase(getUserThunk.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })
