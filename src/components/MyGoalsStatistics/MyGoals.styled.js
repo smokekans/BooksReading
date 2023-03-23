@@ -56,7 +56,6 @@ export const WraperStl = styled.div`
     width: 704px;
     height: 125px;
     padding: 20px 42px 28px;
-    margin-left: 32px;
     display: flex;
     gap: 20px;
   }
@@ -137,6 +136,7 @@ export const LabelStl = styled.p`
   }
   @media screen and (min-width: 1280px) {
     font-size: 12px;
+    width: 66px;
   }
 `;
 
