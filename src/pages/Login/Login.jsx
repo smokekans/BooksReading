@@ -4,7 +4,6 @@ import {
   AddText,
   Container,
   Form,
-  GoogleBtn,
   Input,
   Label,
   LogInBtn,
@@ -16,7 +15,6 @@ import {
   RegLink,
   Stick,
 } from './Login.styled';
-import { ReactComponent as Icon } from '../../images/googleIcon.svg';
 import { getLanguage } from 'redux/language/languageSelectors';
 import { langAuthorizationInfo } from 'languages/langAuthorizationInfo';
 
@@ -54,10 +52,6 @@ const Login = () => {
     <Container>
       <LoginDiv>
         <Form onSubmit={handleSubmit}>
-          <GoogleBtn href="https://bookread-backend.goit.global/auth/google">
-            <Icon />
-            Google
-          </GoogleBtn>
           {/* <div id='googleSignIn'></div> */}
           <Label className="label" htmlFor="emailInput">
             {mail[lang]} <Orange>*</Orange>
