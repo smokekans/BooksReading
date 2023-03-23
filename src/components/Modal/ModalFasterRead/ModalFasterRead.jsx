@@ -6,7 +6,7 @@ import {
   MessageSuccess,
   ModalFinish,
   OverlayModal,
-  WrapBtn
+  WrapBtn,
 } from '../ModalFasterRead/ModalFasterRead.styled';
 import { ReactComponent as IconLike } from '../../../images/likeGrey.svg';
 import { useSelector } from 'react-redux';
@@ -17,24 +17,22 @@ const modalRoot = document.querySelector('#modal-root');
 
 export const ModalFasterRead = ({ onClose }) => {
   const lang = useSelector(getLanguage);
-  const { well, faster, training, back} = langModals;
+  const { well, faster, training, back } = langModals;
 
   return createPortal(
     <OverlayModal>
       <ModalFinish>
         <IconLike />
         <MessageSuccess>
-           {well[lang]} <br /> {faster[lang]}
+          {well[lang]} <br /> {faster[lang]}
         </MessageSuccess>
         <WrapBtn>
           <Link to="/training">
-        <DoneBtn type="button">
-        {training[lang]}
-        </DoneBtn>
-        </Link>
-        <DoneBtn onClick={() => onClose()} type="button">
-        {back[lang]}
-        </DoneBtn>
+            <DoneBtn type="button">{training[lang]}</DoneBtn>
+          </Link>
+          <DoneBtn onClick={() => onClose()} type="button">
+            {back[lang]}
+          </DoneBtn>
         </WrapBtn>
       </ModalFinish>
     </OverlayModal>,

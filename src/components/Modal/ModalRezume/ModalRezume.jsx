@@ -24,6 +24,7 @@ export const ModalRezume = ({ onClose }) => {
 
   const [rating, setRating] = useState(0);
   const [resume, setResume] = useState('');
+
   const id = useSelector(state => state.book.book.idR);
 
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ export const ModalRezume = ({ onClose }) => {
     );
     onClose();
   };
+
   return (
     <>
       <Modal>
@@ -56,24 +58,30 @@ export const ModalRezume = ({ onClose }) => {
                 onChange={value => {
                   setRating(value);
                 }}
-                value={+rating}
+                value={rating}
               />
-              <FormItem name={'resume'}>
+              <FormItem name={'resume'} required={true}>
                 <StyledRatingLabel>
                   <StyledRatingResumeText>{summary[lang]}</StyledRatingResumeText>
                   <StyledTextArea
-                    required={false}
                     autoSize={{ minRows: 7 }}
                     value={resume}
                     onChange={e => {
                       setResume(e.currentTarget.value);
                     }}
+                    rules={[{ required: true }]}
+                    placeholder="Напишіть відгук"
                   />
                 </StyledRatingLabel>
               </FormItem>
               <StyledBox>
                 <StyledRatingButton onClick={handleCancel}>{back[lang]}</StyledRatingButton>
-                <StyledRatingButton type="primary" htmlType="submit" onClick={handleSave}>
+                <StyledRatingButton
+                  type="primary"
+                  htmlType="submit"
+                  onClick={handleSave}
+                  disabled={!resume || !rating}
+                >
                   {save[lang]}
                 </StyledRatingButton>
               </StyledBox>

@@ -43,6 +43,7 @@ const ChartLine = () => {
   const { pathname } = useLocation();
   const [statistic, setStatistic] = useState([]);
   const [daysLeft, setDaysLeft] = useState(0);
+
   useEffect(() => {
     if (books) {
       setStatistic(books.stats);
@@ -54,12 +55,15 @@ const ChartLine = () => {
       setDaysLeft(daysLeft);
     }
   }, [books]);
+
   const amountPagesFromStatistic = books?.filter?.reduce(
     (totalPages, statisticBookInfo) =>
       totalPages + statisticBookInfo.pagesTotal,
     0
   );
+
   let amountPagesForDay = 0;
+
   if (daysLeft || amountPagesFromStatistic) {
     amountPagesForDay = Math.ceil(amountPagesFromStatistic / daysLeft);
   }
@@ -77,7 +81,7 @@ const ChartLine = () => {
         },
         title: {
           display: true,
-          text: 'ЧАС',
+          text: 'TIME',
           align: 'end',
           color: '#091E3F',
           padding: -3,
@@ -121,9 +125,11 @@ const ChartLine = () => {
       },
     },
   };
+
   const currentReadPagesFromStatistic = statistic?.reduce((prev, value) => {
     return prev + value.pagesCount;
   }, 0);
+
   const currentAmountPagesForDay = () => {
     if (amountPagesForDay - currentReadPagesFromStatistic < 0) {
       return 0;
@@ -163,6 +169,7 @@ const ChartLine = () => {
       },
     ],
   };
+
   return (
     <ChartSectionBox>
       <ChartInfoBox>

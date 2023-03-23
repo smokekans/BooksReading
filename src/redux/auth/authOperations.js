@@ -22,18 +22,20 @@ export const signUpThunk = createAsyncThunk(
   }
 );
 
-export const googleSignUpThunk = createAsyncThunk(
-  'auth/google',
-  async (_, { rejectWithValue }) => {
+export const googleThunk = createAsyncThunk(
+  'auth/loginwithgoogle',
+  async (credentials, { rejectWithValue }) => {
+    console.log('credentialsGoogle', credentials);
     try {
-      const { data } = await axios.get('auth/google');
-      token.set(data.token);
+      const { data } = await axios.get('/auth/google');
+      token.set(credentials.data.token);
       return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (e) {
+      return rejectWithValue(e);
     }
   }
 );
+
 
 export const signInThunk = createAsyncThunk(
   'auth/signin',
@@ -62,6 +64,19 @@ export const logOutThunk = createAsyncThunk(
     }
   }
 );
+
+export const getUserThunk = createAsyncThunk(
+  'user/books',
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('user/books');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 
 export const refreshThunk = createAsyncThunk(
   'user/refresh',

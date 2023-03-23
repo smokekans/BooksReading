@@ -64,18 +64,3 @@ export const addBookReview = createAsyncThunk(
     }
   }
 );
-
-// const postApiBook = axios.create({
-//     baseURL: 'https://bookread-backend.goit.global',
-//     method: 'post',
-// })
-// export const addBook = createAsyncThunk(
-//     'book/addBook',
-//     async (newBook, thunkAPI) => {
-//         try {
-//             const response = await postApiBook.post('book', newBook)
-//             return response.data;
-//         } catch (error){ return thunkAPI.rejectWithValue(error)}
-//     }
-// )
-
