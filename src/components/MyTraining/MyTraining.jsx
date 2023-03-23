@@ -17,6 +17,7 @@ import {
   getStartDate,
   getEndDate,
 } from '../../redux/planning/planningSelectors';
+import { updateStats } from 'redux/planning/planningSlice';
 
 export const MyTraining = () => {
   const start = useSelector(getStartDate);
@@ -29,6 +30,7 @@ export const MyTraining = () => {
   const { training, startTraining } = langMyTraining;
 
   const handleBeginTrainingBtn = () => {
+    dispatch(updateStats());
     dispatch(addTrainingConfig(stateBody));
   };
   console.log(start);
