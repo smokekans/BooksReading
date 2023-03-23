@@ -10,7 +10,6 @@ import {
   SignInBtn,
   LogLink,
   LogText,
-  GoogleBtn,
   MainDiv,
   Title,
   UlTitle,
@@ -18,7 +17,6 @@ import {
   UlTitleSecond,
   LiStyled,
 } from './Register.styled';
-import { ReactComponent as Icon } from '../../images/googleIcon.svg';
 import { ReactComponent as ArrowIcon } from '../../images/arrow.svg';
 import { getLanguage } from 'redux/language/languageSelectors';
 import { langAuthorizationInfo } from 'languages/langAuthorizationInfo';
@@ -65,10 +63,6 @@ const Register = () => {
     <Container>
       <RegisterDiv>
         <Form onSubmit={handleSubmit}>
-          <GoogleBtn type="button">
-            <Icon />
-            Google
-          </GoogleBtn>
           <Label htmlFor="nameInput">
             {name[lang]} <Orange>*</Orange>
           </Label>
