@@ -1,5 +1,7 @@
 import { getLanguage } from 'redux/language/languageSelectors';
 import {
+  BeginTrainingBtn,
+  BeginTrainingBtnContainer,
   MobileBooksItem,
   MobileBooksList,
   MobileBookText,
@@ -9,12 +11,29 @@ import {
   MobileTextContainer,
 } from 'components/MyTraining/MyTraining.styled';
 import { ReactComponent as BookIcon } from '../../components/LibraryTable/svg/bookIconGrey.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { langMyTraining } from 'languages/langMyTraining';
+import { Link } from 'react-router-dom';
+import {
+  getEndDate,
+  getPlanBooks,
+  getStartDate,
+} from 'redux/planning/planningSelectors';
+import { addTrainingConfig } from 'redux/planning/planningOperations';
 
 export const EmptyBook = () => {
   const lang = useSelector(getLanguage);
   const { author, publishYear, pagesTotal } = langMyTraining;
+  const filter = useSelector(getPlanBooks);
+  const dispatch = useDispatch();
+  const stateBody = useSelector(state => state.planning);
+  const start = useSelector(getStartDate);
+  const end = useSelector(getEndDate);
+  const { startTraining } = langMyTraining;
+
+  const handleBeginTrainingBtn = () => {
+    dispatch(addTrainingConfig(stateBody));
+  };
 
   return (
     <>
@@ -46,6 +65,17 @@ export const EmptyBook = () => {
           </MobileTextContainer>
         </MobileBooksItem>
       </MobileBooksList>
+      <BeginTrainingBtnContainer>
+        <Link to="/statistics">
+          {filter.length > 0 && start && end ? (
+            <BeginTrainingBtn onClick={handleBeginTrainingBtn} type="button">
+              {startTraining[lang]}
+            </BeginTrainingBtn>
+          ) : (
+            ''
+          )}
+        </Link>
+      </BeginTrainingBtnContainer>
     </>
   );
 };

@@ -13,8 +13,14 @@ import { BooksCustomSelector } from './BooksSelector/BooksSelector';
 import { TableComponent } from './Table/Table';
 import { langMyTraining } from 'languages/langMyTraining';
 import { getLanguage } from 'redux/language/languageSelectors';
+import {
+  getStartDate,
+  getEndDate,
+} from '../../redux/planning/planningSelectors';
 
 export const MyTraining = () => {
+  const start = useSelector(getStartDate);
+  const end = useSelector(getEndDate);
   const stateBody = useSelector(state => state.planning);
   const filter = useSelector(state => state.planning.filter);
   const dispatch = useDispatch();
@@ -25,7 +31,8 @@ export const MyTraining = () => {
   const handleBeginTrainingBtn = () => {
     dispatch(addTrainingConfig(stateBody));
   };
-
+  console.log(start);
+  console.log(end);
   return (
     <>
       <div>
@@ -37,7 +44,9 @@ export const MyTraining = () => {
         <TableComponent />
         <BeginTrainingBtnContainer>
           <Link to="/statistics">
-            {filter.length > 0 ? (
+            {!start.includes(1970) &&
+            filter.length > 0 &&
+            !end.includes(1970) ? (
               <BeginTrainingBtn onClick={handleBeginTrainingBtn} type="button">
                 {startTraining[lang]}
               </BeginTrainingBtn>
