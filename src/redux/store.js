@@ -27,7 +27,7 @@ const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
 const rootRersistConfig = {
   key: 'root',
   storage,
-  whilelist: ['language'],
+  whitelist: ['language', 'planning'],
 };
 
 const rootReducer = combineReducers({

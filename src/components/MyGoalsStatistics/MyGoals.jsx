@@ -19,8 +19,7 @@ export const MyGoals = () => {
   const endDate = new Date(useSelector(getEndDate)).getTime();
   const startData = Date.now();
   const booksAll = useSelector(getPlanBooks);
-  console.log(booksAll)
-
+ 
   const lang = useSelector(getLanguage);
   const { goal, bookaAm, daysAm, left } = langMyGoals;
 
@@ -28,14 +27,15 @@ export const MyGoals = () => {
 
   const books = booksAll.length;
 
-  const bookLeft = () => {
+  const bookFinish = () => {
     const diffPages = booksAll.filter(
       book => book.pagesTotal - book.pagesFinished === 0
     );
-    return diffPages.length ;
-    
+    return diffPages.length;
   };
-  console.log(bookLeft)
+ 
+  const bookLeft = booksAll.length - bookFinish();
+ 
 
   return (
     <BoxGoal>
@@ -58,7 +58,7 @@ export const MyGoals = () => {
           </li>
           <li>
             <BoxStl>
-              <AccentStl>{bookLeft()}</AccentStl>
+              <AccentStl>{bookLeft}</AccentStl>
             </BoxStl>
             <LabelStl>{left[lang]}</LabelStl>
           </li>

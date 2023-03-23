@@ -130,11 +130,13 @@ export const LabelStl = styled.p`
   height: 30px;
   width: 66px;
   @media screen and (min-width: 768px) {
+    width: 100%;
     font-size: 11px;
     padding-top: 4px;
   }
   @media screen and (min-width: 1280px) {
     font-size: 12px;
+    width: 66px;
   }
 `;
 

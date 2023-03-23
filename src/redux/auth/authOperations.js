@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { fetchAllBooks } from 'redux/book/bookOperations';
 import { token } from './token';
 
 axios.defaults.baseURL = 'https://bookread-backend.goit.global';
@@ -36,14 +35,13 @@ export const googleThunk = createAsyncThunk(
   }
 );
 
-
 export const signInThunk = createAsyncThunk(
   'auth/signin',
   async (credentials, { rejectWithValue, dispatch }) => {
     try {
       const { data } = await axios.post('auth/login', credentials);
       token.set(data.accessToken);
-      dispatch(fetchAllBooks());
+      dispatch(getUserThunk());
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -67,16 +65,20 @@ export const logOutThunk = createAsyncThunk(
 
 export const getUserThunk = createAsyncThunk(
   'user/books',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
-      const { data } = await axios.get('user/books');
+      const value = getState().auth.token;
+      if (value === null) {
+        return rejectWithValue('Unable to fetch user');
+      }
+      token.set(value);
+      const { data } = await axios.get('/user/books');
       return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
+    } catch (e) {
+      return rejectWithValue(e.message);
     }
   }
 );
-
 
 export const refreshThunk = createAsyncThunk(
   'user/refresh',
