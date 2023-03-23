@@ -8,7 +8,9 @@ import {
   getGoingToRead,
 } from 'redux/book/bookSelectors';
 import useMatchMedia from 'hooks/useMatchMedia';
-import { fetchAllBooks } from 'redux/book/bookOperations';
+// import { fetchAllBooks } from 'redux/book/bookOperations';
+import { getUserThunk } from 'redux/auth/authOperations';
+
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container } from 'App.styled';
@@ -23,7 +25,7 @@ const Library = () => {
   const finishedReading = useSelector(getFinishedReading);
 
   useEffect(() => {
-    dispatch(fetchAllBooks());
+    dispatch(getUserThunk());
   }, [dispatch]);
 
   const emptyList =

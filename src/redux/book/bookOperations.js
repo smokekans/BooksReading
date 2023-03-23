@@ -18,23 +18,6 @@ export const addBook = createAsyncThunk(
   }
 );
 
-export const fetchAllBooks = createAsyncThunk(
-  'books/fetchAll',
-  async (_, { rejectWithValue, getState }) => {
-    try {
-      const value = getState().auth.token;
-      if (value === null) {
-        return rejectWithValue('Unable to fetch user');
-      }
-      token.set(value);
-      const { data } = await axios.get('/user/books');
-      return data;
-    } catch (e) {
-      return rejectWithValue(e.message);
-    }
-  }
-);
-
 export const deleteBook = createAsyncThunk(
   'books/deleteBook',
   async (bookId, { rejectWithValue, getState }) => {
