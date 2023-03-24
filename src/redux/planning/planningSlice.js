@@ -28,6 +28,9 @@ const planningSlice = createSlice({
     deleteBook(state, { payload }) {
       state.filter = payload;
     },
+    updateStats(state, { payload }) {
+      state.stats = [];
+    },
   },
   extraReducers: builder => {
     builder
@@ -52,4 +55,5 @@ export const {
   addToBooks,
   filteredBooksList,
   deleteBook,
+  updateStats,
 } = planningSlice.actions;
