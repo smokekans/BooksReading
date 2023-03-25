@@ -97,7 +97,11 @@ export const LibraryTable = () => {
                       </div>
                       <div>
                         <SpanMobile>{rate[lang]}:</SpanMobile>
-                        <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
+                        <Rate
+                          value={b.rating}
+                          style={{ width: '120px', fontSize: '17px' }}
+                          disabled
+                        />
                       </div>
                       <Button
                         type="button"
@@ -140,7 +144,11 @@ export const LibraryTable = () => {
                       <td>{b.publishYear}</td>
                       <td>{b.pagesTotal}</td>
                       <td>
-                        <Rate value={b.rating} style={{ width: '120px', fontSize: '17px' }} />
+                        <Rate
+                          value={b.rating}
+                          style={{ width: '120px', fontSize: '17px' }}
+                          disabled
+                        />
                       </td>
                       <td>
                         <Button
