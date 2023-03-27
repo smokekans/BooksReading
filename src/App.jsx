@@ -12,6 +12,7 @@ import { getUserThunk } from 'redux/auth/authOperations';
 import useMatchMedia from 'hooks/useMatchMedia';
 import AuthInfo from 'pages/AuthInfo';
 import { lazy } from 'react';
+import NotFound from './pages/NotFound/NotFound';
 
 const Login = lazy(() => import('./pages/Login/Login'));
 const Register = lazy(() => import('./pages/Register/Register'));
@@ -20,7 +21,6 @@ const Statistics = lazy(() => import('./pages/Statistics/Statistics'));
 const Training = lazy(() => import('./pages/Training/Training'));
 const AddTraining = lazy(() => import('./pages/AddTraining'));
 const AddBook = lazy(() => import('./pages/AddBook'));
-const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 export const App = () => {
   const { isMobile } = useMatchMedia();
@@ -48,18 +48,29 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={isMobile ? <AuthInfo /> : <Navigate to={'/login'} />} />
-          <Route path="" element={<PublicRoute redirectTo="library" restricted />}>
+          <Route
+            index
+            element={isMobile ? <AuthInfo /> : <Navigate to={'/login'} />}
+          />
+          <Route
+            path=""
+            element={<PublicRoute redirectTo="library" restricted />}
+          >
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
           </Route>
           <Route path="" element={<PrivateRoute />}>
-            <Route path="addbook" element={isMobile ? <AddBook /> : <Navigate to={'/library'} />} />
+            <Route
+              path="addbook"
+              element={isMobile ? <AddBook /> : <Navigate to={'/library'} />}
+            />
             <Route path="library" element={<Library />} />
             <Route path="training" element={<Training />} />
             <Route
               path="addtraining"
-              element={isMobile ? <AddTraining /> : <Navigate to={'/training'} />}
+              element={
+                isMobile ? <AddTraining /> : <Navigate to={'/training'} />
+              }
             />
             <Route path="statistics" element={<Statistics />} />
           </Route>
